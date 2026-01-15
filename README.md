@@ -181,9 +181,26 @@ interface UserProgress {
 ### Phase 1: Foundation (Days 1-2) ✅ IN PROGRESS
 
 - [x] Initialize Next.js project
-- [x] Configure Tailwind CSS for landscape mode
+- [x] Automated Verification & Quality Control
 - [ ] Implement SaveSystem and UserProgress context
 - [ ] Create Dashboard (Menu) UI with locked/unlocked states
+
+---
+
+## 🚀 Deployment Guide (Render)
+
+### Option A: Web Service (Easiest)
+Best for full Next.js feature support.
+1. **New > Web Service**
+2. **Build Command:** `npm run build`
+3. **Start Command:** `npm run start`
+
+### Option B: Static Site (Best for Free Tier)
+Fast and cost-effective for client-side PWAs.
+1. Add `output: 'export'` to `next.config.ts`.
+2. **New > Static Site**
+3. **Build Command:** `npm run build`
+4. **Publish Directory:** `out`
 
 ### Phase 2: Core Gameplay (Days 3-5)
 
