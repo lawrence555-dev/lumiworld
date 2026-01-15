@@ -2,6 +2,7 @@
 
 import { Lock, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { AudioSystem } from '@/systems/AudioSystem';
 
 interface WeekCardProps {
     weekId: string;
@@ -22,9 +23,15 @@ export function WeekCard({
     stars,
     onClick,
 }: WeekCardProps) {
+    const handleClick = () => {
+        // Unlock audio for iOS on user gesture before navigating
+        AudioSystem.unlockAudio();
+        onClick();
+    };
+
     return (
         <motion.button
-            onClick={isUnlocked ? onClick : undefined}
+            onClick={isUnlocked ? handleClick : undefined}
             disabled={!isUnlocked}
             whileHover={isUnlocked ? { scale: 1.02, y: -4 } : {}}
             whileTap={isUnlocked ? { scale: 0.96 } : {}}
