@@ -2,6 +2,7 @@
 
 import { createElement, createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 import { SaveSystem, UserProgress } from '@/systems/SaveSystem';
+import { AudioSystem } from '@/systems/AudioSystem';
 
 type ProgressAction =
   | { type: 'LOAD_PROGRESS'; payload: UserProgress }
@@ -45,7 +46,23 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     // Load actual progress on client-side only
     const loadedProgress = SaveSystem.load();
     dispatch({ type: 'LOAD_PROGRESS', payload: loadedProgress });
+
+    // Initialize AudioSystem with user settings
+    AudioSystem.init(
+      !loadedProgress.settings.isMuted,
+      true,
+      loadedProgress.settings.language
+    );
   }, []);
+
+  // Sync AudioSystem when settings change
+  useEffect(() => {
+    AudioSystem.init(
+      !progress.settings.isMuted,
+      true,
+      progress.settings.language
+    );
+  }, [progress.settings.isMuted, progress.settings.language]);
 
   const contextValue: ProgressContextType = {
     progress,

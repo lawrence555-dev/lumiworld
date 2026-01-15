@@ -20,7 +20,7 @@ export default function Dashboard() {
       id: weekId,
       number: num,
       title: t.weeks[weekId]?.title || `Week ${num}`,
-      isUnlocked: weekProgress?.isUnlocked || true, // Force unlock all for simplicity
+      isUnlocked: weekProgress?.isUnlocked || true,
       isCompleted: weekProgress?.isCompleted ?? false,
       stars: weekProgress?.stars ?? 0,
     };
@@ -28,23 +28,25 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen relative flex flex-col">
+      {/* Fixed Header Bar */}
       <Header />
 
-      {/* Scrollable Content Container */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-10 pt-52 pb-32">
-        <header className="mb-12 text-center md:text-left">
-          <h2 className="text-sm font-black uppercase tracking-[0.3em] text-indigo-400 opacity-60">
-            Curriculum Path
-          </h2>
-          <p className="text-white/40 text-xs font-bold mt-1">
-            Complete each level to master STEAM concepts
-          </p>
-        </header>
+      {/* Fixed Curriculum Path Title - Below Header */}
+      <div className="fixed top-20 left-6 z-50 pointer-events-none">
+        <h2 className="text-sm font-black uppercase tracking-[0.3em] text-indigo-400 opacity-80">
+          Curriculum Path
+        </h2>
+        <p className="text-white/40 text-xs font-bold mt-0.5">
+          Complete each level to master STEAM concepts
+        </p>
+      </div>
 
+      {/* Scrollable Content Container - Cards Only */}
+      <main className="flex-1 w-full max-w-7xl mx-auto px-6 pt-36 pb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
         >
           {weeks_data.map((week) => (
             <div key={week.id} className="w-full">
