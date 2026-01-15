@@ -1,6 +1,5 @@
 # Project Proposal: LumiWorld - Integrated Pre-K STEAM & Early Literacy Initiative
 
-**Proposer:** [Your Name]  
 **Curriculum System:** US-Based (Aligned with US Common Core & NGSS)  
 **Target Grade:** Pre-Kindergarten (Ages 4-5)  
 **Unit Theme:** Sharing the Planet (Environmental Stewardship)  
