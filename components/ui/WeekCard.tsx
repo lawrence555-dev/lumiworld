@@ -3,6 +3,7 @@
 import { Lock, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { AudioSystem } from '@/systems/AudioSystem';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface WeekCardProps {
     weekId: string;
@@ -23,6 +24,7 @@ export function WeekCard({
     stars,
     onClick,
 }: WeekCardProps) {
+    const { t } = useLanguage();
     const handleClick = () => {
         // Unlock audio for iOS on user gesture before navigating
         AudioSystem.unlockAudio();
@@ -58,7 +60,7 @@ export function WeekCard({
                         ? 'bg-indigo-500 text-white shadow-xl shadow-indigo-500/40 ring-4 ring-indigo-500/20'
                         : 'bg-white/10 text-white/20 ring-1 ring-white/5'}
                 `}>
-                    <span className="opacity-50 text-[10px] mr-1 font-bold uppercase tracking-widest">Level</span> {weekNumber}
+                    <span className="opacity-50 text-[10px] mr-1 font-bold uppercase tracking-widest">{t.ui.level}</span> {weekNumber}
                 </div>
             </div>
 
@@ -97,11 +99,11 @@ export function WeekCard({
                             ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
                             : 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-600'}
                     `}>
-                        {isCompleted ? '✓ Mastery Achieved' : 'Begin Journey'}
+                        {isCompleted ? `✓ ${t.feedback.mastery_achieved}` : t.ui.begin_journey}
                     </div>
                 ) : (
                     <div className="w-full py-4 rounded-3xl text-xs font-black uppercase tracking-[0.2em] bg-white/5 text-white/20 border border-white/5">
-                        Coming Soon
+                        {t.ui.coming_soon}
                     </div>
                 )}
             </div>

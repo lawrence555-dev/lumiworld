@@ -15,8 +15,11 @@ export const th: TranslationKeys = {
         reset_all: 'รีเซ็ตความคืบหน้าทั้งหมด',
         cancel: 'ยกเลิก',
         reset: 'รีเซ็ต',
-        madeWith: 'สร้างด้วย ❤️ สำหรับ',
-        forFourYearOlds: 'เด็กอายุ 4 ขวบที่อยากรู้อยากเห็น',
+        level: 'ระดับ',
+        begin_journey: 'เริ่มการเดินทาง',
+        coming_soon: 'เร็วๆ นี้',
+        curriculum_path: 'เส้นทางการเรียนรู้',
+        master_steam: 'ทำครบทุกระดับเพื่อเป็นผู้เชี่ยวชาญ STEAM',
     },
 
     dashboard: {
@@ -25,14 +28,14 @@ export const th: TranslationKeys = {
     },
 
     weeks: {
-        w1: { title: 'การจำแนกประเภท (Sorting)' },
-        w2: { title: 'กายวิภาคเบื้องต้น (Anatomy)' },
-        w3: { title: 'ทักษะจำนวน (Number Sense)' },
-        w4: { title: 'การเปรียบเทียบ (Measurement)' },
-        w5: { title: 'การสำรวจถิ่นที่อยู่ (Habitats)' },
-        w6: { title: 'พฤกษศาสตร์พื้นฐาน (Botany)' },
-        w7: { title: 'วิทยาศาสตร์สิ่งแวดล้อม (Eco Science)' },
-        w8: { title: 'โครงการสรุป (Capstone)' },
+        w1: { title: 'การจำแนกประเภท' },
+        w2: { title: 'กายวิภาคเบื้องต้น' },
+        w3: { title: 'ทักษะจำนวน' },
+        w4: { title: 'การเปรียบเทียบ' },
+        w5: { title: 'การสำรวจถิ่นที่อยู่' },
+        w6: { title: 'พฤกษศาสตร์พื้นฐาน' },
+        w7: { title: 'วิทยาศาสตร์สิ่งแวดล้อม' },
+        w8: { title: 'โครงการสรุป' },
     },
 
     week1: {
@@ -40,24 +43,36 @@ export const th: TranslationKeys = {
         instruction: 'ลากรายการไปยังตะกร้าที่ถูกต้อง!',
         living: 'สิ่งมีชีวิต',
         non_living: 'ไม่มีชีวิต',
-        items: {
-            cat: 'Cat',
-            flower: 'Flower',
-            tree: 'Tree',
-            butterfly: 'Butterfly',
-            rock: 'Rock',
-            car: 'Car',
-            robot: 'Robot',
-            hat: 'Hat',
-        },
     },
 
     feedback: {
         great_job: 'เก่งมาก!',
         try_again: 'ลองอีกครั้ง!',
-        amazing: 'น่าทึ่ง! คุณทำสัปดาห์เสร็จแล้ว',
+        amazing: 'สุดยอด! คุณเก่งมากในหัวข้อ',
         you_did_it: 'คุณทำได้!',
         correct: 'ถูกต้อง',
+        hint: 'ลากไอเทมไปยังหมวดหมู่ที่ถูกต้อง',
+        mastery_achieved: 'มาสเตอร์แล้ว!',
+    },
+
+    // All Zones
+    zones: {
+        living: 'สิ่งมีชีวิต',
+        'non-living': 'สิ่งไม่มีชีวิต',
+        sea: 'ส่วนประกอบสัตว์ทะเล',
+        land: 'ส่วนประกอบสัตว์บก',
+        low: 'กลุ่มเล็ก',
+        high: 'กลุ่มใหญ่',
+        huge: 'ใหญ่ยักษ์',
+        tiny: 'จิ๋ว',
+        sky: 'ท้องฟ้า',
+        earth: 'พื้นดิน',
+        need: 'สิ่งที่พืชต้องการ',
+        not_need: 'สิ่งที่ไม่จำเป็น',
+        clean: 'ทะเลสะอาด',
+        trash: 'ขยะ',
+        forest: 'ป่า',
+        ocean: 'มหาสมุทร',
     },
 
     settings: {

@@ -13,10 +13,13 @@ export const ko: TranslationKeys = {
         high_contrast: '고대비',
         export_progress: '진행 상황 내보내기',
         reset_all: '모든 진행 상황 재설정',
-        cancel: '취สอบ',
+        cancel: '취소',
         reset: '재설정',
-        madeWith: '호기심 많은',
-        forFourYearOlds: '4세 어린이를 위해 ❤️로 만들었습니다',
+        level: '레벨',
+        begin_journey: '여행 시작하기',
+        coming_soon: '커밍순',
+        curriculum_path: '커리큘럼 경로',
+        master_steam: 'STEAM을 마스터하기 위해 각 레벨을 완료하세요',
     },
 
     dashboard: {
@@ -25,14 +28,14 @@ export const ko: TranslationKeys = {
     },
 
     weeks: {
-        w1: { title: '과학적 분류 (Sorting)' },
-        w2: { title: '해부학 입문 (Anatomy)' },
-        w3: { title: '수적 감각 및 필요 (Number Sense)' },
-        w4: { title: '비교 측정 (Measurement)' },
-        w5: { title: '서식지 탐劃 (Habitats)' },
-        w6: { title: '식물학 기초 (Botany)' },
-        w7: { title: '환경 과학 (Eco Science)' },
-        w8: { title: '종합 프로젝트 (Capstone)' },
+        w1: { title: '과학적 분류' },
+        w2: { title: '해부학 입문' },
+        w3: { title: '수적 감각 및 필요' },
+        w4: { title: '비교 측정' },
+        w5: { title: '서식지 탐험' },
+        w6: { title: '식물학 기초' },
+        w7: { title: '환경 과학' },
+        w8: { title: '종합 프로젝트' },
     },
 
     week1: {
@@ -40,24 +43,36 @@ export const ko: TranslationKeys = {
         instruction: '항목을 올바른 바구니로 드래그하세요!',
         living: '생물',
         non_living: '무생물',
-        items: {
-            cat: 'Cat',
-            flower: 'Flower',
-            tree: 'Tree',
-            butterfly: 'Butterfly',
-            rock: 'Rock',
-            car: 'Car',
-            robot: 'Robot',
-            hat: 'Hat',
-        },
     },
 
     feedback: {
         great_job: '잘했어요!',
         try_again: '다시 시도해보세요!',
-        amazing: '놀라워요! 주를 완료했습니다',
+        amazing: '놀라워요! 당신은 완벽하게 익혔어요',
         you_did_it: '해냈어요!',
         correct: '정답',
+        hint: '항목을 올바른 범주로 드래그하세요',
+        mastery_achieved: '숙달 완료!',
+    },
+
+    // All Zones
+    zones: {
+        living: '생물',
+        'non-living': '무생물',
+        sea: '바다 생물 부위',
+        land: '육지 동물 부위',
+        low: '작은 숫자',
+        high: '큰 숫자',
+        huge: '거대한',
+        tiny: '작은',
+        sky: '하늘',
+        earth: '땅',
+        need: '식물에게 필요한 것',
+        not_need: '필요 없는 것',
+        clean: '깨끗한 바다',
+        trash: '쓰레기',
+        forest: '숲',
+        ocean: '바다',
     },
 
     settings: {

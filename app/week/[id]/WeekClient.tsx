@@ -12,12 +12,13 @@ import confetti from 'canvas-confetti';
 import { Home } from 'lucide-react';
 import { use } from 'react';
 import { WEEK_GAME_DATA, GameItem } from '@/data/GameContent';
+import { GAME_LABELS } from '@/data/GameLabels';
 
 export default function WeekClient({ params: paramsPromise }: { params: Promise<{ id: string }> }) {
     const params = use(paramsPromise);
     const { id } = params;
     const router = useRouter();
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const { updateWeek } = useProgress();
 
     // Game configuration for this week
@@ -51,13 +52,13 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                     <Home size={32} />
                 </button>
                 <div className="text-9xl mb-8">🚀</div>
-                <h1 className="text-5xl font-black mb-4">Coming Soon!</h1>
-                <p className="text-2xl opacity-70">We are preparing Level {id.replace('w', '')} for you! ✨</p>
+                <h1 className="text-5xl font-black mb-4">{t.ui.coming_soon}!</h1>
+                <p className="text-2xl opacity-70">Level {id.replace('w', '')} is coming soon! ✨</p>
                 <button
                     onClick={() => router.push('/')}
                     className="mt-12 px-10 py-4 bg-indigo-500 rounded-2xl font-bold text-xl shadow-lg hover:bg-indigo-400 transition-all"
                 >
-                    Back to Dashboard
+                    {t.ui.back_home}
                 </button>
             </div>
         );
@@ -68,14 +69,17 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
 
     useEffect(() => {
         if (currentItem && !isGameComplete && !isProcessing) {
+            // Get localized label
+            const localizedLabel = GAME_LABELS[currentItem.id]?.[language] || currentItem.label;
+
             // Small delay to ensure audio context is ready on iOS
             const timer = setTimeout(() => {
-                console.log('[Game] Speaking item:', currentItem.label);
-                AudioSystem.speak(currentItem.label);
+                console.log('[Game] Speaking item:', localizedLabel);
+                AudioSystem.speak(localizedLabel);
             }, 300);
             return () => clearTimeout(timer);
         }
-    }, [currentItemIndex, currentItem, isGameComplete, isProcessing]);
+    }, [currentItemIndex, currentItem, isGameComplete, isProcessing, language]);
 
     const handleDragEnd = async (itemId: string, x: number, y: number) => {
         // Prevent double-trigger with processing lock
@@ -110,7 +114,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 spread: 50,
                 origin: { y: 0.7 }
             });
-            AudioSystem.playSuccess('Bingo!');
+            AudioSystem.playSuccess(t.feedback.correct);
             setCorrectCount(prev => prev + 1);
 
             if (isInLeftZone) setLeftFilled(true);
@@ -123,7 +127,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 setIsProcessing(false);
             }, 800);
         } else if (isInLeftZone || isInRightZone) {
-            AudioSystem.playError('Try again!');
+            AudioSystem.playError(t.feedback.try_again);
         }
     };
 
@@ -142,7 +146,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 spread: 80,
                 origin: { y: 0.5 }
             });
-            AudioSystem.speak(`Amazing! You mastered ${config.title}!`);
+            AudioSystem.speak(`${t.feedback.amazing} ${t.weeks[id as keyof typeof t.weeks].title}`);
 
             setTimeout(() => {
                 router.push('/');
@@ -155,15 +159,15 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             <div className="w-screen h-screen bg-gradient-to-br from-emerald-600 to-indigo-900 flex items-center justify-center">
                 <div className="text-center">
                     <div className="text-9xl mb-8">🏆</div>
-                    <h1 className="text-7xl font-black text-white mb-4 tracking-tighter">Mastery Achieved!</h1>
+                    <h1 className="text-7xl font-black text-white mb-4 tracking-tighter">{t.feedback.mastery_achieved}</h1>
                     <p className="text-3xl text-white/80 font-bold uppercase tracking-[0.2em] mb-8">
-                        {correctCount} / {randomizedItems.length} Correct
+                        {correctCount} / {randomizedItems.length} {t.feedback.correct}
                     </p>
                     <button
                         onClick={() => router.push('/')}
                         className="px-8 py-4 bg-white/20 hover:bg-white/30 rounded-2xl text-white font-bold text-xl transition-all"
                     >
-                        🏠 Back to Home
+                        🏠 {t.ui.back_home}
                     </button>
                 </div>
             </div>
@@ -211,7 +215,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 <div ref={leftZoneRef} className="transition-transform hover:scale-105">
                     <DropZone
                         id={config.leftZone.id}
-                        label={config.leftZone.label}
+                        label={(t.zones as any)[config.leftZone.id] || config.leftZone.label}
                         icon={config.leftZone.icon}
                         acceptTypes={[config.leftZone.id]}
                         color={config.leftZone.color}
@@ -222,7 +226,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 <div ref={rightZoneRef} className="transition-transform hover:scale-105">
                     <DropZone
                         id={config.rightZone.id}
-                        label={config.rightZone.label}
+                        label={(t.zones as any)[config.rightZone.id] || config.rightZone.label}
                         icon={config.rightZone.icon}
                         acceptTypes={[config.rightZone.id]}
                         color={config.rightZone.color}
@@ -238,7 +242,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                         key={currentItem.id}
                         id={currentItem.id}
                         type={currentItem.type}
-                        label={currentItem.label}
+                        label={GAME_LABELS[currentItem.id]?.[language as keyof typeof GAME_LABELS[string]] || currentItem.label}
                         emoji={currentItem.emoji}
                         initialX={typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 0}
                         initialY={150}
@@ -250,7 +254,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             {/* Hint Overlay */}
             <div className="absolute bottom-12 left-1/2 -translate-x-1/2 pointer-events-none">
                 <p className="text-white/20 font-black uppercase tracking-[0.4em] text-xs">
-                    Drag the item to the correct category
+                    {t.feedback.hint}
                 </p>
             </div>
         </div>

@@ -15,8 +15,11 @@ export const ja: TranslationKeys = {
         reset_all: 'すべての進捗をリセット',
         cancel: 'キャンセル',
         reset: 'リセット',
-        madeWith: '好奇心旺盛な',
-        forFourYearOlds: '4歳児のために ❤️ で作られました',
+        level: 'レベル',
+        begin_journey: 'はじめる',
+        coming_soon: 'まもなくとうじょう',
+        curriculum_path: 'がくしゅうの みちしるべ',
+        master_steam: 'レベルをクリアして STEAMをマスターしよう',
     },
 
     dashboard: {
@@ -25,14 +28,14 @@ export const ja: TranslationKeys = {
     },
 
     weeks: {
-        w1: { title: '科学的な分類 (Sorting)' },
-        w2: { title: '生物構造の紹介 (Anatomy)' },
-        w3: { title: '数感と生存ニーズ (Number Sense)' },
-        w4: { title: '比較測定 (Measurement)' },
-        w5: { title: '生息地の探索 (Habitats)' },
-        w6: { title: '植物学の基礎 (Botany)' },
-        w7: { title: '環境科学 (Eco Science)' },
-        w8: { title: '総括プロジェクト (Capstone)' },
+        w1: { title: '科学的な分類' },
+        w2: { title: '生物構造の紹介' },
+        w3: { title: '数感と生存ニーズ' },
+        w4: { title: '比較測定' },
+        w5: { title: '生息地の探索' },
+        w6: { title: '植物学の基礎' },
+        w7: { title: '環境科学' },
+        w8: { title: '総括プロジェクト' },
     },
 
     week1: {
@@ -40,24 +43,36 @@ export const ja: TranslationKeys = {
         instruction: 'アイテムを正しいバスケットにドラッグしてください！',
         living: '生き物',
         non_living: '無生物',
-        items: {
-            cat: 'Cat',
-            flower: 'Flower',
-            tree: 'Tree',
-            butterfly: 'Butterfly',
-            rock: 'Rock',
-            car: 'Car',
-            robot: 'Robot',
-            hat: 'Hat',
-        },
     },
 
     feedback: {
         great_job: 'よくできました！',
         try_again: 'もう一度試してみて！',
-        amazing: 'すごい！週を完了しました',
+        amazing: 'すごい！マスターしました',
         you_did_it: 'やったね！',
-        correct: '正解',
+        correct: 'せいかい',
+        hint: 'ただしい ぐるーぷに ドラッグしてね',
+        mastery_achieved: 'じょうずになりました！',
+    },
+
+    // All Zones
+    zones: {
+        living: 'いきもの',
+        'non-living': 'いきものではない',
+        sea: 'うみのいきもののからだ',
+        land: 'りくのいきもののからだ',
+        low: 'すくない',
+        high: 'たくさん',
+        huge: 'おおきい',
+        tiny: 'ちいさい',
+        sky: 'そら',
+        earth: 'だいち',
+        need: 'しょくぶつに ひつようなもの',
+        not_need: 'いらないもの',
+        clean: 'きれいなうみ',
+        trash: 'ごみ',
+        forest: 'もり',
+        ocean: 'うみ',
     },
 
     settings: {

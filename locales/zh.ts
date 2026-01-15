@@ -15,8 +15,11 @@ export const zh: TranslationKeys = {
         reset_all: '重置所有進度',
         cancel: '取消',
         reset: '重置',
-        madeWith: '用 ❤️ 為',
-        forFourYearOlds: '好奇的 4 歲兒童製作',
+        level: '等級',
+        begin_journey: '開始旅程',
+        coming_soon: '敬請期待',
+        curriculum_path: '課程路徑',
+        master_steam: '完成每個等級來精通 STEAM',
     },
 
     dashboard: {
@@ -25,14 +28,14 @@ export const zh: TranslationKeys = {
     },
 
     weeks: {
-        w1: { title: '科學分類 (Sorting)' },
-        w2: { title: '生物構造導論 (Anatomy)' },
-        w3: { title: '數感與生存需求 (Number Sense)' },
-        w4: { title: '比較測量 (Measurement)' },
-        w5: { title: '棲息地探索 (Habitats)' },
-        w6: { title: '植物學基礎 (Botany)' },
-        w7: { title: '環境科學 (Eco Science)' },
-        w8: { title: '總結性專題 (Capstone)' },
+        w1: { title: '科學分類' },
+        w2: { title: '生物構造導論' },
+        w3: { title: '數感與生存需求' },
+        w4: { title: '比較測量' },
+        w5: { title: '棲息地探索' },
+        w6: { title: '植物學基礎' },
+        w7: { title: '環境科學' },
+        w8: { title: '總結性專題' },
     },
 
     week1: {
@@ -40,24 +43,36 @@ export const zh: TranslationKeys = {
         instruction: '把物品拖到正確的籃子裡！',
         living: '生物',
         non_living: '非生物',
-        items: {
-            cat: 'Cat',
-            flower: 'Flower',
-            tree: 'Tree',
-            butterfly: 'Butterfly',
-            rock: 'Rock',
-            car: 'Car',
-            robot: 'Robot',
-            hat: 'Hat',
-        },
     },
 
     feedback: {
         great_job: '做得好！',
         try_again: '再試一次！',
-        amazing: '太棒了！你完成了第',
+        amazing: '太棒了！你精通了',
         you_did_it: '你做到了！',
         correct: '正確',
+        hint: '將物品拖移到正確的分類中',
+        mastery_achieved: '達成大師！',
+    },
+
+    // All Zones
+    zones: {
+        living: '生物',
+        'non-living': '非生物',
+        sea: '海洋構造',
+        land: '陸地構造',
+        low: '小數量',
+        high: '大數量',
+        huge: '巨大的',
+        tiny: '微小的',
+        sky: '天空',
+        earth: '大地',
+        need: '植物需求',
+        not_need: '不需物品',
+        clean: '乾淨海洋',
+        trash: '海洋垃圾',
+        forest: '森林',
+        ocean: '海洋',
     },
 
     settings: {

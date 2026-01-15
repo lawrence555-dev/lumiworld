@@ -53,11 +53,6 @@ export default function Dashboard() {
           ))}
         </motion.div>
       </main>
-
-      {/* Discreet Footer */}
-      <div className="fixed bottom-4 left-6 text-white/20 text-[10px] uppercase tracking-widest pointer-events-none">
-        {t.ui.madeWith} ❤️ {t.ui.forFourYearOlds}
-      </div>
     </div>
   );
 }

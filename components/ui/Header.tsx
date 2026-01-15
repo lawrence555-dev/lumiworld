@@ -41,10 +41,10 @@ export const Header = ({ showHome = false, showCurriculumPath = false }: HeaderP
                     {showCurriculumPath && (
                         <div className="hidden sm:block border-l border-white/10 pl-4 ml-2">
                             <h2 className="text-xs font-black uppercase tracking-[0.2em] text-indigo-400">
-                                Curriculum Path
+                                {t.ui.curriculum_path}
                             </h2>
                             <p className="text-white/40 text-[9px] font-medium mt-0.5">
-                                Complete each level to master STEAM
+                                {t.ui.master_steam}
                             </p>
                         </div>
                     )}

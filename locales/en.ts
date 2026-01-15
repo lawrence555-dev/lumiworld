@@ -14,8 +14,11 @@ export const en = {
         reset_all: 'Reset All Progress',
         cancel: 'Cancel',
         reset: 'Reset',
-        madeWith: 'Made with',
-        forFourYearOlds: 'for curious 4-year-olds',
+        level: 'Level',
+        begin_journey: 'Begin Journey',
+        coming_soon: 'Coming Soon',
+        curriculum_path: 'Curriculum Path',
+        master_steam: 'Complete each level to master STEAM',
     },
 
     // Dashboard
@@ -42,25 +45,37 @@ export const en = {
         instruction: 'Drag the item to the correct bin!',
         living: 'Living',
         non_living: 'Non-Living',
-        items: {
-            cat: 'Cat',
-            flower: 'Flower',
-            tree: 'Tree',
-            butterfly: 'Butterfly',
-            rock: 'Rock',
-            car: 'Car',
-            robot: 'Robot',
-            hat: 'Hat',
-        },
+    },
+
+    // All Zones (Normalized for lookup)
+    zones: {
+        living: 'Living',
+        'non-living': 'Non-Living',
+        sea: 'Sea Parts',
+        land: 'Land Parts',
+        low: 'Small Group',
+        high: 'Big Group',
+        huge: 'Huge',
+        tiny: 'Tiny',
+        sky: 'Sky',
+        earth: 'Earth',
+        need: 'Plant Needs',
+        not_need: 'Not Needed',
+        clean: 'Clean Ocean',
+        trash: 'Trash',
+        forest: 'Forest',
+        ocean: 'Ocean',
     },
 
     // Feedback
     feedback: {
         great_job: 'Great job!',
         try_again: 'Try again!',
-        amazing: 'Amazing! You completed Week',
+        amazing: 'Amazing! You mastered',
         you_did_it: 'You Did It!',
         correct: 'Correct',
+        hint: 'Drag the item to the correct category',
+        mastery_achieved: 'Mastery Achieved!',
     },
 
     // Settings
