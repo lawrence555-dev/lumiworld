@@ -17,8 +17,8 @@ export const Header = ({ showHome = false }: HeaderProps) => {
     const isMuted = progress.settings.isMuted;
 
     return (
-        <header className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
-            <div className="glass px-5 py-2 rounded-xl flex items-center justify-between shadow-2xl border border-white/10">
+        <header className="fixed top-2 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-3xl">
+            <div className="glass px-5 py-2 rounded-xl flex items-center justify-between shadow-2xl border border-white/10 bg-slate-900/60 transition-colors">
                 <div className="flex items-center gap-3">
                     <motion.div
                         whileHover={{ rotate: 10, scale: 1.1 }}

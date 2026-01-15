@@ -31,7 +31,7 @@ export default function Dashboard() {
       <Header />
 
       {/* Scrollable Content Container */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-6 pt-24 pb-32">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-6 pt-32 pb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

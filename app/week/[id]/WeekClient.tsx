@@ -20,14 +20,38 @@ interface GameItem {
 }
 
 const gameItems: GameItem[] = [
+    // Living (15)
     { id: 'cat', type: 'living', label: 'Cat', emoji: '🐱' },
     { id: 'flower', type: 'living', label: 'Flower', emoji: '🌻' },
     { id: 'tree', type: 'living', label: 'Tree', emoji: '🌳' },
     { id: 'butterfly', type: 'living', label: 'Butterfly', emoji: '🦋' },
+    { id: 'dog', type: 'living', label: 'Dog', emoji: '🐶' },
+    { id: 'bird', type: 'living', label: 'Bird', emoji: '🐦' },
+    { id: 'fish', type: 'living', label: 'Fish', emoji: '🐟' },
+    { id: 'bee', type: 'living', label: 'Bee', emoji: '🐝' },
+    { id: 'ant', type: 'living', label: 'Ant', emoji: '🐜' },
+    { id: 'mushroom', type: 'living', label: 'Mushroom', emoji: '🍄' },
+    { id: 'grass', type: 'living', label: 'Grass', emoji: '🌿' },
+    { id: 'human', type: 'living', label: 'Human', emoji: '👶' },
+    { id: 'whale', type: 'living', label: 'Whale', emoji: '🐋' },
+    { id: 'owl', type: 'living', label: 'Owl', emoji: '🦉' },
+    { id: 'rabbit', type: 'living', label: 'Rabbit', emoji: '🐰' },
+    // Non-living (15)
     { id: 'rock', type: 'non-living', label: 'Rock', emoji: '🪨' },
     { id: 'car', type: 'non-living', label: 'Car', emoji: '🚗' },
     { id: 'robot', type: 'non-living', label: 'Robot', emoji: '🤖' },
     { id: 'hat', type: 'non-living', label: 'Hat', emoji: '🎩' },
+    { id: 'ball', type: 'non-living', label: 'Ball', emoji: '⚽' },
+    { id: 'phone', type: 'non-living', label: 'Phone', emoji: '📱' },
+    { id: 'book', type: 'non-living', label: 'Book', emoji: '📖' },
+    { id: 'spoon', type: 'non-living', label: 'Spoon', emoji: '🥄' },
+    { id: 'chair', type: 'non-living', label: 'Chair', emoji: '🪑' },
+    { id: 'table', type: 'non-living', label: 'Table', emoji: '🏷️' },
+    { id: 'pencil', type: 'non-living', label: 'Pencil', emoji: '✏️' },
+    { id: 'key', type: 'non-living', label: 'Key', emoji: '🔑' },
+    { id: 'toy', type: 'non-living', label: 'Toy', emoji: '🧸' },
+    { id: 'cup', type: 'non-living', label: 'Cup', emoji: '🥛' },
+    { id: 'clock', type: 'non-living', label: 'Clock', emoji: '⏰' },
 ];
 
 export default function WeekClient({ params: paramsPromise }: { params: Promise<{ id: string }> }) {
