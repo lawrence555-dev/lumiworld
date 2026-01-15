@@ -1,0 +1,311 @@
+{
+    "curriculum": {
+        "totalWeeks": 8,
+        "targetAge": 4,
+        "focusAreas": [
+            "STEAM",
+            "Logic",
+            "English",
+            "Problem Solving"
+        ],
+        "weeks": [
+            {
+                "weekNumber": 1,
+                "title": "Colors & Shapes",
+                "theme": "Basic Recognition",
+                "learningObjectives": [
+                    "Identify primary colors (Red, Blue, Yellow)",
+                    "Recognize basic shapes (Circle, Square, Triangle)",
+                    "Match objects by color and shape"
+                ],
+                "activities": [
+                    {
+                        "id": "w1_activity1",
+                        "type": "drag-and-drop",
+                        "title": "Color Matching",
+                        "description": "Drag colored balls into matching buckets",
+                        "difficulty": "easy",
+                        "items": [
+                            {
+                                "id": "red_ball",
+                                "type": "red",
+                                "label": "Red Ball"
+                            },
+                            {
+                                "id": "blue_ball",
+                                "type": "blue",
+                                "label": "Blue Ball"
+                            },
+                            {
+                                "id": "yellow_ball",
+                                "type": "yellow",
+                                "label": "Yellow Ball"
+                            }
+                        ],
+                        "dropZones": [
+                            {
+                                "id": "red_bucket",
+                                "acceptTypes": [
+                                    "red"
+                                ],
+                                "label": "Red Bucket"
+                            },
+                            {
+                                "id": "blue_bucket",
+                                "acceptTypes": [
+                                    "blue"
+                                ],
+                                "label": "Blue Bucket"
+                            },
+                            {
+                                "id": "yellow_bucket",
+                                "acceptTypes": [
+                                    "yellow"
+                                ],
+                                "label": "Yellow Bucket"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "w1_activity2",
+                        "type": "drag-and-drop",
+                        "title": "Shape Sorting",
+                        "description": "Put shapes in the right boxes",
+                        "difficulty": "easy",
+                        "items": [
+                            {
+                                "id": "circle1",
+                                "type": "circle",
+                                "label": "Circle"
+                            },
+                            {
+                                "id": "square1",
+                                "type": "square",
+                                "label": "Square"
+                            },
+                            {
+                                "id": "triangle1",
+                                "type": "triangle",
+                                "label": "Triangle"
+                            }
+                        ],
+                        "dropZones": [
+                            {
+                                "id": "circle_box",
+                                "acceptTypes": [
+                                    "circle"
+                                ],
+                                "label": "Circle Box"
+                            },
+                            {
+                                "id": "square_box",
+                                "acceptTypes": [
+                                    "square"
+                                ],
+                                "label": "Square Box"
+                            },
+                            {
+                                "id": "triangle_box",
+                                "acceptTypes": [
+                                    "triangle"
+                                ],
+                                "label": "Triangle Box"
+                            }
+                        ]
+                    }
+                ],
+                "vocabulary": [
+                    "red",
+                    "blue",
+                    "yellow",
+                    "circle",
+                    "square",
+                    "triangle"
+                ]
+            },
+            {
+                "weekNumber": 2,
+                "title": "Numbers 1-5",
+                "theme": "Counting Basics",
+                "learningObjectives": [
+                    "Count from 1 to 5",
+                    "Match numbers with quantities",
+                    "Understand one-to-one correspondence"
+                ],
+                "activities": [
+                    {
+                        "id": "w2_activity1",
+                        "type": "drag-and-drop",
+                        "title": "Count the Apples",
+                        "description": "Drag the correct number to match the apples",
+                        "difficulty": "easy"
+                    }
+                ],
+                "vocabulary": [
+                    "one",
+                    "two",
+                    "three",
+                    "four",
+                    "five"
+                ]
+            },
+            {
+                "weekNumber": 3,
+                "title": "Animals & Sounds",
+                "theme": "Nature Exploration",
+                "learningObjectives": [
+                    "Identify common animals",
+                    "Match animals with their sounds",
+                    "Learn animal names in English"
+                ],
+                "activities": [
+                    {
+                        "id": "w3_activity1",
+                        "type": "drag-and-drop",
+                        "title": "Animal Homes",
+                        "description": "Help animals find their homes",
+                        "difficulty": "medium"
+                    }
+                ],
+                "vocabulary": [
+                    "dog",
+                    "cat",
+                    "bird",
+                    "fish",
+                    "cow"
+                ]
+            },
+            {
+                "weekNumber": 4,
+                "title": "Big & Small",
+                "theme": "Size Comparison",
+                "learningObjectives": [
+                    "Compare sizes (big, small, medium)",
+                    "Order objects by size",
+                    "Understand relative sizing"
+                ],
+                "activities": [
+                    {
+                        "id": "w4_activity1",
+                        "type": "drag-and-drop",
+                        "title": "Size Sorting",
+                        "description": "Put items in order from small to big",
+                        "difficulty": "medium"
+                    }
+                ],
+                "vocabulary": [
+                    "big",
+                    "small",
+                    "medium",
+                    "bigger",
+                    "smaller"
+                ]
+            },
+            {
+                "weekNumber": 5,
+                "title": "Patterns",
+                "theme": "Logic & Sequencing",
+                "learningObjectives": [
+                    "Recognize simple patterns (AB, ABB)",
+                    "Complete pattern sequences",
+                    "Create own patterns"
+                ],
+                "activities": [
+                    {
+                        "id": "w5_activity1",
+                        "type": "drag-and-drop",
+                        "title": "Pattern Completion",
+                        "description": "What comes next in the pattern?",
+                        "difficulty": "medium"
+                    }
+                ],
+                "vocabulary": [
+                    "pattern",
+                    "next",
+                    "repeat",
+                    "same",
+                    "different"
+                ]
+            },
+            {
+                "weekNumber": 6,
+                "title": "Opposites",
+                "theme": "Concept Pairing",
+                "learningObjectives": [
+                    "Understand opposite concepts",
+                    "Match opposite pairs",
+                    "Use opposite words in context"
+                ],
+                "activities": [
+                    {
+                        "id": "w6_activity1",
+                        "type": "drag-and-drop",
+                        "title": "Find the Opposite",
+                        "description": "Match items with their opposites",
+                        "difficulty": "hard"
+                    }
+                ],
+                "vocabulary": [
+                    "hot",
+                    "cold",
+                    "up",
+                    "down",
+                    "day",
+                    "night"
+                ]
+            },
+            {
+                "weekNumber": 7,
+                "title": "Simple Machines",
+                "theme": "STEAM Introduction",
+                "learningObjectives": [
+                    "Identify simple tools (lever, wheel)",
+                    "Understand cause and effect",
+                    "Basic problem solving"
+                ],
+                "activities": [
+                    {
+                        "id": "w7_activity1",
+                        "type": "drag-and-drop",
+                        "title": "Fix the Machine",
+                        "description": "Put the parts in the right place",
+                        "difficulty": "hard"
+                    }
+                ],
+                "vocabulary": [
+                    "push",
+                    "pull",
+                    "turn",
+                    "wheel",
+                    "lever"
+                ]
+            },
+            {
+                "weekNumber": 8,
+                "title": "Story Sequencing",
+                "theme": "Narrative Logic",
+                "learningObjectives": [
+                    "Understand story order (beginning, middle, end)",
+                    "Sequence events logically",
+                    "Retell simple stories"
+                ],
+                "activities": [
+                    {
+                        "id": "w8_activity1",
+                        "type": "drag-and-drop",
+                        "title": "Story Order",
+                        "description": "Put the pictures in the right order",
+                        "difficulty": "hard"
+                    }
+                ],
+                "vocabulary": [
+                    "first",
+                    "then",
+                    "next",
+                    "last",
+                    "story"
+                ]
+            }
+        ]
+    }
+}
