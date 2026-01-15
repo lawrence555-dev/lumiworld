@@ -26,16 +26,16 @@
 
 ## 🎯 Project Overview
 
-LumiWorld is an interactive educational PWA designed for 4-year-old children, focusing on STEAM education through engaging drag-and-drop games and interactive activities.
+LumiWorld is an interactive educational PWA designed for 4rd-year-old children, focusing on STEAM education through engaging drag-and-drop games and interactive activities. It is fully aligned with **US Pre-K STEAM & Early Literacy** standards (CCSS & NGSS).
 
 **Key Features:**
-- ✅ 8-Week Progressive Curriculum
-- ✅ Drag-and-Drop Mechanics
-- ✅ Touch & Mouse Support (iPad Optimized)
-- ✅ Web Speech API (TTS) for English Learning
-- ✅ Local-First Architecture (No Backend)
-- ✅ Star Rating System (0-3 stars)
-- ✅ PWA Installable to Home Screen
+- ✅ **8-Week Curriculum:** Interactive dashboard for all 12 weeks.
+- ✅ **Smart Interaction:** Area-based collision detection for forgiving drag-and-drop.
+- ✅ **Grid Language Selector:** Stable, touch-friendly UI for 5 languages.
+- ✅ **Next.js 15 Prepared:** Async `params` handling with `React.use()`.
+- ✅ **Audio Support:** Web Speech API (TTS) for multi-language learning.
+- ✅ **Local-First:** No backend, 100% private and offline-capable.
+- ✅ **Professional Proposals:** Dedicated [Chinese](file:///Users/lawrence/.gemini/lumiworld-persistent-system/PROPOSAL_ZH.md) and [English](file:///Users/lawrence/.gemini/lumiworld-persistent-system/PROPOSAL_EN.md) curriculum proposals included.
 
 ---
 
@@ -45,12 +45,10 @@ LumiWorld is an interactive educational PWA designed for 4-year-old children, fo
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
-| **Framework** | Next.js 14+ (App Router) | Structure & routing |
-| **Styling** | Tailwind CSS | Mobile-first, landscape iPad optimization |
-| **State Management** | React Context API + useReducer | Global state |
-| **Persistence** | Browser LocalStorage | Data-not-landing architecture |
-| **Audio** | Web Speech API + HTML5 Audio | TTS & sound effects |
-| **Animation** | Framer Motion | Smooth UI transitions |
+| **Framework** | Next.js 15 (App Router) | Structure & routing |
+| **Styling** | Vanilla CSS + Tailwind | Premium glassmorphism design |
+| **Logic** | React 18 / Next 15 | Asynchronous state & component lifecycle |
+| **Audio** | Web Speech API | Multi-language TTS engine |
 
 ### Data Schema
 

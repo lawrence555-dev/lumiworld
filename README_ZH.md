@@ -26,31 +26,29 @@
 
 ## 🎯 專案概述
 
-LumiWorld 是一款專為 4 歲兒童設計的互動式教育 PWA，透過引人入勝的拖放遊戲和互動活動，專注於 STEAM 教育。
+LumiWorld 是一款專為 4 歲兒童設計的互動式教育 PWA，透過引人入勝的拖放遊戲和互動活動，專注於 STEAM 教育。本專案完全對齊 **美國 Pre-K STEAM 與早期素養 (Early Literacy)** 標準（CCSS 與 NGSS）。
 
-**核心功能：**
-- ✅ 8 週循序漸進的課程
-- ✅ 直覺的拖放機制
-- ✅ 支援觸控與滑鼠（針對 iPad 優化）
-- ✅ 使用 Web Speech API (TTS) 輔助語言學習
-- ✅ 本地優先架構（無後端，隱私安全）
-- ✅ 星級評分系統 (0-3 顆星)
-- ✅ 可安裝至主畫面的 PWA
+**核心特性：**
+- ✅ **8 週完整課程**：包含所有 8 週的互動式儀表板。
+- ✅ **智慧交互系統**：採用區域碰撞檢測（Area-based collision），提供更寬容的拖放體驗。
+- ✅ **穩定語言選擇器**：全新網格化 UI，支援 5 種語言，完美適配平板觸控。
+- ✅ **預備 Next.js 15**：已修復非同步 `params` 處理，使用 `React.use()` 確保兼容性。
+- ✅ **多語系語音支持**：整合 Web Speech API (TTS)，輔助跨學科語言學習。
+- ✅ **隱私第一**：純前端架構，100% 數據存於在地端，支援離線運行。
+- ✅ **專業提案文件**：內附專業的[中文提案](file:///Users/lawrence/.gemini/lumiworld-persistent-system/PROPOSAL_ZH.md)與[英文提案](file:///Users/lawrence/.gemini/lumiworld-persistent-system/PROPOSAL_EN.md)。
 
 ---
 
 ## 🏗 系統架構
 
-### 技術棧
+### 技術棧 (Tech Stack)
 
 | 組件 | 技術 | 用途 |
 |-----------|-----------|---------|
-| **框架** | Next.js 14+ (App Router) | 結構與路由 |
-| **樣式** | Tailwind CSS | 行動優先、橫向 iPad 優化 |
-| **狀態管理** | React Context API + useReducer | 全域狀態管理 |
-| **持久化** | 瀏覽器 LocalStorage | 本地資料存儲 |
-| **音訊** | Web Speech API + HTML5 Audio | 語音合成與音效 |
-| **動畫** | Framer Motion | 流暢的 UI 轉換 |
+| **框架** | Next.js 15 (App Router) | 結構與路由控制 |
+| **樣式** | Vanilla CSS + Tailwind | 高級玻璃擬態 (Glassmorphism) 設計 |
+| **邏輯** | React 18 / Next 15 | 非同步狀態與組件生命週期管理 |
+| **音訊** | Web Speech API | 多國語言 TTS 引擎 |
 
 ### 資料架構
 
