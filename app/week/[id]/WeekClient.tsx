@@ -34,6 +34,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
     const [correctCount, setCorrectCount] = useState(0);
     const [leftFilled, setLeftFilled] = useState(false);
     const [rightFilled, setRightFilled] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
 
     // Refs for drop zones
     const leftZoneRef = useRef<HTMLDivElement>(null);
@@ -66,19 +67,21 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
     const isGameComplete = currentItemIndex >= randomizedItems.length;
 
     useEffect(() => {
-        if (currentItem && !isGameComplete) {
+        if (currentItem && !isGameComplete && !isProcessing) {
             AudioSystem.speak(currentItem.label);
         }
-    }, [currentItemIndex, currentItem, isGameComplete]);
+    }, [currentItemIndex, currentItem, isGameComplete, isProcessing]);
 
     const handleDragEnd = async (itemId: string, x: number, y: number) => {
+        // Prevent double-trigger with processing lock
+        if (isProcessing) return;
         if (!leftZoneRef.current || !rightZoneRef.current) return;
 
         const leftRect = leftZoneRef.current.getBoundingClientRect();
         const rightRect = rightZoneRef.current.getBoundingClientRect();
 
         const checkOverlap = (rect: DOMRect, cx: number, cy: number) => {
-            const dragArea = 80; // Forgiving area
+            const dragArea = 80;
             return (
                 cx + dragArea / 2 >= rect.left &&
                 cx - dragArea / 2 <= rect.right &&
@@ -95,12 +98,14 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             (currentItem.type === config.rightZone.id && isInRightZone);
 
         if (isCorrect) {
+            setIsProcessing(true);
+
             confetti({
-                particleCount: 80,
-                spread: 60,
+                particleCount: 50,
+                spread: 50,
                 origin: { y: 0.7 }
             });
-            await AudioSystem.playSuccess('Bingo!');
+            AudioSystem.playSuccess('Bingo!');
             setCorrectCount(prev => prev + 1);
 
             if (isInLeftZone) setLeftFilled(true);
@@ -110,9 +115,10 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 setCurrentItemIndex(prev => prev + 1);
                 setLeftFilled(false);
                 setRightFilled(false);
-            }, 1200);
+                setIsProcessing(false);
+            }, 800);
         } else if (isInLeftZone || isInRightZone) {
-            await AudioSystem.playError('Try again!');
+            AudioSystem.playError('Try again!');
         }
     };
 
@@ -122,15 +128,15 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             updateWeek(id as any, stars);
 
             confetti({
-                particleCount: 200,
-                spread: 100,
+                particleCount: 100,
+                spread: 80,
                 origin: { y: 0.5 }
             });
             AudioSystem.speak(`Amazing! You mastered ${config.title}!`);
 
             setTimeout(() => {
                 router.push('/');
-            }, 3500);
+            }, 2500);
         }
     }, [isGameComplete, correctCount, updateWeek, router, id, config.title, randomizedItems.length]);
 
@@ -138,7 +144,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
         return (
             <div className="w-screen h-screen bg-gradient-to-br from-emerald-600 to-indigo-900 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="text-9xl mb-8 animate-bounce">🏆</div>
+                    <div className="text-9xl mb-8">🏆</div>
                     <h1 className="text-7xl font-black text-white mb-4 tracking-tighter">Mastery Achieved!</h1>
                     <p className="text-3xl text-white/80 font-bold uppercase tracking-[0.2em]">
                         {correctCount} / {randomizedItems.length} Correct

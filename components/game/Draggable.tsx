@@ -27,8 +27,10 @@ export function Draggable({
     const [position, setPosition] = useState({ x: initialX, y: initialY });
     const [isDragging, setIsDragging] = useState(false);
     const dragRef = useRef<HTMLDivElement>(null);
+    const startPosRef = useRef<{ x: number; y: number } | null>(null);
 
     const handleDragStart = (clientX: number, clientY: number) => {
+        startPosRef.current = { x: clientX, y: clientY };
         setIsDragging(true);
         onDragStart?.(id);
     };
@@ -45,7 +47,21 @@ export function Draggable({
 
     const handleDragEnd = (clientX: number, clientY: number) => {
         setIsDragging(false);
-        onDragEnd(id, clientX, clientY);
+
+        // Only trigger callback if actually dragged (minimum 30px movement)
+        if (startPosRef.current) {
+            const dx = clientX - startPosRef.current.x;
+            const dy = clientY - startPosRef.current.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance > 30) {
+                onDragEnd(id, clientX, clientY);
+            } else {
+                // Reset position if not dragged far enough
+                setPosition({ x: initialX, y: initialY });
+            }
+        }
+        startPosRef.current = null;
     };
 
     // Touch Events
