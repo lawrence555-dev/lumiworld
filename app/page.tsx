@@ -28,17 +28,18 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen relative">
-      {/* Sticky Header with Curriculum Path */}
-      <div className="sticky top-0 z-50 bg-gradient-to-b from-[#0B0E14] via-[#0B0E14] to-transparent pb-8">
-        <Header showCurriculumPath={true} />
-      </div>
+      {/* Header at Top */}
+      <Header showCurriculumPath={true} />
 
-      {/* Cards Container */}
+      {/* Spacer to ensure cards don't overlap with header */}
+      <div className="h-20" aria-hidden="true" />
+
+      {/* Cards Container with top padding */}
       <main className="w-full max-w-7xl mx-auto px-8 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-20"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
         >
           {weeks_data.map((week) => (
             <div key={week.id} className="w-full">
