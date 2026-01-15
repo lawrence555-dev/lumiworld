@@ -216,6 +216,16 @@ class SaveSystemClass {
         this.save(data);
         return data;
     }
+
+    /**
+     * Update student name
+     */
+    updateStudentName(name: string): UserProgress {
+        const data = this.load();
+        data.studentName = name;
+        this.save(data);
+        return data;
+    }
 }
 
 // Singleton instance
