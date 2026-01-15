@@ -175,7 +175,7 @@ export default function Week1Page() {
                     type={currentItem.type}
                     label={currentItem.label}
                     emoji={currentItem.emoji}
-                    initialX={window.innerWidth / 2 - 70}
+                    initialX={typeof window !== 'undefined' ? window.innerWidth / 2 - 70 : 0}
                     initialY={100}
                     onDragEnd={handleDragEnd}
                 />
