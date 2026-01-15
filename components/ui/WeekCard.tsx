@@ -36,7 +36,7 @@ export function WeekCard({
             whileHover={isUnlocked ? { scale: 1.02, y: -4 } : {}}
             whileTap={isUnlocked ? { scale: 0.96 } : {}}
             className={`
-                relative w-full aspect-square rounded-[2rem] p-4 sm:p-5
+                relative w-full aspect-[4/5] rounded-[2rem] p-4 sm:p-5
                 flex flex-col items-center
                 transition-all duration-500
                 ${isUnlocked

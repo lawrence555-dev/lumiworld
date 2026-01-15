@@ -32,7 +32,7 @@ export default function Dashboard() {
       <Header showCurriculumPath={true} />
 
       {/* Spacer to ensure cards don't overlap with header */}
-      <div className="h-20" aria-hidden="true" />
+      <div className="h-12" aria-hidden="true" />
 
       {/* Cards Container with top padding */}
       <main className="w-full max-w-7xl mx-auto px-8 pb-24">

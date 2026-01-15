@@ -42,17 +42,38 @@ class AudioSystemClass {
 
     /**
      * Unlock audio for iOS Safari (must be called from user gesture)
+     * iOS requires speaking actual content, not empty string
      */
     unlockAudio() {
-        if (this.isAudioUnlocked) return;
+        if (this.isAudioUnlocked) {
+            console.log('[AudioSystem] Already unlocked');
+            return;
+        }
 
         if (typeof window !== 'undefined' && window.speechSynthesis) {
-            // Speak empty string to unlock iOS audio
-            const utterance = new SpeechSynthesisUtterance('');
-            utterance.volume = 0;
-            window.speechSynthesis.speak(utterance);
-            this.isAudioUnlocked = true;
-            console.log('[AudioSystem] Audio unlocked for iOS');
+            try {
+                // iOS requires actual content to unlock audio, not empty string
+                const utterance = new SpeechSynthesisUtterance('ready');
+                utterance.volume = 0.01; // Very quiet but not silent
+                utterance.rate = 2; // Fast
+
+                utterance.onend = () => {
+                    this.isAudioUnlocked = true;
+                    console.log('[AudioSystem] ✅ Audio unlocked for iOS');
+                };
+
+                utterance.onerror = (e) => {
+                    console.log('[AudioSystem] ⚠️ Unlock error:', e.error);
+                    // Still mark as unlocked so we can try speaking
+                    this.isAudioUnlocked = true;
+                };
+
+                window.speechSynthesis.speak(utterance);
+                console.log('[AudioSystem] Attempting audio unlock...');
+            } catch (e) {
+                console.log('[AudioSystem] ⚠️ Unlock exception:', e);
+                this.isAudioUnlocked = true;
+            }
         }
     }
 

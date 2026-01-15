@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 };
 
 import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
+import { ThemeApplier } from "@/components/ui/ThemeApplier";
 
 export default function RootLayout({
   children,
@@ -29,6 +30,7 @@ export default function RootLayout({
         <AnimatedBackground />
         <ProgressProvider>
           <LanguageProvider>
+            <ThemeApplier />
             {children}
           </LanguageProvider>
         </ProgressProvider>
