@@ -1,6 +1,7 @@
 /**
  * AudioSystem - Sound and Speech Management (Updated for Multi-Language)
  * Handles Web Speech API (TTS) and sound effects with language support
+ * Includes iOS Safari audio unlock mechanism
  */
 
 import { SupportedLanguage } from './SaveSystem';
@@ -11,6 +12,7 @@ class AudioSystemClass {
     private speechSynthesis: SpeechSynthesisUtterance | null = null;
     private currentUtterance: SpeechSynthesisUtterance | null = null;
     private currentLanguage: SupportedLanguage = 'en-US';
+    private isAudioUnlocked: boolean = false;
 
     constructor() {
         if (typeof window !== 'undefined') {
@@ -25,6 +27,33 @@ class AudioSystemClass {
         this.soundEnabled = soundEnabled;
         this.musicEnabled = musicEnabled;
         this.currentLanguage = language;
+
+        // Set up auto-unlock on first user interaction (required for iOS)
+        if (typeof window !== 'undefined' && !this.isAudioUnlocked) {
+            const unlockHandler = () => {
+                this.unlockAudio();
+                window.removeEventListener('touchstart', unlockHandler);
+                window.removeEventListener('click', unlockHandler);
+            };
+            window.addEventListener('touchstart', unlockHandler, { once: true });
+            window.addEventListener('click', unlockHandler, { once: true });
+        }
+    }
+
+    /**
+     * Unlock audio for iOS Safari (must be called from user gesture)
+     */
+    unlockAudio() {
+        if (this.isAudioUnlocked) return;
+
+        if (typeof window !== 'undefined' && window.speechSynthesis) {
+            // Speak empty string to unlock iOS audio
+            const utterance = new SpeechSynthesisUtterance('');
+            utterance.volume = 0;
+            window.speechSynthesis.speak(utterance);
+            this.isAudioUnlocked = true;
+            console.log('[AudioSystem] Audio unlocked for iOS');
+        }
     }
 
     /**

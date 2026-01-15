@@ -26,10 +26,10 @@ export function WeekCard({
         <motion.button
             onClick={isUnlocked ? onClick : undefined}
             disabled={!isUnlocked}
-            whileHover={isUnlocked ? { scale: 1.02, y: -8 } : {}}
+            whileHover={isUnlocked ? { scale: 1.02, y: -4 } : {}}
             whileTap={isUnlocked ? { scale: 0.96 } : {}}
             className={`
-                relative w-full aspect-[4/5] rounded-[2.5rem] p-6 sm:p-8
+                relative w-full aspect-square rounded-[2rem] p-4 sm:p-5
                 flex flex-col items-center
                 transition-all duration-500
                 ${isUnlocked
@@ -44,14 +44,14 @@ export function WeekCard({
             )}
 
             {/* Week Number Indicator - Professional Pill Shape */}
-            <div className="mb-6">
+            <div className="mb-3">
                 <div className={`
-                    px-6 py-2 rounded-full flex items-center justify-center text-2xl font-black tracking-tighter
+                    px-4 py-1.5 rounded-full flex items-center justify-center text-xl font-black tracking-tighter
                     ${isUnlocked
                         ? 'bg-indigo-500 text-white shadow-xl shadow-indigo-500/40 ring-4 ring-indigo-500/20'
                         : 'bg-white/10 text-white/20 ring-1 ring-white/5'}
                 `}>
-                    <span className="opacity-50 text-xs mr-1 font-bold uppercase tracking-widest">Level</span> {weekNumber}
+                    <span className="opacity-50 text-[10px] mr-1 font-bold uppercase tracking-widest">Level</span> {weekNumber}
                 </div>
             </div>
 
