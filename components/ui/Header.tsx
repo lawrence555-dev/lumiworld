@@ -17,20 +17,20 @@ export const Header = ({ showHome = false }: HeaderProps) => {
     const isMuted = progress.settings.isMuted;
 
     return (
-        <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl">
-            <div className="glass px-6 py-4 rounded-3xl flex items-center justify-between shadow-2xl border border-white/10">
-                <div className="flex items-center gap-4">
+        <header className="fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
+            <div className="glass px-5 py-2 rounded-xl flex items-center justify-between shadow-2xl border border-white/10">
+                <div className="flex items-center gap-3">
                     <motion.div
                         whileHover={{ rotate: 10, scale: 1.1 }}
-                        className="bg-indigo-500 p-2 rounded-2xl shadow-lg shadow-indigo-500/20"
+                        className="bg-indigo-500 w-10 h-10 rounded-xl shadow-lg shadow-indigo-500/20 flex items-center justify-center"
                     >
-                        <span className="text-2xl">🌟</span>
+                        <span className="text-xl">🌟</span>
                     </motion.div>
                     <div>
-                        <h1 className="text-2xl font-extrabold tracking-tight text-white drop-shadow-sm">
+                        <h1 className="text-xl font-black tracking-tight text-white leading-tight">
                             LumiWorld
                         </h1>
-                        <p className="text-xs text-white/60 font-medium">
+                        <p className="text-[10px] text-white/50 font-bold uppercase tracking-wider">
                             {t.ui.studentName}: {progress.studentName}
                         </p>
                     </div>
@@ -42,9 +42,9 @@ export const Header = ({ showHome = false }: HeaderProps) => {
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.9 }}
-                                className="p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 text-white transition-colors"
+                                className="w-11 h-11 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 text-white transition-colors flex items-center justify-center"
                             >
-                                <Home size={24} />
+                                <Home size={22} />
                             </motion.button>
                         </Link>
                     )}
@@ -53,21 +53,21 @@ export const Header = ({ showHome = false }: HeaderProps) => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         onClick={() => updateSettings({ isMuted: !isMuted })}
-                        className={`p-3 rounded-2xl border transition-all ${isMuted
-                                ? 'bg-rose-500/20 border-rose-500/40 text-rose-400'
-                                : 'bg-white/5 border-white/5 text-white hover:bg-white/10'
+                        className={`w-11 h-11 rounded-2xl border transition-all flex items-center justify-center ${isMuted
+                            ? 'bg-rose-500/20 border-rose-500/40 text-rose-400'
+                            : 'bg-white/5 border-white/5 text-white hover:bg-white/10'
                             }`}
                     >
-                        {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+                        {isMuted ? <VolumeX size={22} /> : <Volume2 size={22} />}
                     </motion.button>
 
                     <Link href="/settings">
                         <motion.button
                             whileHover={{ scale: 1.1, rotate: 45 }}
                             whileTap={{ scale: 0.9 }}
-                            className="p-3 rounded-2xl bg-indigo-500 text-white shadow-lg shadow-indigo-500/40 hover:bg-indigo-600 transition-all border border-indigo-400/20"
+                            className="w-11 h-11 rounded-2xl bg-indigo-500 text-white shadow-lg shadow-indigo-500/40 hover:bg-indigo-600 transition-all border border-indigo-400/20 flex items-center justify-center"
                         >
-                            <Settings size={24} />
+                            <Settings size={22} />
                         </motion.button>
                     </Link>
                 </nav>

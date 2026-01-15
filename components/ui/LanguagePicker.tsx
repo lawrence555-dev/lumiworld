@@ -15,58 +15,33 @@ const languageOptions: { code: SupportedLanguage; flag: string; name: string }[]
 ];
 
 export function LanguagePicker() {
-    const { language, setLanguage, t } = useLanguage();
-    const [isOpen, setIsOpen] = useState(false);
-
-    const currentOption = languageOptions.find(opt => opt.code === language);
-
-    const handleSelect = (lang: SupportedLanguage) => {
-        setLanguage(lang);
-        setIsOpen(false);
-    };
+    const { language, setLanguage } = useLanguage();
 
     return (
-        <div className="relative">
-            {/* Trigger Button */}
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full px-6 py-4 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xl flex items-center justify-between transition-all"
-            >
-                <div className="flex items-center gap-3">
-                    <Globe size={24} />
-                    <span>{currentOption?.flag} {currentOption?.name}</span>
-                </div>
-                <span className="text-2xl">{isOpen ? '▲' : '▼'}</span>
-            </button>
-
-            {/* Dropdown Menu */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="absolute top-full left-0 right-0 mt-2 bg-slate-800 rounded-xl shadow-2xl overflow-hidden z-50"
-                    >
-                        {languageOptions.map((option) => (
-                            <button
-                                key={option.code}
-                                onClick={() => handleSelect(option.code)}
-                                className={`w-full px-6 py-4 text-left text-xl font-bold flex items-center gap-3 transition-all ${option.code === language
-                                        ? 'bg-blue-500 text-white'
-                                        : 'bg-slate-800 text-white/70 hover:bg-slate-700'
-                                    }`}
-                            >
-                                <span className="text-3xl">{option.flag}</span>
-                                <span>{option.name}</span>
-                                {option.code === language && (
-                                    <span className="ml-auto text-2xl">✓</span>
-                                )}
-                            </button>
-                        ))}
-                    </motion.div>
-                )}
-            </AnimatePresence>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
+            {languageOptions.map((option) => (
+                <button
+                    key={option.code}
+                    onClick={() => setLanguage(option.code)}
+                    className={`
+                        relative flex flex-col items-center justify-center p-4 rounded-2xl
+                        transition-all duration-300 border-2
+                        ${option.code === language
+                            ? 'bg-indigo-500/20 border-indigo-500 text-white shadow-lg shadow-indigo-500/20'
+                            : 'bg-white/5 border-transparent text-white/40 hover:bg-white/10 hover:text-white/60'
+                        }
+                    `}
+                >
+                    <span className="text-3xl mb-1">{option.flag}</span>
+                    <span className="text-xs font-bold tracking-tight uppercase">{option.name}</span>
+                    {option.code === language && (
+                        <motion.div
+                            layoutId="lang-active"
+                            className="absolute inset-0 rounded-2xl border-2 border-indigo-500 z-10 pointer-events-none"
+                        />
+                    )}
+                </button>
+            ))}
         </div>
     );
 }

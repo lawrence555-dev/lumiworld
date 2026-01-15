@@ -37,7 +37,7 @@ class SaveSystemClass {
         for (let i = 1; i <= 8; i++) {
             const weekId = `w${i}`;
             weeks[weekId] = {
-                isUnlocked: i === 1, // Only Week 1 unlocked by default
+                isUnlocked: true, // All weeks unlocked by default as requested
                 isCompleted: false,
                 stars: 0,
                 lastPlayed: '',
@@ -76,6 +76,17 @@ class SaveSystemClass {
             // Ensure language field exists (for backwards compatibility)
             if (!data.settings.language) {
                 data.settings.language = 'en-US';
+            }
+
+            // Migration: Ensure all 8 weeks exist and are unlocked
+            const defaultWeeks = this.getDefaultProgress().weeks;
+            for (let i = 1; i <= 8; i++) {
+                const weekId = `w${i}`;
+                if (!data.weeks[weekId]) {
+                    data.weeks[weekId] = defaultWeeks[weekId];
+                }
+                // Force unlock for all weeks as per new requirement
+                data.weeks[weekId].isUnlocked = true;
             }
 
             return data;

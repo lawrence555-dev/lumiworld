@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/hooks/useLanguage';
 import { Draggable } from '@/components/game/Draggable';
 import { DropZone } from '@/components/game/DropZone';
 import { useProgress } from '@/hooks/useProgress';
@@ -28,13 +29,49 @@ const gameItems: GameItem[] = [
     { id: 'hat', type: 'non-living', label: 'Hat', emoji: '🎩' },
 ];
 
-export default function Week1Page() {
+import { use } from 'react';
+
+export default function WeekPage({ params: paramsPromise }: { params: Promise<{ id: string }> }) {
+    const params = use(paramsPromise);
+    const { id } = params;
     const router = useRouter();
+    const { t } = useLanguage();
     const { updateWeek } = useProgress();
+
+    // Game state
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
     const [correctCount, setCorrectCount] = useState(0);
     const [livingFilled, setLivingFilled] = useState(false);
     const [nonLivingFilled, setNonLivingFilled] = useState(false);
+
+    // Refs for drop zones to get dynamic positions
+    const livingZoneRef = useRef<HTMLDivElement>(null);
+    const nonLivingZoneRef = useRef<HTMLDivElement>(null);
+
+    const isWeek1 = id === 'w1';
+
+    // Fallback for non-w1 weeks (Coming Soon)
+    if (!isWeek1) {
+        return (
+            <div className="w-screen h-screen bg-gradient-to-br from-indigo-900 to-purple-900 flex flex-col items-center justify-center p-8 text-white">
+                <button
+                    onClick={() => router.push('/')}
+                    className="absolute top-8 left-8 w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center"
+                >
+                    <Home size={32} />
+                </button>
+                <div className="text-9xl mb-8">🚀</div>
+                <h1 className="text-5xl font-black mb-4">Week {id.replace('w', '')}: {t.weeks[id as keyof typeof t.weeks]?.title}</h1>
+                <p className="text-2xl opacity-70">Coming very soon! Let's play Week 1 first! ✨</p>
+                <button
+                    onClick={() => router.push('/')}
+                    className="mt-12 px-10 py-4 bg-indigo-500 rounded-2xl font-bold text-xl shadow-lg hover:bg-indigo-400 transition-all"
+                >
+                    Back to Dashboard
+                </button>
+            </div>
+        );
+    }
 
     const currentItem = gameItems[currentItemIndex];
     const isGameComplete = currentItemIndex >= gameItems.length;
@@ -47,17 +84,27 @@ export default function Week1Page() {
     }, [currentItemIndex, currentItem, isGameComplete]);
 
     const handleDragEnd = async (itemId: string, x: number, y: number) => {
-        // Get drop zone positions (simplified - in real app, use refs)
-        const livingZone = { x: 200, y: 300, width: 280, height: 320 };
-        const nonLivingZone = { x: 700, y: 300, width: 280, height: 320 };
+        if (!livingZoneRef.current || !nonLivingZoneRef.current) return;
 
-        const isInLivingZone =
-            x >= livingZone.x && x <= livingZone.x + livingZone.width &&
-            y >= livingZone.y && y <= livingZone.y + livingZone.height;
+        // Get actual positions of drop zones
+        const livingRect = livingZoneRef.current.getBoundingClientRect();
+        const nonLivingRect = nonLivingZoneRef.current.getBoundingClientRect();
 
-        const isInNonLivingZone =
-            x >= nonLivingZone.x && x <= nonLivingZone.x + nonLivingZone.width &&
-            y >= nonLivingZone.y && y <= nonLivingZone.y + nonLivingZone.height;
+        // Helper function to check if a rect overlaps with another rect
+        // We'll treat the item as a small 40x40 square around the drop point (finger/mouse)
+        // for better precision than a single point but still forgiving area.
+        const checkOverlap = (rect: DOMRect, cx: number, cy: number) => {
+            const dragArea = 60; // Forgiving area around the touch/mouse point
+            return (
+                cx + dragArea / 2 >= rect.left &&
+                cx - dragArea / 2 <= rect.right &&
+                cy + dragArea / 2 >= rect.top &&
+                cy - dragArea / 2 <= rect.bottom
+            );
+        };
+
+        const isInLivingZone = checkOverlap(livingRect, x, y);
+        const isInNonLivingZone = checkOverlap(nonLivingRect, x, y);
 
         const isCorrect =
             (currentItem.type === 'living' && isInLivingZone) ||
@@ -139,7 +186,7 @@ export default function Week1Page() {
                 </button>
 
                 <div className="text-3xl font-bold text-white">
-                    Week 1: Living vs Non-Living
+                    Week 1: {t.weeks.w1.title}
                 </div>
 
                 <div className="text-2xl font-bold text-white">
@@ -149,23 +196,27 @@ export default function Week1Page() {
 
             {/* Drop Zones */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-12">
-                <DropZone
-                    id="living"
-                    label="Living"
-                    icon="❤️"
-                    acceptTypes={['living']}
-                    color="green"
-                    filled={livingFilled}
-                />
+                <div ref={livingZoneRef}>
+                    <DropZone
+                        id="living"
+                        label="Living"
+                        icon="❤️"
+                        acceptTypes={['living']}
+                        color="green"
+                        filled={livingFilled}
+                    />
+                </div>
 
-                <DropZone
-                    id="non-living"
-                    label="Non-Living"
-                    icon="🪨"
-                    acceptTypes={['non-living']}
-                    color="gray"
-                    filled={nonLivingFilled}
-                />
+                <div ref={nonLivingZoneRef}>
+                    <DropZone
+                        id="non-living"
+                        label="Non-Living"
+                        icon="🪨"
+                        acceptTypes={['non-living']}
+                        color="gray"
+                        filled={nonLivingFilled}
+                    />
+                </div>
             </div>
 
             {/* Draggable Item */}
