@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/hooks/useLanguage';
 import { Draggable } from '@/components/game/Draggable';
@@ -11,48 +11,7 @@ import { GameLogic } from '@/systems/GameLogic';
 import confetti from 'canvas-confetti';
 import { Home } from 'lucide-react';
 import { use } from 'react';
-
-interface GameItem {
-    id: string;
-    type: 'living' | 'non-living';
-    label: string;
-    emoji: string;
-}
-
-const gameItems: GameItem[] = [
-    // Living (15)
-    { id: 'cat', type: 'living', label: 'Cat', emoji: '🐱' },
-    { id: 'flower', type: 'living', label: 'Flower', emoji: '🌻' },
-    { id: 'tree', type: 'living', label: 'Tree', emoji: '🌳' },
-    { id: 'butterfly', type: 'living', label: 'Butterfly', emoji: '🦋' },
-    { id: 'dog', type: 'living', label: 'Dog', emoji: '🐶' },
-    { id: 'bird', type: 'living', label: 'Bird', emoji: '🐦' },
-    { id: 'fish', type: 'living', label: 'Fish', emoji: '🐟' },
-    { id: 'bee', type: 'living', label: 'Bee', emoji: '🐝' },
-    { id: 'ant', type: 'living', label: 'Ant', emoji: '🐜' },
-    { id: 'mushroom', type: 'living', label: 'Mushroom', emoji: '🍄' },
-    { id: 'grass', type: 'living', label: 'Grass', emoji: '🌿' },
-    { id: 'human', type: 'living', label: 'Human', emoji: '👶' },
-    { id: 'whale', type: 'living', label: 'Whale', emoji: '🐋' },
-    { id: 'owl', type: 'living', label: 'Owl', emoji: '🦉' },
-    { id: 'rabbit', type: 'living', label: 'Rabbit', emoji: '🐰' },
-    // Non-living (15)
-    { id: 'rock', type: 'non-living', label: 'Rock', emoji: '🪨' },
-    { id: 'car', type: 'non-living', label: 'Car', emoji: '🚗' },
-    { id: 'robot', type: 'non-living', label: 'Robot', emoji: '🤖' },
-    { id: 'hat', type: 'non-living', label: 'Hat', emoji: '🎩' },
-    { id: 'ball', type: 'non-living', label: 'Ball', emoji: '⚽' },
-    { id: 'phone', type: 'non-living', label: 'Phone', emoji: '📱' },
-    { id: 'book', type: 'non-living', label: 'Book', emoji: '📖' },
-    { id: 'spoon', type: 'non-living', label: 'Spoon', emoji: '🥄' },
-    { id: 'chair', type: 'non-living', label: 'Chair', emoji: '🪑' },
-    { id: 'table', type: 'non-living', label: 'Table', emoji: '🏷️' },
-    { id: 'pencil', type: 'non-living', label: 'Pencil', emoji: '✏️' },
-    { id: 'key', type: 'non-living', label: 'Key', emoji: '🔑' },
-    { id: 'toy', type: 'non-living', label: 'Toy', emoji: '🧸' },
-    { id: 'cup', type: 'non-living', label: 'Cup', emoji: '🥛' },
-    { id: 'clock', type: 'non-living', label: 'Clock', emoji: '⏰' },
-];
+import { WEEK_GAME_DATA, GameItem } from '@/data/GameContent';
 
 export default function WeekClient({ params: paramsPromise }: { params: Promise<{ id: string }> }) {
     const params = use(paramsPromise);
@@ -61,20 +20,27 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
     const { t } = useLanguage();
     const { updateWeek } = useProgress();
 
+    // Game configuration for this week
+    const config = WEEK_GAME_DATA[id as keyof typeof WEEK_GAME_DATA];
+
+    // Randomized items for this session
+    const randomizedItems = useMemo(() => {
+        if (!config) return [];
+        return [...config.items].sort(() => Math.random() - 0.5);
+    }, [config]);
+
     // Game state
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
     const [correctCount, setCorrectCount] = useState(0);
-    const [livingFilled, setLivingFilled] = useState(false);
-    const [nonLivingFilled, setNonLivingFilled] = useState(false);
+    const [leftFilled, setLeftFilled] = useState(false);
+    const [rightFilled, setRightFilled] = useState(false);
 
-    // Refs for drop zones to get dynamic positions
-    const livingZoneRef = useRef<HTMLDivElement>(null);
-    const nonLivingZoneRef = useRef<HTMLDivElement>(null);
+    // Refs for drop zones
+    const leftZoneRef = useRef<HTMLDivElement>(null);
+    const rightZoneRef = useRef<HTMLDivElement>(null);
 
-    const isWeek1 = id === 'w1';
-
-    // Fallback for non-w1 weeks (Coming Soon)
-    if (!isWeek1) {
+    // If config doesn't exist, show Coming Soon
+    if (!config) {
         return (
             <div className="w-screen h-screen bg-gradient-to-br from-indigo-900 to-purple-900 flex flex-col items-center justify-center p-8 text-white">
                 <button
@@ -84,8 +50,8 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                     <Home size={32} />
                 </button>
                 <div className="text-9xl mb-8">🚀</div>
-                <h1 className="text-5xl font-black mb-4">Week {id.replace('w', '')}: {t.weeks[id as keyof typeof t.weeks]?.title}</h1>
-                <p className="text-2xl opacity-70">Coming very soon! Let's play Week 1 first! ✨</p>
+                <h1 className="text-5xl font-black mb-4">Coming Soon!</h1>
+                <p className="text-2xl opacity-70">We are preparing Level {id.replace('w', '')} for you! ✨</p>
                 <button
                     onClick={() => router.push('/')}
                     className="mt-12 px-10 py-4 bg-indigo-500 rounded-2xl font-bold text-xl shadow-lg hover:bg-indigo-400 transition-all"
@@ -96,26 +62,23 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
         );
     }
 
-    const currentItem = gameItems[currentItemIndex];
-    const isGameComplete = currentItemIndex >= gameItems.length;
+    const currentItem = randomizedItems[currentItemIndex];
+    const isGameComplete = currentItemIndex >= randomizedItems.length;
 
     useEffect(() => {
-        // Speak item name when it appears
         if (currentItem && !isGameComplete) {
             AudioSystem.speak(currentItem.label);
         }
     }, [currentItemIndex, currentItem, isGameComplete]);
 
     const handleDragEnd = async (itemId: string, x: number, y: number) => {
-        if (!livingZoneRef.current || !nonLivingZoneRef.current) return;
+        if (!leftZoneRef.current || !rightZoneRef.current) return;
 
-        // Get actual positions of drop zones
-        const livingRect = livingZoneRef.current.getBoundingClientRect();
-        const nonLivingRect = nonLivingZoneRef.current.getBoundingClientRect();
+        const leftRect = leftZoneRef.current.getBoundingClientRect();
+        const rightRect = rightZoneRef.current.getBoundingClientRect();
 
-        // Helper function to check if a rect overlaps with another rect
         const checkOverlap = (rect: DOMRect, cx: number, cy: number) => {
-            const dragArea = 60; // Forgiving area around the touch/mouse point
+            const dragArea = 80; // Forgiving area
             return (
                 cx + dragArea / 2 >= rect.left &&
                 cx - dragArea / 2 <= rect.right &&
@@ -124,71 +87,61 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             );
         };
 
-        const isInLivingZone = checkOverlap(livingRect, x, y);
-        const isInNonLivingZone = checkOverlap(nonLivingRect, x, y);
+        const isInLeftZone = checkOverlap(leftRect, x, y);
+        const isInRightZone = checkOverlap(rightRect, x, y);
 
         const isCorrect =
-            (currentItem.type === 'living' && isInLivingZone) ||
-            (currentItem.type === 'non-living' && isInNonLivingZone);
+            (currentItem.type === config.leftZone.id && isInLeftZone) ||
+            (currentItem.type === config.rightZone.id && isInRightZone);
 
         if (isCorrect) {
-            // Success!
             confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 }
+                particleCount: 80,
+                spread: 60,
+                origin: { y: 0.7 }
             });
-            await AudioSystem.playSuccess('Great job!');
+            await AudioSystem.playSuccess('Bingo!');
             setCorrectCount(prev => prev + 1);
 
-            // Mark zone as filled
-            if (currentItem.type === 'living') {
-                setLivingFilled(true);
-            } else {
-                setNonLivingFilled(true);
-            }
+            if (isInLeftZone) setLeftFilled(true);
+            else setRightFilled(true);
 
-            // Move to next item
             setTimeout(() => {
                 setCurrentItemIndex(prev => prev + 1);
-                setLivingFilled(false);
-                setNonLivingFilled(false);
-            }, 1500);
-        } else if (isInLivingZone || isInNonLivingZone) {
-            // Wrong zone
+                setLeftFilled(false);
+                setRightFilled(false);
+            }, 1200);
+        } else if (isInLeftZone || isInRightZone) {
             await AudioSystem.playError('Try again!');
         }
     };
 
     useEffect(() => {
-        if (isGameComplete) {
-            // Calculate stars
-            const stars = GameLogic.calculateStars(correctCount, gameItems.length);
-            updateWeek('w1', stars);
+        if (isGameComplete && randomizedItems.length > 0) {
+            const stars = GameLogic.calculateStars(correctCount, randomizedItems.length);
+            updateWeek(id as any, stars);
 
-            // Victory celebration
             confetti({
                 particleCount: 200,
                 spread: 100,
                 origin: { y: 0.5 }
             });
-            AudioSystem.speak('Amazing! You completed Week 1!');
+            AudioSystem.speak(`Amazing! You mastered ${config.title}!`);
 
-            // Return to dashboard after 3 seconds
             setTimeout(() => {
                 router.push('/');
-            }, 3000);
+            }, 3500);
         }
-    }, [isGameComplete, correctCount, updateWeek, router]);
+    }, [isGameComplete, correctCount, updateWeek, router, id, config.title, randomizedItems.length]);
 
     if (isGameComplete) {
         return (
-            <div className="w-screen h-screen bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+            <div className="w-screen h-screen bg-gradient-to-br from-emerald-600 to-indigo-900 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="text-9xl mb-8">🎉</div>
-                    <h1 className="text-6xl font-black text-white mb-4">You Did It!</h1>
-                    <p className="text-3xl text-white">
-                        {correctCount} / {gameItems.length} Correct
+                    <div className="text-9xl mb-8 animate-bounce">🏆</div>
+                    <h1 className="text-7xl font-black text-white mb-4 tracking-tighter">Mastery Achieved!</h1>
+                    <p className="text-3xl text-white/80 font-bold uppercase tracking-[0.2em]">
+                        {correctCount} / {randomizedItems.length} Correct
                     </p>
                 </div>
             </div>
@@ -196,62 +149,88 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
     }
 
     return (
-        <div className="w-screen h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 relative overflow-hidden">
-            {/* Header */}
-            <header className="absolute top-8 left-8 right-8 flex justify-between items-center z-20">
-                <button
-                    onClick={() => router.push('/')}
-                    className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center"
-                >
-                    <Home size={32} className="text-white" />
-                </button>
+        <div className="w-screen h-screen bg-[#0B0E14] relative overflow-hidden">
+            {/* Ambient Background */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-950/40 via-background to-purple-950/40 -z-10" />
+            <div className="blob opacity-20 left-[10%] top-[10%]" />
+            <div className="blob-secondary opacity-20 right-[10%] bottom-[10%]" />
 
-                <div className="text-3xl font-bold text-white">
-                    Week 1: {t.weeks.w1.title}
+            {/* Header */}
+            <header className="absolute top-8 left-10 right-10 flex justify-between items-end z-20">
+                <div className="flex items-center gap-6">
+                    <button
+                        onClick={() => router.push('/')}
+                        className="w-16 h-16 rounded-3xl glass hover:bg-white/10 flex items-center justify-center transition-all active:scale-95 shadow-2xl"
+                    >
+                        <Home size={32} className="text-white" />
+                    </button>
+                    <div>
+                        <h2 className="text-white/40 text-xs font-black uppercase tracking-[0.3em] mb-1">
+                            {config.title}
+                        </h2>
+                        <div className="text-3xl font-black text-white tracking-tighter">
+                            Level {id.replace('w', '')}
+                        </div>
+                    </div>
                 </div>
 
-                <div className="text-2xl font-bold text-white">
-                    {currentItemIndex + 1} / {gameItems.length}
+                <div className="bg-white/5 px-8 py-4 rounded-3xl border border-white/5 backdrop-blur-xl">
+                    <div className="flex items-center gap-3">
+                        <span className="text-white/40 font-black text-sm uppercase tracking-widest">Progress</span>
+                        <div className="text-3xl font-black text-indigo-400 tabular-nums">
+                            {currentItemIndex + 1} <span className="text-white/20 text-xl mx-1">/</span> {randomizedItems.length}
+                        </div>
+                    </div>
                 </div>
             </header>
 
             {/* Drop Zones */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-12">
-                <div ref={livingZoneRef}>
+            <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-12 sm:gap-20">
+                <div ref={leftZoneRef} className="transition-transform hover:scale-105">
                     <DropZone
-                        id="living"
-                        label="Living"
-                        icon="❤️"
-                        acceptTypes={['living']}
-                        color="green"
-                        filled={livingFilled}
+                        id={config.leftZone.id}
+                        label={config.leftZone.label}
+                        icon={config.leftZone.icon}
+                        acceptTypes={[config.leftZone.id]}
+                        color={config.leftZone.color}
+                        filled={leftFilled}
                     />
                 </div>
 
-                <div ref={nonLivingZoneRef}>
+                <div ref={rightZoneRef} className="transition-transform hover:scale-105">
                     <DropZone
-                        id="non-living"
-                        label="Non-Living"
-                        icon="🪨"
-                        acceptTypes={['non-living']}
-                        color="gray"
-                        filled={nonLivingFilled}
+                        id={config.rightZone.id}
+                        label={config.rightZone.label}
+                        icon={config.rightZone.icon}
+                        acceptTypes={[config.rightZone.id]}
+                        color={config.rightZone.color}
+                        filled={rightFilled}
                     />
                 </div>
             </div>
 
             {/* Draggable Item */}
-            {currentItem && (
-                <Draggable
-                    id={currentItem.id}
-                    type={currentItem.type}
-                    label={currentItem.label}
-                    emoji={currentItem.emoji}
-                    initialX={typeof window !== 'undefined' ? window.innerWidth / 2 - 70 : 0}
-                    initialY={100}
-                    onDragEnd={handleDragEnd}
-                />
+            {currentItem && !isGameComplete && (
+                <div className="relative z-50">
+                    <Draggable
+                        key={currentItem.id}
+                        id={currentItem.id}
+                        type={currentItem.type}
+                        label={currentItem.label}
+                        emoji={currentItem.emoji}
+                        initialX={typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 0}
+                        initialY={150}
+                        onDragEnd={handleDragEnd}
+                    />
+                </div>
             )}
+
+            {/* Hint Overlay */}
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 pointer-events-none">
+                <p className="text-white/20 font-black uppercase tracking-[0.4em] text-xs">
+                    Drag the item to the correct category
+                </p>
+            </div>
         </div>
     );
 }

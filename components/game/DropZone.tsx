@@ -8,7 +8,7 @@ interface DropZoneProps {
     label: string;
     icon: string;
     acceptTypes: string[];
-    color: 'green' | 'gray';
+    color: 'green' | 'blue' | 'purple' | 'emerald' | 'cyan' | 'gray';
     filled: boolean;
     onDrop?: (itemId: string) => void;
 }
@@ -25,9 +25,18 @@ export function DropZone({
     const [isHovered, setIsHovered] = useState(false);
     const zoneRef = useRef<HTMLDivElement>(null);
 
-    const bgColor = color === 'green'
-        ? 'bg-gradient-to-br from-green-500 to-emerald-600'
-        : 'bg-gradient-to-br from-gray-500 to-slate-600';
+    const getBgColor = () => {
+        switch (color) {
+            case 'green': return 'bg-gradient-to-br from-green-500 to-emerald-600';
+            case 'blue': return 'bg-gradient-to-br from-blue-500 to-indigo-600';
+            case 'purple': return 'bg-gradient-to-br from-purple-500 to-pink-600';
+            case 'emerald': return 'bg-gradient-to-br from-emerald-500 to-teal-600';
+            case 'cyan': return 'bg-gradient-to-br from-cyan-500 to-blue-600';
+            default: return 'bg-gradient-to-br from-gray-500 to-slate-600';
+        }
+    };
+
+    const bgColor = getBgColor();
 
     return (
         <motion.div
