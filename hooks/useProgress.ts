@@ -7,6 +7,7 @@ import { AudioSystem } from '@/systems/AudioSystem';
 type ProgressAction =
   | { type: 'LOAD_PROGRESS'; payload: UserProgress }
   | { type: 'UPDATE_WEEK'; payload: { weekId: string; stars: number } }
+  | { type: 'UPDATE_MASTERY'; payload: { skillId: string; success: boolean; timeSeconds: number } }
   | { type: 'UPDATE_SETTINGS'; payload: Partial<UserProgress['settings']> }
   | { type: 'UPDATE_NAME'; payload: string }
   | { type: 'RESET_PROGRESS' };
@@ -17,6 +18,8 @@ function progressReducer(state: UserProgress, action: ProgressAction): UserProgr
       return action.payload;
     case 'UPDATE_WEEK':
       return SaveSystem.updateWeekProgress(action.payload.weekId, action.payload.stars);
+    case 'UPDATE_MASTERY':
+      return SaveSystem.updateMastery(action.payload.skillId, action.payload.success, action.payload.timeSeconds);
     case 'UPDATE_SETTINGS':
       return SaveSystem.updateSettings(action.payload);
     case 'UPDATE_NAME':
@@ -31,6 +34,7 @@ function progressReducer(state: UserProgress, action: ProgressAction): UserProgr
 interface ProgressContextType {
   progress: UserProgress;
   updateWeek: (weekId: string, stars: number) => void;
+  updateMastery: (skillId: string, success: boolean, timeSeconds: number) => void;
   updateSettings: (settings: Partial<UserProgress['settings']>) => void;
   updateName: (name: string) => void;
   resetProgress: () => void;
@@ -67,6 +71,7 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   const contextValue: ProgressContextType = {
     progress,
     updateWeek: (weekId, stars) => dispatch({ type: 'UPDATE_WEEK', payload: { weekId, stars } }),
+    updateMastery: (skillId, success, timeSeconds) => dispatch({ type: 'UPDATE_MASTERY', payload: { skillId, success, timeSeconds } }),
     updateSettings: (settings) => dispatch({ type: 'UPDATE_SETTINGS', payload: settings }),
     updateName: (name) => dispatch({ type: 'UPDATE_NAME', payload: name }),
     resetProgress: () => dispatch({ type: 'RESET_PROGRESS' }),

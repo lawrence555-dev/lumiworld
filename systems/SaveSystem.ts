@@ -197,20 +197,24 @@ class SaveSystemClass {
      */
     updateMastery(skillId: string, success: boolean, timeSeconds: number): UserProgress {
         const data = this.load();
+
+        // Ensure the mastery object exists for this skill
         if (!data.mastery[skillId]) {
-            data.mastery[skillId] = { status: 'in-progress', attempts: 0, totalTimeSeconds: 0 };
+            data.mastery[skillId] = { status: 'needs-support', attempts: 0, totalTimeSeconds: 0 };
         }
 
         const m = data.mastery[skillId];
-        m.attempts += 1;
-        m.totalTimeSeconds += timeSeconds;
 
-        if (success && m.attempts >= 1) {
+        // Only increment attempts if it's a "level finish" (success can be true or false, but here we use it to mark a completed attempt)
+        // However, for pure time tracking, we might want to call this frequently or once at the end.
+        // Let's assume this is called at the end of a level.
+        m.attempts += 1;
+        m.totalTimeSeconds += Math.floor(timeSeconds);
+
+        if (success) {
             m.status = 'mastered';
-        } else if (m.attempts > 0) {
-            if (m.status !== 'mastered') {
-                m.status = 'in-progress';
-            }
+        } else if (m.status !== 'mastered') {
+            m.status = 'in-progress';
         }
 
         this.save(data);
@@ -227,6 +231,20 @@ class SaveSystemClass {
         return data;
     }
 }
+
+/**
+ * Skill Map for mapping week IDs to mastery skills
+ */
+export const WEEK_SKILL_MAP: Record<string, string> = {
+    'w1': 'classification',
+    'w2': 'anatomy',
+    'w3': 'number-sense',
+    'w4': 'measurement',
+    'w5': 'habitats',
+    'w6': 'botany',
+    'w7': 'pollution',
+    'w8': 'ecosystems',
+};
 
 // Singleton instance
 export const SaveSystem = new SaveSystemClass();

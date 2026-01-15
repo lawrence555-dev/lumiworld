@@ -1,6 +1,6 @@
 # 🌟 LumiWorld - Pre-K Educational PWA
 
-> **Version:** 2.0.0  
+> **Version:** 2.1.0  
 > **Type:** Pre-K Educational Progressive Web App  
 > **Stack:** Next.js 15, Tailwind CSS, LocalStorage (No Backend)
 
@@ -34,7 +34,8 @@ LumiWorld is an interactive educational PWA designed for 4-year-old children, fo
 | **8-Week Curriculum** | Complete 8-level STEAM curriculum with 30 items per level (240 total) |
 | **Multi-Language** | 5 languages: English, 繁體中文, 日本語, 한국어, ภาษาไทย |
 | **Multi-Language TTS** | Voice reads items in selected language (Web Speech API) |
-| **iPad Optimized** | Touch-friendly interface with iOS audio unlock mechanism |
+| **Learning Report** | Detailed mastery tracking (time spent, attempts, status) per skill |
+| **iPad Optimized** | Responsive layout for all tablet resolutions + iOS audio unlock |
 | **Drag-and-Drop** | Smooth drag-and-drop with 30px minimum distance check |
 | **Progress Tracking** | Star rating system (1-3 stars) with LocalStorage persistence |
 | **Offline-First** | No backend required, works without internet |
@@ -69,8 +70,14 @@ interface UserProgress {
     [weekId: string]: {
       isUnlocked: boolean;
       isCompleted: boolean;
-      stars: number; // 0-3
-      lastPlayed: string;
+      stars: number;
+    };
+  };
+  mastery: {
+    [skillId: string]: {
+      status: 'none' | 'in-progress' | 'mastered';
+      attempts: number;
+      totalTimeSeconds: number;
     };
   };
 }
@@ -80,7 +87,7 @@ interface UserProgress {
 
 | Module | File | Purpose |
 |--------|------|---------|
-| **SaveSystem** | `/systems/SaveSystem.ts` | LocalStorage persistence |
+| **SaveSystem** | `/systems/SaveSystem.ts` | LocalStorage persistence + Mastery tracking |
 | **AudioSystem** | `/systems/AudioSystem.ts` | Multi-language TTS + iOS unlock |
 | **GameLogic** | `/systems/GameLogic.ts` | Collision detection, scoring |
 | **GameContent** | `/data/GameContent.ts` | 240 curriculum items (30 per level) |

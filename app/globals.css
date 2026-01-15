@@ -30,6 +30,7 @@
 [data-theme="high-contrast"] body,
 .theme-high-contrast body {
   background: #000000 !important;
+  transition: background-color 0.3s ease;
 }
 
 [data-theme="high-contrast"] .glass-card,

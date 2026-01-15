@@ -31,15 +31,12 @@ export default function Dashboard() {
       {/* Header at Top */}
       <Header showCurriculumPath={true} />
 
-      {/* Spacer to ensure cards don't overlap with header */}
-      <div className="h-12" aria-hidden="true" />
-
       {/* Cards Container with top padding */}
-      <main className="w-full max-w-7xl mx-auto px-8 pb-24">
+      <main className="w-full max-w-7xl mx-auto px-6 sm:px-8 pb-8 pt-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 sm:gap-x-6 sm:gap-y-8 lg:gap-x-8 lg:gap-y-10"
         >
           {weeks_data.map((week) => (
             <div key={week.id} className="w-full">

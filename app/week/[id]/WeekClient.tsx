@@ -13,13 +13,14 @@ import { Home } from 'lucide-react';
 import { use } from 'react';
 import { WEEK_GAME_DATA, GameItem } from '@/data/GameContent';
 import { GAME_LABELS } from '@/data/GameLabels';
+import { WEEK_SKILL_MAP } from '@/systems/SaveSystem';
 
 export default function WeekClient({ params: paramsPromise }: { params: Promise<{ id: string }> }) {
     const params = use(paramsPromise);
     const { id } = params;
     const router = useRouter();
     const { t, language } = useLanguage();
-    const { updateWeek } = useProgress();
+    const { updateWeek, updateMastery } = useProgress();
 
     // Game configuration for this week
     const config = WEEK_GAME_DATA[id as keyof typeof WEEK_GAME_DATA];
@@ -69,6 +70,11 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
 
     useEffect(() => {
         if (currentItem && !isGameComplete && !isProcessing) {
+            // Initialize start time on first item
+            if (startTimeRef.current === 0) {
+                startTimeRef.current = Date.now();
+            }
+
             // Get localized label
             const localizedLabel = GAME_LABELS[currentItem.id]?.[language] || currentItem.label;
 
@@ -133,6 +139,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
 
     // Ref to prevent double execution of victory effect
     const hasRedirectedRef = useRef(false);
+    const startTimeRef = useRef<number>(0);
 
     useEffect(() => {
         if (isGameComplete && randomizedItems.length > 0 && !hasRedirectedRef.current) {
@@ -140,6 +147,11 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
 
             const stars = GameLogic.calculateStars(correctCount, randomizedItems.length);
             updateWeek(id as any, stars);
+
+            // Update mastery time and status
+            const timeSpent = (Date.now() - startTimeRef.current) / 1000;
+            const skillId = WEEK_SKILL_MAP[id] || id;
+            updateMastery(skillId, true, timeSpent);
 
             confetti({
                 particleCount: 100,
@@ -152,7 +164,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 router.push('/');
             }, 2500);
         }
-    }, [isGameComplete, correctCount, updateWeek, router, id, config.title, randomizedItems.length]);
+    }, [isGameComplete, correctCount, updateWeek, updateMastery, router, id, t.weeks, t.feedback.amazing, randomizedItems.length]);
 
     if (isGameComplete) {
         return (
