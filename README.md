@@ -1,23 +1,18 @@
 # 🌟 LumiWorld - Pre-K Educational PWA
 
-> **Version:** 1.0.0  
+> **Version:** 2.0.0  
 > **Type:** Pre-K Educational Progressive Web App  
-> **Stack:** Next.js, Tailwind CSS, LocalStorage (No Backend)
+> **Stack:** Next.js 15, Tailwind CSS, LocalStorage (No Backend)
 
 ---
 
 ## 📑 Table of Contents
 
 - [Project Overview](#-project-overview)
+- [Key Features](#-key-features)
 - [System Architecture](#-system-architecture)
-  - [Tech Stack](#tech-stack)
-  - [Data Schema](#data-schema)
-  - [Core Modules](#core-modules)
-- [Level Design](#-level-design)
-  - [Week 1: Living vs. Non-Living](#week-1-living-vs-non-living)
-  - [Week 3: Hungry Guppies](#week-3-hungry-guppies)
-  - [Week 7: Ocean Rescue](#week-7-ocean-rescue)
-- [Development Roadmap](#-development-roadmap)
+- [8-Week Curriculum](#-8-week-curriculum)
+- [Multi-Language Support](#-multi-language-support)
 - [Getting Started](#-getting-started)
 - [Project Structure](#-project-structure)
 - [License](#-license)
@@ -26,17 +21,24 @@
 
 ## 🎯 Project Overview
 
-LumiWorld is an interactive educational PWA designed for 4rd-year-old children, focusing on STEAM education through engaging drag-and-drop games and interactive activities. It is fully aligned with **US Pre-K STEAM & Early Literacy** standards (CCSS & NGSS).
+LumiWorld is an interactive educational PWA designed for 4-year-old children, focusing on STEAM education through engaging drag-and-drop games and interactive activities. It is fully aligned with **US Pre-K STEAM & Early Literacy** standards (CCSS & NGSS).
 
-**Key Features:**
-- ✅ **8-Week Curriculum:** Interactive dashboard for all 8 weeks.
-- ✅ **Learning Report:** Formative assessment dashboard tracking Mastery Levels and Time Spent.
-- ✅ **Smart Interaction:** Area-based collision detection for forgiving drag-and-drop.
-- ✅ **Grid Language Selector:** Stable, touch-friendly UI for 5 languages.
-- ✅ **Next.js 15 Prepared:** Async `params` handling with `React.use()`.
-- ✅ **Audio Support:** Web Speech API (TTS) for multi-language learning.
-- ✅ **Local-First:** No backend, 100% private and offline-capable.
-- ✅ **Professional Proposals:** Dedicated [Chinese](file:///Users/lawrence/.gemini/lumiworld-persistent-system/PROPOSAL_ZH.md) and [English](file:///Users/lawrence/.gemini/lumiworld-persistent-system/PROPOSAL_EN.md) curriculum proposals included.
+**Live Demo:** [https://lumiworld.onrender.com](https://lumiworld.onrender.com)
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **8-Week Curriculum** | Complete 8-level STEAM curriculum with 30 items per level (240 total) |
+| **Multi-Language** | 5 languages: English, 繁體中文, 日本語, 한국어, ภาษาไทย |
+| **Multi-Language TTS** | Voice reads items in selected language (Web Speech API) |
+| **iPad Optimized** | Touch-friendly interface with iOS audio unlock mechanism |
+| **Drag-and-Drop** | Smooth drag-and-drop with 30px minimum distance check |
+| **Progress Tracking** | Star rating system (1-3 stars) with LocalStorage persistence |
+| **Offline-First** | No backend required, works without internet |
+| **COPPA Compliant** | No data collection, no tracking, child-safe |
 
 ---
 
@@ -45,15 +47,15 @@ LumiWorld is an interactive educational PWA designed for 4rd-year-old children, 
 ### Tech Stack
 
 | Component | Technology | Purpose |
-|-----------|-----------|---------|
+|-----------|------------|---------|
 | **Framework** | Next.js 15 (App Router) | Structure & routing |
-| **Styling** | Vanilla CSS + Tailwind | Premium glassmorphism design |
-| **Logic** | React 18 / Next 15 | Asynchronous state & component lifecycle |
+| **Styling** | Tailwind CSS | Glassmorphism design |
+| **Logic** | React 18 | State & component lifecycle |
 | **Audio** | Web Speech API | Multi-language TTS engine |
+| **Animation** | Framer Motion | Smooth transitions |
+| **Effects** | canvas-confetti | Celebration animations |
 
 ### Data Schema
-
-The application stores a single JSON object under the key `LUMI_WORLD_DATA_V1`.
 
 ```typescript
 interface UserProgress {
@@ -61,13 +63,14 @@ interface UserProgress {
   settings: {
     isMuted: boolean;
     theme: 'default' | 'high-contrast';
+    language: 'en-US' | 'zh-TW' | 'ja-JP' | 'ko-KR' | 'th-TH';
   };
   weeks: {
-    [weekId: string]: { // e.g., "w1", "w2"
+    [weekId: string]: {
       isUnlocked: boolean;
       isCompleted: boolean;
       stars: number; // 0-3
-      lastPlayed: string; // ISO Date string
+      lastPlayed: string;
     };
   };
 }
@@ -75,152 +78,50 @@ interface UserProgress {
 
 ### Core Modules
 
-#### A. SaveSystem (`/systems/SaveSystem.ts`)
-
-**Responsibility:** Handle read/write operations to LocalStorage safely.
-
-**Methods:**
-- `load()`: Returns UserProgress or default state
-- `save(state)`: Serializes state to JSON string
-- `unlockNext(currentWeekId)`: Logic to set isUnlocked = true for next week
-- `reset()`: Clears data (Parental control)
-
-#### B. AudioSystem (`/systems/AudioSystem.ts`)
-
-**Responsibility:** Centralize all sound outputs.
-
-**Methods:**
-- `speak(text: string)`: Triggers TTS for English learning (e.g., "Cat", "Feed the fish")
-- `playSFX(type: 'success' | 'error' | 'pop')`: Plays feedback sounds
-
-#### C. GameEngine (`/components/game/Engine.tsx`)
-
-**Responsibility:** Wrapper component for Drag-and-Drop logic and Collision Detection.
-
-**Features:**
-- Touch Events (iPad) + Mouse Events support
-- **Snap-to-Zone:** If item dropped near valid target, snap into place
-- **Rebound:** If dropped in invalid zone, animate back to start
+| Module | File | Purpose |
+|--------|------|---------|
+| **SaveSystem** | `/systems/SaveSystem.ts` | LocalStorage persistence |
+| **AudioSystem** | `/systems/AudioSystem.ts` | Multi-language TTS + iOS unlock |
+| **GameLogic** | `/systems/GameLogic.ts` | Collision detection, scoring |
+| **GameContent** | `/data/GameContent.ts` | 240 curriculum items (30 per level) |
 
 ---
 
-## 🎮 Level Design
+## 📚 8-Week Curriculum
 
-### Week 1: Living vs. Non-Living (Sorting)
+Each level contains **30 practice items** with drag-and-drop classification:
 
-**Goal:** Categorize objects into two bins.
+| Level | Theme | Categories | Standard |
+|:-----:|-------|------------|----------|
+| **1** | Scientific Classification | Living vs Non-Living | NGSS K-LS1-1 |
+| **2** | Introduction to Anatomy | Sea Parts vs Land Parts | CCSS.ELA-LITERACY.RF.K.3.A |
+| **3** | Number Sense & Needs | Small Group vs Big Group | CCSS.MATH.CONTENT.K.CC.B.4 |
+| **4** | Comparative Measurement | Huge vs Tiny | CCSS.MATH.CONTENT.K.MD.A.2 |
+| **5** | Habitat Exploration | Sky vs Earth | NGSS Spatial Logic |
+| **6** | Botany Basics | Plant Needs vs Not Needed | NGSS Life Cycles |
+| **7** | Environmental Science | Clean Ocean vs Trash | NGSS K-ESS3-3 + CASEL SEL |
+| **8** | Ecosystem Management | Forest vs Ocean | STEAM Integration |
 
-**UI Layout:**
-- **Left Bin:** Green, labeled "Living" (Icon: Heart ❤️)
-- **Right Bin:** Gray, labeled "Non-Living" (Icon: Rock 🪨)
-- **Center:** Spawn area for draggable items
-
-**Mechanics:**
-1. Item appears (e.g., "Cat")
-2. Text label + Audio plays: "Cat"
-3. User drags item to a bin
-
-**Logic:**
-- ✅ **Correct:** Item disappears into bin, positive SFX, confetti
-- ❌ **Incorrect:** Item shakes, plays "Boing" sound, voice says "Try again"
-
-**Assets:**
-- **Living:** Cat 🐱, Flower 🌻, Tree 🌳, Butterfly 🦋
-- **Non-Living:** Rock 🪨, Car 🚗, Robot 🤖, Hat 🎩
+📖 **For Teachers:** See [docs/TEACHER_GUIDE_ZH.md](docs/TEACHER_GUIDE_ZH.md) for detailed curriculum guide.
 
 ---
 
-### Week 3: Hungry Guppies (Counting & Needs)
+## 🌐 Multi-Language Support
 
-**Goal:** Feed the fish the exact number of food pellets requested.
+### Supported Languages
 
-**UI Layout:**
-- **Center:** Fish tank with 3-5 moving fish
-- **Bottom:** Food dispenser (infinite draggable pellets)
+| Language | Code | Voice | UI |
+|----------|------|-------|-----|
+| 🇺🇸 English | en-US | ✅ | ✅ |
+| 🇹🇼 繁體中文 | zh-TW | ✅ | ✅ |
+| 🇯🇵 日本語 | ja-JP | ✅ | ✅ |
+| 🇰🇷 한국어 | ko-KR | ✅ | ✅ |
+| 🇹🇭 ภาษาไทย | th-TH | ✅ | ✅ |
 
-**Mechanics:**
-1. Instruction: Text & Audio says "Feed 3 pellets"
-2. Fish have a counter (visual bubbles or simple logic)
-3. User drags food to any fish
-
-**Logic:**
-- On drop: Counter increments. Voice counts "One!", "Two!", "Three!"
-- **Win Condition:** When count equals target (3), fish turns happy and swims away
-
-**Assets:**
-- Fish Animation (Idle / Eat / Happy)
-- Food Pellet Icon 🟤
-
----
-
-### Week 7: Ocean Rescue (Reaction & Logic)
-
-**Goal:** Clean the ocean by tapping trash, but avoid tapping animals.
-
-**UI Layout:**
-- **Background:** Underwater scene
-- **Objects:** Floating items moving left to right
-
-**Mechanics:**
-1. Items float across the screen
-2. User Action: Tap on items
-
-**Logic:**
-- ✅ **Tap Trash:** Item vanishes, "Clean!" sound, progress bar fills
-- ❌ **Tap Dolphin:** Dolphin turns sad 😢, "Oh no!" sound, progress bar decreases
-- **Win Condition:** Clear 5 pieces of trash
-
-**Assets:**
-- **Trash:** Bottle 🧴, Bag 🛍️, Can 🥫
-- **Animals:** Dolphin 🐬, Turtle 🐢
-
----
-
-## 📅 Development Roadmap
-
-### Phase 1: Foundation (Days 1-2) ✅ IN PROGRESS
-
-- [x] Initialize Next.js project
-- [x] Automated Verification & Quality Control
-- [ ] Implement SaveSystem and UserProgress context
-- [ ] Create Dashboard (Menu) UI with locked/unlocked states
-
----
-
-## 🚀 Deployment Guide (Render)
-
-### Option A: Web Service (Easiest)
-Best for full Next.js feature support.
-1. **New > Web Service**
-2. **Build Command:** `npm run build`
-3. **Start Command:** `npm run start`
-
-### Option B: Static Site (Best for Free Tier)
-Fast and cost-effective for client-side PWAs.
-1. Add `output: 'export'` to `next.config.ts`.
-2. **New > Static Site**
-3. **Build Command:** `npm run build`
-4. **Publish Directory:** `out`
-
-### Phase 2: Core Gameplay (Days 3-5)
-
-- [ ] Build Draggable and DropZone components
-- [ ] Implement Week 1 (Sorting) logic
-- [ ] Connect Week 1 completion to SaveSystem (Unlock Week 2)
-- [ ] Test on iPad / Mobile browser
-
-### Phase 3: Content Expansion (Days 6-10)
-
-- [ ] Implement Week 3 (Counting) logic
-- [ ] Implement Week 7 (Reaction) logic
-- [ ] Add AudioSystem (TTS integration)
-- [ ] Add "Parent Gate" reset button
-
-### Phase 4: Polish (Days 11-14)
-
-- [ ] Add "Victory Modal" with star animations
-- [ ] Create manifest.json for PWA installation
-- [ ] Final testing for accessibility and edge cases
+### How It Works
+- **Display:** Item names always shown in English
+- **Voice:** Items spoken in the selected language
+- **iOS Support:** Automatic audio unlock on first touch
 
 ---
 
@@ -234,14 +135,11 @@ Fast and cost-effective for client-side PWAs.
 ### Installation
 
 ```bash
-# Navigate to project
-cd /Users/lawrence/.gemini/lumiworld-persistent-system
+# Clone or navigate to project
+cd lumiworld-persistent-system
 
 # Install dependencies
 npm install
-
-# Install additional packages
-npm install framer-motion lucide-react canvas-confetti
 
 # Run development server
 npm run dev
@@ -250,18 +148,11 @@ npm run dev
 # http://localhost:3000
 ```
 
-### Build for Production
+### Deploy to Render
 
-```bash
-# Build static site
-npm run build
-
-# Start production server
-npm start
-
-# Export static files (for deployment)
-npm run export
-```
+1. Connect GitHub repository
+2. **Build Command:** `npm run build`
+3. **Start Command:** `npm run start`
 
 ---
 
@@ -270,57 +161,24 @@ npm run export
 ```
 lumiworld-persistent-system/
 ├── app/                      # Next.js App Router
-│   ├── page.tsx             # Dashboard (Week Selection)
-│   ├── week/[id]/           # Individual Week Pages
-│   │   └── page.tsx
-│   ├── settings/            # Settings Page
-│   │   └── page.tsx
-│   └── layout.tsx           # Root Layout
+│   ├── page.tsx             # Dashboard (Level Selection)
+│   ├── week/[id]/           # Game Levels
+│   └── settings/            # Settings Page
 ├── components/
-│   ├── game/                # Game Components
-│   │   ├── Engine.tsx       # Drag-and-Drop Engine
-│   │   ├── Draggable.tsx    # Draggable Item Component
-│   │   ├── DropZone.tsx     # Drop Target Component
-│   │   └── GameCanvas.tsx   # Game Container
-│   └── ui/                  # UI Components
-│       ├── WeekCard.tsx     # Week Selection Card
-│       ├── StarDisplay.tsx  # Star Rating Display
-│       ├── ProgressBar.tsx  # Progress Indicator
-│       └── VictoryModal.tsx # Completion Modal
-├── systems/                 # Core Logic (⭐ CRITICAL)
-│   ├── SaveSystem.ts        # LocalStorage Management
-│   ├── AudioSystem.ts       # Web Speech API + Sound
+│   ├── game/                # Draggable, DropZone
+│   └── ui/                  # Header, WeekCard
+├── systems/                 # Core Logic
+│   ├── SaveSystem.ts        # LocalStorage
+│   ├── AudioSystem.ts       # TTS + iOS Unlock
 │   └── GameLogic.ts         # Collision Detection
-├── hooks/                   # Custom React Hooks
-│   ├── useProgress.ts       # UserProgress Context
-│   └── useDragAndDrop.ts    # Drag-and-Drop Hook
-├── data/                    # Static Data
-│   └── Curriculum.json      # 8-Week Course Data
-├── public/
-│   ├── audio/               # Sound Effects
-│   ├── images/              # Game Assets
-│   └── manifest.json        # PWA Configuration
-└── README.md
+├── data/
+│   ├── Curriculum.json      # Level configurations
+│   └── GameContent.ts       # 240 curriculum items
+├── hooks/                   # useProgress, useLanguage
+├── locales/                 # en.ts, zh.ts, ja.ts, ko.ts, th.ts
+└── docs/
+    └── TEACHER_GUIDE_ZH.md  # Teacher curriculum guide
 ```
-
----
-
-## 🎨 Design Principles
-
-1. **Child-Friendly UI**
-   - Large touch targets (min 60px)
-   - High contrast colors
-   - Simple, clear icons
-
-2. **Responsive Design**
-   - Optimized for iPad (1024x768 landscape)
-   - Works on desktop and mobile
-   - `w-screen h-screen overflow-hidden`
-
-3. **Accessibility**
-   - Voice feedback for all actions
-   - Clear visual feedback
-   - No time pressure
 
 ---
 
