@@ -31,7 +31,7 @@ export default function Dashboard() {
       <Header />
 
       {/* Scrollable Content Container */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-10 pt-40 pb-32">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-10 pt-52 pb-32">
         <header className="mb-12 text-center md:text-left">
           <h2 className="text-sm font-black uppercase tracking-[0.3em] text-indigo-400 opacity-60">
             Curriculum Path
