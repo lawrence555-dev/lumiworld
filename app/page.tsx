@@ -27,22 +27,24 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="min-h-screen relative flex flex-col">
-      {/* Fixed Header Bar */}
-      <Header />
+    <div className="min-h-screen relative">
+      {/* Sticky Header Group */}
+      <div className="sticky top-0 z-50 bg-gradient-to-b from-[#0B0E14] via-[#0B0E14] to-transparent pb-8">
+        <Header />
 
-      {/* Fixed Curriculum Path Title - Aligned with Header */}
-      <div className="fixed top-16 left-8 z-40 pointer-events-none">
-        <h2 className="text-sm font-black uppercase tracking-[0.3em] text-indigo-400 opacity-80">
-          Curriculum Path
-        </h2>
-        <p className="text-white/40 text-xs font-bold mt-0.5">
-          Complete each level to master STEAM concepts
-        </p>
+        {/* Curriculum Path Title */}
+        <div className="mt-16 px-8">
+          <h2 className="text-sm font-black uppercase tracking-[0.3em] text-indigo-400 opacity-80">
+            Curriculum Path
+          </h2>
+          <p className="text-white/40 text-xs font-bold mt-0.5">
+            Complete each level to master STEAM concepts
+          </p>
+        </div>
       </div>
 
-      {/* Scrollable Content Container - Cards Only */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-8 pt-56 pb-24">
+      {/* Cards Container */}
+      <main className="w-full max-w-7xl mx-auto px-8 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
