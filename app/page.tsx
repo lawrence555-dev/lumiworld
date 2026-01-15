@@ -28,19 +28,9 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen relative">
-      {/* Sticky Header Group */}
+      {/* Sticky Header with Curriculum Path */}
       <div className="sticky top-0 z-50 bg-gradient-to-b from-[#0B0E14] via-[#0B0E14] to-transparent pb-8">
-        <Header />
-
-        {/* Curriculum Path Title */}
-        <div className="mt-16 px-8">
-          <h2 className="text-sm font-black uppercase tracking-[0.3em] text-indigo-400 opacity-80">
-            Curriculum Path
-          </h2>
-          <p className="text-white/40 text-xs font-bold mt-0.5">
-            Complete each level to master STEAM concepts
-          </p>
-        </div>
+        <Header showCurriculumPath={true} />
       </div>
 
       {/* Cards Container */}

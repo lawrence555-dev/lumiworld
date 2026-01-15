@@ -36,12 +36,18 @@ class AudioSystemClass {
 
     /**
      * Speak text using Web Speech API
-     * @param text - Text to speak
-     * @param isInstruction - If true, use selected language. If false, always use English (for teaching)
+     * Uses selected language for pronunciation with natural voice
      */
-    speak(text: string, isInstruction: boolean = false): Promise<void> {
-        return new Promise((resolve, reject) => {
-            if (!this.soundEnabled || !window.speechSynthesis) {
+    speak(text: string): Promise<void> {
+        return new Promise((resolve) => {
+            if (!this.soundEnabled) {
+                console.log('[AudioSystem] Sound disabled, skipping speech');
+                resolve();
+                return;
+            }
+
+            if (typeof window === 'undefined' || !window.speechSynthesis) {
+                console.log('[AudioSystem] SpeechSynthesis not available');
                 resolve();
                 return;
             }
@@ -51,11 +57,31 @@ class AudioSystemClass {
 
             const utterance = new SpeechSynthesisUtterance(text);
 
-            // Teaching content (item names) always in English
-            // Instructions use selected language
-            utterance.lang = isInstruction ? this.currentLanguage : 'en-US';
-            utterance.rate = 0.9; // Slightly slower for children
-            utterance.pitch = 1.1; // Slightly higher pitch for friendliness
+            // Use the selected language for pronunciation
+            utterance.lang = this.currentLanguage;
+
+            // More natural speech settings
+            utterance.rate = 0.85; // Slower for children
+            utterance.pitch = 1.0; // Natural pitch
+            utterance.volume = 1.0; // Full volume
+
+            // Try to get a high-quality voice for this language
+            const voices = window.speechSynthesis.getVoices();
+            const langPrefix = this.currentLanguage.split('-')[0]; // e.g., 'en', 'zh', 'ja'
+
+            // Prefer voices that match the language
+            const matchingVoice = voices.find(v =>
+                v.lang.startsWith(langPrefix) && !v.localService
+            ) || voices.find(v =>
+                v.lang.startsWith(langPrefix)
+            );
+
+            if (matchingVoice) {
+                utterance.voice = matchingVoice;
+                console.log(`[AudioSystem] Using voice: ${matchingVoice.name} for ${this.currentLanguage}`);
+            }
+
+            console.log(`[AudioSystem] Speaking "${text}" in ${this.currentLanguage}`);
 
             utterance.onend = () => {
                 this.currentUtterance = null;
@@ -63,17 +89,15 @@ class AudioSystemClass {
             };
 
             utterance.onerror = (event) => {
-                // Detailed error logging for SpeechSynthesisErrorEvent
-                // Ignore "canceled" as it's expected when interrupting speech
                 if (event.error !== 'canceled') {
-                    console.error('[AudioSystem] Speech error:', event.error, event);
+                    console.error('[AudioSystem] Speech error:', event.error);
                 }
                 this.currentUtterance = null;
-                // Resolve anyway to prevent blocking the game flow on speech errors
                 resolve();
             };
 
             this.currentUtterance = utterance;
+
             try {
                 window.speechSynthesis.speak(utterance);
             } catch (e) {
@@ -110,17 +134,17 @@ class AudioSystemClass {
     /**
      * Play success sound with speech
      */
-    async playSuccess(message: string = 'Great job!', isInstruction: boolean = true) {
+    async playSuccess(message: string = 'Great job!') {
         this.playSound('success');
-        await this.speak(message, isInstruction);
+        await this.speak(message);
     }
 
     /**
      * Play error sound with speech
      */
-    async playError(message: string = 'Try again!', isInstruction: boolean = true) {
+    async playError(message: string = 'Try again!') {
         this.playSound('error');
-        await this.speak(message, isInstruction);
+        await this.speak(message);
     }
 
     /**

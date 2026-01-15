@@ -9,17 +9,19 @@ import { useLanguage } from '@/hooks/useLanguage';
 
 interface HeaderProps {
     showHome?: boolean;
+    showCurriculumPath?: boolean;
 }
 
-export const Header = ({ showHome = false }: HeaderProps) => {
+export const Header = ({ showHome = false, showCurriculumPath = false }: HeaderProps) => {
     const { progress, updateSettings } = useProgress();
     const { t } = useLanguage();
     const isMuted = progress.settings.isMuted;
 
     return (
         <header className="relative w-full flex justify-center pt-2 z-[100]">
-            <div className="glass px-5 py-2 rounded-xl flex items-center justify-between shadow-2xl border border-white/10 bg-slate-900/60 transition-colors w-[95%] max-w-3xl">
-                <div className="flex items-center gap-3">
+            <div className="glass px-5 py-2 rounded-xl flex items-center justify-between shadow-2xl border border-white/10 bg-slate-900/60 transition-colors w-[95%] max-w-4xl">
+                <div className="flex items-center gap-4">
+                    {/* Logo */}
                     <motion.div
                         whileHover={{ rotate: 10, scale: 1.1 }}
                         className="bg-indigo-500 w-10 h-10 rounded-xl shadow-lg shadow-indigo-500/20 flex items-center justify-center"
@@ -34,6 +36,18 @@ export const Header = ({ showHome = false }: HeaderProps) => {
                             {t.ui.studentName}: {progress.studentName}
                         </p>
                     </div>
+
+                    {/* Curriculum Path - Fixed next to LumiWorld */}
+                    {showCurriculumPath && (
+                        <div className="hidden sm:block border-l border-white/10 pl-4 ml-2">
+                            <h2 className="text-xs font-black uppercase tracking-[0.2em] text-indigo-400">
+                                Curriculum Path
+                            </h2>
+                            <p className="text-white/40 text-[9px] font-medium mt-0.5">
+                                Complete each level to master STEAM
+                            </p>
+                        </div>
+                    )}
                 </div>
 
                 <nav className="flex items-center gap-3">
