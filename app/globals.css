@@ -13,31 +13,43 @@
   --inner-glow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* High Contrast Theme - Better visibility */
-[data-theme="high-contrast"] {
-  --primary: #818CF8;
-  --primary-glow: rgba(129, 140, 248, 0.6);
-  --secondary: #FB7185;
-  --accent: #FBBF24;
-  --success: #34D399;
+/* High Contrast Theme - Much more visible difference */
+[data-theme="high-contrast"],
+.theme-high-contrast {
+  --primary: #A5B4FC;
+  --primary-glow: rgba(165, 180, 252, 0.8);
+  --secondary: #FDA4AF;
+  --accent: #FCD34D;
+  --success: #6EE7B7;
   --background: #000000;
-  --glass: rgba(30, 41, 59, 0.9);
-  --glass-border: rgba(255, 255, 255, 0.25);
-  --inner-glow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.2);
+  --glass: rgba(50, 50, 80, 0.95);
+  --glass-border: rgba(255, 255, 0, 0.5);
+  --inner-glow: inset 0 2px 4px 0 rgba(255, 255, 255, 0.3);
 }
 
-[data-theme="high-contrast"] body {
-  background: #000000;
+[data-theme="high-contrast"] body,
+.theme-high-contrast body {
+  background: #000000 !important;
 }
 
-[data-theme="high-contrast"] .glass-card {
-  background: rgba(255, 255, 255, 0.12);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+[data-theme="high-contrast"] .glass-card,
+.theme-high-contrast .glass-card {
+  background: rgba(40, 40, 80, 0.95) !important;
+  border: 3px solid rgba(255, 255, 0, 0.6) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-[data-theme="high-contrast"] .glass-card:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.5);
+[data-theme="high-contrast"] .glass-card:hover,
+.theme-high-contrast .glass-card:hover {
+  background: rgba(60, 60, 100, 0.98) !important;
+  border-color: rgba(255, 255, 0, 0.9) !important;
+}
+
+/* High contrast text enhancement */
+[data-theme="high-contrast"] *,
+.theme-high-contrast * {
+  text-shadow: none !important;
 }
 
 * {
