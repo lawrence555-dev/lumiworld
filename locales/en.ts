@@ -26,14 +26,14 @@ export const en = {
 
     // Weeks
     weeks: {
-        w1: { title: 'Living vs Non-Living' },
-        w2: { title: 'Numbers 1-5' },
-        w3: { title: 'Hungry Guppies' },
-        w4: { title: 'Big & Small' },
-        w5: { title: 'Patterns' },
-        w6: { title: 'Opposites' },
-        w7: { title: 'Ocean Rescue' },
-        w8: { title: 'Story Time' },
+        w1: { title: 'Scientific Classification' },
+        w2: { title: 'Introduction to Anatomy' },
+        w3: { title: 'Number Sense & Needs' },
+        w4: { title: 'Comparative Measurement' },
+        w5: { title: 'Habitat Exploration' },
+        w6: { title: 'Botany Basics' },
+        w7: { title: 'Environmental Science' },
+        w8: { title: 'Capstone Project' },
     },
 
     // Week 1
@@ -71,6 +71,14 @@ export const en = {
         theme_label: 'Theme',
         language_label: 'Language',
         data_management: 'Data Management',
+        learning_report: 'Learning Report',
+        mastery_level: 'Mastery Level',
+        time_spent: 'Time Spent',
+        status_mastered: 'Mastered',
+        status_in_progress: 'In Progress',
+        status_needs_support: 'Needs Support',
+        seconds_abbr: 's',
+        minutes_abbr: 'm',
         reset_confirm_title: 'Reset All Progress?',
         reset_confirm_message: 'This will delete all stars and progress. This cannot be undone.',
     },

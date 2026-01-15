@@ -4,306 +4,172 @@
         "targetAge": 4,
         "focusAreas": [
             "STEAM",
-            "Logic",
-            "English",
-            "Problem Solving"
+            "Early Literacy",
+            "Science",
+            "Math",
+            "SEL"
         ],
         "weeks": [
             {
                 "weekNumber": 1,
-                "title": "Colors & Shapes",
-                "theme": "Basic Recognition",
-                "learningObjectives": [
-                    "Identify primary colors (Red, Blue, Yellow)",
-                    "Recognize basic shapes (Circle, Square, Triangle)",
-                    "Match objects by color and shape"
+                "title": "Scientific Classification",
+                "theme": "Living vs. Non-Living",
+                "standards": [
+                    "NGSS K-LS1-1"
                 ],
-                "activities": [
-                    {
-                        "id": "w1_activity1",
-                        "type": "drag-and-drop",
-                        "title": "Color Matching",
-                        "description": "Drag colored balls into matching buckets",
-                        "difficulty": "easy",
-                        "items": [
-                            {
-                                "id": "red_ball",
-                                "type": "red",
-                                "label": "Red Ball"
-                            },
-                            {
-                                "id": "blue_ball",
-                                "type": "blue",
-                                "label": "Blue Ball"
-                            },
-                            {
-                                "id": "yellow_ball",
-                                "type": "yellow",
-                                "label": "Yellow Ball"
-                            }
-                        ],
-                        "dropZones": [
-                            {
-                                "id": "red_bucket",
-                                "acceptTypes": [
-                                    "red"
-                                ],
-                                "label": "Red Bucket"
-                            },
-                            {
-                                "id": "blue_bucket",
-                                "acceptTypes": [
-                                    "blue"
-                                ],
-                                "label": "Blue Bucket"
-                            },
-                            {
-                                "id": "yellow_bucket",
-                                "acceptTypes": [
-                                    "yellow"
-                                ],
-                                "label": "Yellow Bucket"
-                            }
-                        ]
-                    },
-                    {
-                        "id": "w1_activity2",
-                        "type": "drag-and-drop",
-                        "title": "Shape Sorting",
-                        "description": "Put shapes in the right boxes",
-                        "difficulty": "easy",
-                        "items": [
-                            {
-                                "id": "circle1",
-                                "type": "circle",
-                                "label": "Circle"
-                            },
-                            {
-                                "id": "square1",
-                                "type": "square",
-                                "label": "Square"
-                            },
-                            {
-                                "id": "triangle1",
-                                "type": "triangle",
-                                "label": "Triangle"
-                            }
-                        ],
-                        "dropZones": [
-                            {
-                                "id": "circle_box",
-                                "acceptTypes": [
-                                    "circle"
-                                ],
-                                "label": "Circle Box"
-                            },
-                            {
-                                "id": "square_box",
-                                "acceptTypes": [
-                                    "square"
-                                ],
-                                "label": "Square Box"
-                            },
-                            {
-                                "id": "triangle_box",
-                                "acceptTypes": [
-                                    "triangle"
-                                ],
-                                "label": "Triangle Box"
-                            }
-                        ]
-                    }
+                "learningObjectives": [
+                    "Distinguish between living and non-living things",
+                    "Identify requirements for life",
+                    "Classify objects by biological attributes"
                 ],
                 "vocabulary": [
-                    "red",
-                    "blue",
-                    "yellow",
-                    "circle",
-                    "square",
-                    "triangle"
+                    "Living",
+                    "Non-living",
+                    "Energy",
+                    "Growth"
                 ]
             },
             {
                 "weekNumber": 2,
-                "title": "Numbers 1-5",
-                "theme": "Counting Basics",
-                "learningObjectives": [
-                    "Count from 1 to 5",
-                    "Match numbers with quantities",
-                    "Understand one-to-one correspondence"
+                "title": "Introduction to Anatomy",
+                "theme": "Fish Body Parts & Phonics",
+                "standards": [
+                    "CCSS.ELA-LITERACY.RF.K.3.A"
                 ],
-                "activities": [
-                    {
-                        "id": "w2_activity1",
-                        "type": "drag-and-drop",
-                        "title": "Count the Apples",
-                        "description": "Drag the correct number to match the apples",
-                        "difficulty": "easy"
-                    }
+                "learningObjectives": [
+                    "Identify external anatomy of a fish (fin, tail, gills)",
+                    "Recognize letter F sound/shape",
+                    "Assemble biological puzzles"
                 ],
                 "vocabulary": [
-                    "one",
-                    "two",
-                    "three",
-                    "four",
-                    "five"
+                    "Fish",
+                    "Fin",
+                    "Tail",
+                    "Gills",
+                    "Scale"
                 ]
             },
             {
                 "weekNumber": 3,
-                "title": "Animals & Sounds",
-                "theme": "Nature Exploration",
-                "learningObjectives": [
-                    "Identify common animals",
-                    "Match animals with their sounds",
-                    "Learn animal names in English"
+                "title": "Number Sense & Needs",
+                "theme": "Counting & Feeding",
+                "standards": [
+                    "CCSS.MATH.CONTENT.K.CC.B.4"
                 ],
-                "activities": [
-                    {
-                        "id": "w3_activity1",
-                        "type": "drag-and-drop",
-                        "title": "Animal Homes",
-                        "description": "Help animals find their homes",
-                        "difficulty": "medium"
-                    }
+                "learningObjectives": [
+                    "Count items 1-5 with one-to-one correspondence",
+                    "Match quantity to numerical symbols",
+                    "Understand feeding as a biological need"
                 ],
                 "vocabulary": [
-                    "dog",
-                    "cat",
-                    "bird",
-                    "fish",
-                    "cow"
+                    "One",
+                    "Two",
+                    "Three",
+                    "Four",
+                    "Five",
+                    "Feed"
                 ]
             },
             {
                 "weekNumber": 4,
-                "title": "Big & Small",
-                "theme": "Size Comparison",
-                "learningObjectives": [
-                    "Compare sizes (big, small, medium)",
-                    "Order objects by size",
-                    "Understand relative sizing"
+                "title": "Comparative Measurement",
+                "theme": "Elephant & Mouse (Size)",
+                "standards": [
+                    "CCSS.MATH.CONTENT.K.MD.A.2"
                 ],
-                "activities": [
-                    {
-                        "id": "w4_activity1",
-                        "type": "drag-and-drop",
-                        "title": "Size Sorting",
-                        "description": "Put items in order from small to big",
-                        "difficulty": "medium"
-                    }
+                "learningObjectives": [
+                    "Compare objects using big/small/heavy/light",
+                    "Identify relative size in animals",
+                    "Use comparative vocabulary"
                 ],
                 "vocabulary": [
-                    "big",
-                    "small",
-                    "medium",
-                    "bigger",
-                    "smaller"
+                    "Big",
+                    "Small",
+                    "Elephant",
+                    "Mouse",
+                    "Compare"
                 ]
             },
             {
                 "weekNumber": 5,
-                "title": "Patterns",
-                "theme": "Logic & Sequencing",
-                "learningObjectives": [
-                    "Recognize simple patterns (AB, ABB)",
-                    "Complete pattern sequences",
-                    "Create own patterns"
+                "title": "Habitat Exploration",
+                "theme": "Eagle Perspective",
+                "standards": [
+                    "NGSS/CCSS Spatial Logic"
                 ],
-                "activities": [
-                    {
-                        "id": "w5_activity1",
-                        "type": "drag-and-drop",
-                        "title": "Pattern Completion",
-                        "description": "What comes next in the pattern?",
-                        "difficulty": "medium"
-                    }
+                "learningObjectives": [
+                    "Understand habitats from different perspectives",
+                    "Use spatial prepositions (up/down/between)",
+                    "Identify bird habitats"
                 ],
                 "vocabulary": [
-                    "pattern",
-                    "next",
-                    "repeat",
-                    "same",
-                    "different"
+                    "Eagle",
+                    "Sky",
+                    "Habitat",
+                    "Up",
+                    "Down"
                 ]
             },
             {
                 "weekNumber": 6,
-                "title": "Opposites",
-                "theme": "Concept Pairing",
-                "learningObjectives": [
-                    "Understand opposite concepts",
-                    "Match opposite pairs",
-                    "Use opposite words in context"
+                "title": "Botany Basics",
+                "theme": "Plant Growth Cycles",
+                "standards": [
+                    "NGSS Life Cycles"
                 ],
-                "activities": [
-                    {
-                        "id": "w6_activity1",
-                        "type": "drag-and-drop",
-                        "title": "Find the Opposite",
-                        "description": "Match items with their opposites",
-                        "difficulty": "hard"
-                    }
+                "learningObjectives": [
+                    "Sequence plant growth from seed to flower",
+                    "Identify plant needs (sun, water, soil)",
+                    "Understand growth as a time-based process"
                 ],
                 "vocabulary": [
-                    "hot",
-                    "cold",
-                    "up",
-                    "down",
-                    "day",
-                    "night"
+                    "Seed",
+                    "Soil",
+                    "Water",
+                    "Sun",
+                    "Root",
+                    "Stem"
                 ]
             },
             {
                 "weekNumber": 7,
-                "title": "Simple Machines",
-                "theme": "STEAM Introduction",
-                "learningObjectives": [
-                    "Identify simple tools (lever, wheel)",
-                    "Understand cause and effect",
-                    "Basic problem solving"
+                "title": "Environmental Science",
+                "theme": "Ocean Pollution & SEL",
+                "standards": [
+                    "NGSS K-ESS3-3",
+                    "CASEL SEL"
                 ],
-                "activities": [
-                    {
-                        "id": "w7_activity1",
-                        "type": "drag-and-drop",
-                        "title": "Fix the Machine",
-                        "description": "Put the parts in the right place",
-                        "difficulty": "hard"
-                    }
+                "learningObjectives": [
+                    "Identify human impact on marine environments",
+                    "Recognize emotions (sad/happy) in affected animals",
+                    "Classify trash vs. natural objects"
                 ],
                 "vocabulary": [
-                    "push",
-                    "pull",
-                    "turn",
-                    "wheel",
-                    "lever"
+                    "Pollution",
+                    "Trash",
+                    "Dolphin",
+                    "Save",
+                    "Clean"
                 ]
             },
             {
                 "weekNumber": 8,
-                "title": "Story Sequencing",
-                "theme": "Narrative Logic",
-                "learningObjectives": [
-                    "Understand story order (beginning, middle, end)",
-                    "Sequence events logically",
-                    "Retell simple stories"
+                "title": "Capstone Project",
+                "theme": "Ecosystem Management",
+                "standards": [
+                    "STEAM Integration"
                 ],
-                "activities": [
-                    {
-                        "id": "w8_activity1",
-                        "type": "drag-and-drop",
-                        "title": "Story Order",
-                        "description": "Put the pictures in the right order",
-                        "difficulty": "hard"
-                    }
+                "learningObjectives": [
+                    "Apply multi-week knowledge to a system",
+                    "Balance needs of multiple organisms",
+                    "Demonstrate executive function in problem solving"
                 ],
                 "vocabulary": [
-                    "first",
-                    "then",
-                    "next",
-                    "last",
-                    "story"
+                    "Ecosystem",
+                    "Balance",
+                    "Hero",
+                    "Helper",
+                    "Care"
                 ]
             }
         ]

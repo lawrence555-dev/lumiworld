@@ -22,6 +22,13 @@ export interface UserProgress {
     weeks: {
         [weekId: string]: WeekProgress; // e.g., "w1", "w2"
     };
+    mastery: {
+        [skillId: string]: {
+            status: 'mastered' | 'in-progress' | 'needs-support';
+            attempts: number;
+            totalTimeSeconds: number;
+        };
+    };
 }
 
 const STORAGE_KEY = 'LUMI_WORLD_DATA_V1';
@@ -52,6 +59,16 @@ class SaveSystemClass {
                 language: 'en-US', // Default language
             },
             weeks,
+            mastery: {
+                'classification': { status: 'in-progress', attempts: 0, totalTimeSeconds: 0 },
+                'anatomy': { status: 'needs-support', attempts: 0, totalTimeSeconds: 0 },
+                'number-sense': { status: 'needs-support', attempts: 0, totalTimeSeconds: 0 },
+                'measurement': { status: 'needs-support', attempts: 0, totalTimeSeconds: 0 },
+                'habitats': { status: 'needs-support', attempts: 0, totalTimeSeconds: 0 },
+                'botany': { status: 'needs-support', attempts: 0, totalTimeSeconds: 0 },
+                'pollution': { status: 'needs-support', attempts: 0, totalTimeSeconds: 0 },
+                'ecosystems': { status: 'needs-support', attempts: 0, totalTimeSeconds: 0 },
+            }
         };
     }
 
@@ -87,6 +104,11 @@ class SaveSystemClass {
                 }
                 // Force unlock for all weeks as per new requirement
                 data.weeks[weekId].isUnlocked = true;
+            }
+
+            // Migration: Ensure mastery object exists
+            if (!data.mastery) {
+                data.mastery = this.getDefaultProgress().mastery;
             }
 
             return data;
@@ -171,11 +193,26 @@ class SaveSystemClass {
     }
 
     /**
-     * Update student name
+     * Update mastery for a specific skill
      */
-    updateStudentName(name: string): UserProgress {
+    updateMastery(skillId: string, success: boolean, timeSeconds: number): UserProgress {
         const data = this.load();
-        data.studentName = name;
+        if (!data.mastery[skillId]) {
+            data.mastery[skillId] = { status: 'in-progress', attempts: 0, totalTimeSeconds: 0 };
+        }
+
+        const m = data.mastery[skillId];
+        m.attempts += 1;
+        m.totalTimeSeconds += timeSeconds;
+
+        if (success && m.attempts >= 1) {
+            m.status = 'mastered';
+        } else if (m.attempts > 0) {
+            if (m.status !== 'mastered') {
+                m.status = 'in-progress';
+            }
+        }
+
         this.save(data);
         return data;
     }

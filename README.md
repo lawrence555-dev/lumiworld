@@ -29,7 +29,8 @@
 LumiWorld is an interactive educational PWA designed for 4rd-year-old children, focusing on STEAM education through engaging drag-and-drop games and interactive activities. It is fully aligned with **US Pre-K STEAM & Early Literacy** standards (CCSS & NGSS).
 
 **Key Features:**
-- ✅ **8-Week Curriculum:** Interactive dashboard for all 12 weeks.
+- ✅ **8-Week Curriculum:** Interactive dashboard for all 8 weeks.
+- ✅ **Learning Report:** Formative assessment dashboard tracking Mastery Levels and Time Spent.
 - ✅ **Smart Interaction:** Area-based collision detection for forgiving drag-and-drop.
 - ✅ **Grid Language Selector:** Stable, touch-friendly UI for 5 languages.
 - ✅ **Next.js 15 Prepared:** Async `params` handling with `React.use()`.
