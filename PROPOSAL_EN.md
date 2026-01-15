@@ -53,7 +53,7 @@ We employ an **"Inquiry-Based Learning"** model, guiding students to transition 
 To meet the expectations of elite US educational systems, our design incorporates the following strategies:
 
 ### 1. Differentiated Instruction
-Recognizing that not all 4rd graders progress at the same rate, the system includes an **"Adaptive Engine"**:
+Recognizing that not all 4-year-olds progress at the same rate, the system includes an **"Adaptive Engine"**:
 - **Scaffolding:** When a student struggles with a math task, the system automatically reduces options (e.g., from 3 to 2) and provides visual hints rather than just giving the answer.
 
 ### 2. Phonemic Awareness & Sight Words (Science of Reading)

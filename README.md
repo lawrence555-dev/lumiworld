@@ -126,7 +126,7 @@ Each level contains **30 practice items** with drag-and-drop classification:
 | 🇹🇭 ภาษาไทย | th-TH | ✅ | ✅ |
 
 ### How It Works
-- **Display:** Item names always shown in English
+- **Display:** Item names translated based on selected language
 - **Voice:** Items spoken in the selected language
 - **iOS Support:** Automatic audio unlock on first touch
 
