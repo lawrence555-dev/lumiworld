@@ -122,8 +122,13 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
         }
     };
 
+    // Ref to prevent double execution of victory effect
+    const hasRedirectedRef = useRef(false);
+
     useEffect(() => {
-        if (isGameComplete && randomizedItems.length > 0) {
+        if (isGameComplete && randomizedItems.length > 0 && !hasRedirectedRef.current) {
+            hasRedirectedRef.current = true;
+
             const stars = GameLogic.calculateStars(correctCount, randomizedItems.length);
             updateWeek(id as any, stars);
 
@@ -146,9 +151,15 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 <div className="text-center">
                     <div className="text-9xl mb-8">🏆</div>
                     <h1 className="text-7xl font-black text-white mb-4 tracking-tighter">Mastery Achieved!</h1>
-                    <p className="text-3xl text-white/80 font-bold uppercase tracking-[0.2em]">
+                    <p className="text-3xl text-white/80 font-bold uppercase tracking-[0.2em] mb-8">
                         {correctCount} / {randomizedItems.length} Correct
                     </p>
+                    <button
+                        onClick={() => router.push('/')}
+                        className="px-8 py-4 bg-white/20 hover:bg-white/30 rounded-2xl text-white font-bold text-xl transition-all"
+                    >
+                        🏠 Back to Home
+                    </button>
                 </div>
             </div>
         );
