@@ -1,7 +1,6 @@
 # LumiWorld —— Pre-K STEAM 與早期素養整合計畫
 **Project Proposal: LumiWorld - Integrated Pre-K STEAM & Early Literacy Initiative**
 
-**提案人：** [您的名字]  
 **適用體制：** 美式課程體系 (Aligned with US Common Core & NGSS)  
 **目標年級：** Pre-Kindergarten (4-5 歲)  
 **單元主題：** Sharing the Planet (Environmental Stewardship)  
