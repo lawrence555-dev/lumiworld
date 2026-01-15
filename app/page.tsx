@@ -42,7 +42,7 @@ export default function Dashboard() {
       </div>
 
       {/* Scrollable Content Container - Cards Only */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-6 pt-36 pb-20">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-8 pt-48 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

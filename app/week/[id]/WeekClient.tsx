@@ -68,7 +68,12 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
 
     useEffect(() => {
         if (currentItem && !isGameComplete && !isProcessing) {
-            AudioSystem.speak(currentItem.label);
+            // Small delay to ensure audio context is ready on iOS
+            const timer = setTimeout(() => {
+                console.log('[Game] Speaking item:', currentItem.label);
+                AudioSystem.speak(currentItem.label);
+            }, 300);
+            return () => clearTimeout(timer);
         }
     }, [currentItemIndex, currentItem, isGameComplete, isProcessing]);
 
