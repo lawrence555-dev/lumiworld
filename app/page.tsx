@@ -31,8 +31,8 @@ export default function Dashboard() {
       {/* Fixed Header Bar */}
       <Header />
 
-      {/* Fixed Curriculum Path Title - Below Header */}
-      <div className="fixed top-20 left-6 z-50 pointer-events-none">
+      {/* Fixed Curriculum Path Title - Aligned with Header */}
+      <div className="fixed top-16 left-8 z-40 pointer-events-none">
         <h2 className="text-sm font-black uppercase tracking-[0.3em] text-indigo-400 opacity-80">
           Curriculum Path
         </h2>
@@ -42,7 +42,7 @@ export default function Dashboard() {
       </div>
 
       {/* Scrollable Content Container - Cards Only */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-8 pt-48 pb-24">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-8 pt-56 pb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
