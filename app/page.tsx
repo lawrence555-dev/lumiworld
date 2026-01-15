@@ -4,82 +4,55 @@ import { useProgress } from '@/hooks/useProgress';
 import { useLanguage } from '@/hooks/useLanguage';
 import { WeekCard } from '@/components/ui/WeekCard';
 import { useRouter } from 'next/navigation';
-import { Settings, Volume2, VolumeX } from 'lucide-react';
+import { motion } from "framer-motion";
+
+import { Header } from "@/components/ui/Header";
 
 export default function Dashboard() {
-  const { progress, updateSettings } = useProgress();
+  const { progress } = useProgress();
   const { t } = useLanguage();
   const router = useRouter();
 
-  const handleWeekClick = (weekId: string) => {
-    router.push(`/week/${weekId}`);
-  };
-
-  const toggleMute = () => {
-    updateSettings({ isMuted: !progress.settings.isMuted });
-  };
+  const weeks_data = [1, 2, 3, 4, 5, 6, 7, 8].map(num => {
+    const weekId = `w${num}` as keyof typeof t.weeks;
+    return {
+      id: weekId,
+      number: num,
+      title: t.weeks[weekId].title,
+      isUnlocked: progress.weeks[weekId]?.isUnlocked ?? false,
+      isCompleted: progress.weeks[weekId]?.isCompleted ?? false,
+      stars: progress.weeks[weekId]?.stars ?? 0,
+    };
+  });
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 overflow-hidden">
-      {/* Header */}
-      <header className="flex items-center justify-between p-8">
-        <div>
-          <h1 className="text-5xl font-black text-white">
-            🌟 {t.dashboard.title}
-          </h1>
-          <p className="text-xl text-blue-200 mt-2">
-            {t.dashboard.greeting}, {progress.studentName}!
-          </p>
-        </div>
+    <main className="landscape-container">
+      <Header />
 
-        <div className="flex gap-4">
-          {/* Mute Toggle */}
-          <button
-            onClick={toggleMute}
-            className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all"
-          >
-            {progress.settings.isMuted ? (
-              <VolumeX size={32} className="text-white" />
-            ) : (
-              <Volume2 size={32} className="text-white" />
-            )}
-          </button>
+      <div className="flex-1 mt-32 overflow-y-auto pb-12 px-4 scrollbar-hide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+        >
+          {weeks_data.map((week) => (
+            <WeekCard
+              key={week.id}
+              weekId={week.id}
+              weekNumber={week.number}
+              title={week.title}
+              isUnlocked={week.isUnlocked}
+              isCompleted={week.isCompleted}
+              stars={week.stars}
+              onClick={() => router.push(`/week/${week.id}`)}
+            />
+          ))}
+        </motion.div>
+      </div>
 
-          {/* Settings */}
-          <button
-            onClick={() => router.push('/settings')}
-            className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all"
-          >
-            <Settings size={32} className="text-white" />
-          </button>
-        </div>
-      </header>
-
-      {/* Week Grid */}
-      <main className="px-8 pb-8">
-        <div className="grid grid-cols-4 grid-rows-2 gap-6 max-w-7xl mx-auto">
-          {Object.entries(progress.weeks).map(([weekId, weekData]) => {
-            const weekNumber = parseInt(weekId.replace('w', ''));
-            return (
-              <WeekCard
-                key={weekId}
-                weekId={weekId}
-                weekNumber={weekNumber}
-                title={t.weeks[weekId as keyof typeof t.weeks]}
-                isUnlocked={weekData.isUnlocked}
-                isCompleted={weekData.isCompleted}
-                stars={weekData.stars}
-                onClick={() => handleWeekClick(weekId)}
-              />
-            );
-          })}
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="absolute bottom-4 left-0 right-0 text-center text-white/50 text-sm">
-        {t.ui.made_with_love}
-      </footer>
-    </div>
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 text-white/30 text-[10px] font-medium tracking-widest uppercase flex items-center gap-1">
+        {t.ui.madeWith} <span className="text-rose-500/50">❤️</span> {t.ui.forFourYearOlds}
+      </div>
+    </main>
   );
 }

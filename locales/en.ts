@@ -5,7 +5,7 @@ export const en = {
         settings: 'Settings',
         reset_data: 'Reset Data',
         back_home: 'Back Home',
-        student_name: 'Student Name',
+        studentName: 'Student Name',
         theme: 'Theme',
         language: 'Language',
         default: 'Default',
@@ -14,7 +14,8 @@ export const en = {
         reset_all: 'Reset All Progress',
         cancel: 'Cancel',
         reset: 'Reset',
-        made_with_love: 'Made with ❤️ for curious 4-year-olds',
+        madeWith: 'Made with',
+        forFourYearOlds: 'for curious 4-year-olds',
     },
 
     // Dashboard
@@ -25,14 +26,14 @@ export const en = {
 
     // Weeks
     weeks: {
-        w1: 'Living vs Non-Living',
-        w2: 'Numbers 1-5',
-        w3: 'Hungry Guppies',
-        w4: 'Big & Small',
-        w5: 'Patterns',
-        w6: 'Opposites',
-        w7: 'Ocean Rescue',
-        w8: 'Story Time',
+        w1: { title: 'Living vs Non-Living' },
+        w2: { title: 'Numbers 1-5' },
+        w3: { title: 'Hungry Guppies' },
+        w4: { title: 'Big & Small' },
+        w5: { title: 'Patterns' },
+        w6: { title: 'Opposites' },
+        w7: { title: 'Ocean Rescue' },
+        w8: { title: 'Story Time' },
     },
 
     // Week 1

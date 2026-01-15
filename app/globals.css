@@ -1,42 +1,107 @@
 @import "tailwindcss";
 
-/* LumiWorld - Child-Friendly Theme */
-:root {
-  /* Primary Colors */
-  --color-primary: #3b82f6;
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
-  --background: #1e293b;
-  --foreground: #f1f5f9;
-  --card-bg: #334155;
-}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+:root {
+  --primary: #4F46E5;
+  --secondary: #EC4899;
+  --accent: #F59E0B;
+  --success: #10B981;
+  --background: #0F172A;
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-html,
 body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--background);
+  color: white;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Comic Sans MS', Arial, sans-serif;
+  user-select: none;
 }
 
-button,
-a {
-  min-width: 60px;
-  min-height: 60px;
-  cursor: pointer;
-  user-select: none;
+/* Glassmorphism Utilities */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animated Background Blobs */
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: -1;
+  opacity: 0.4;
+  animation: float 20s infinite alternate;
+}
+
+.blob-secondary {
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+  animation-delay: -5s;
+  right: 0;
+  bottom: 0;
+}
+
+.blob-accent {
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  animation-delay: -10s;
+  left: 30%;
+  top: 20%;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(100px, 50px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-50px, 100px) scale(0.9);
+  }
+}
+
+/* Bouncy Buttons */
+.btn-bouncy {
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-bouncy:active {
+  transform: scale(0.9);
+}
+
+/* Layout Utilities */
+.landscape-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }

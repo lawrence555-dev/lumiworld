@@ -38,9 +38,11 @@ interface ProgressContextType {
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined);
 
 export function ProgressProvider({ children }: { children: ReactNode }) {
-  const [progress, dispatch] = useReducer(progressReducer, SaveSystem.load());
+  // Use default progress for initial render to ensure hydration matching
+  const [progress, dispatch] = useReducer(progressReducer, SaveSystem.getDefaultProgress());
 
   useEffect(() => {
+    // Load actual progress on client-side only
     const loadedProgress = SaveSystem.load();
     dispatch({ type: 'LOAD_PROGRESS', payload: loadedProgress });
   }, []);

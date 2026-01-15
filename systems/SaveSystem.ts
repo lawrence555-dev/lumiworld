@@ -28,9 +28,9 @@ const STORAGE_KEY = 'LUMI_WORLD_DATA_V1';
 
 class SaveSystemClass {
     /**
-     * Get default user progress
+     * Get default user progress (safe for SSR)
      */
-    private getDefaultProgress(): UserProgress {
+    getDefaultProgress(): UserProgress {
         const weeks: { [key: string]: WeekProgress } = {};
 
         // Initialize 8 weeks

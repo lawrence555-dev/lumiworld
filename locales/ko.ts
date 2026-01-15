@@ -6,16 +6,17 @@ export const ko: TranslationKeys = {
         settings: '설정',
         reset_data: '데이터 재설정',
         back_home: '홈으로 돌아가기',
-        student_name: '학생 이름',
+        studentName: '학생 이름',
         theme: '테마',
         language: '언어',
         default: '기본',
         high_contrast: '고대비',
         export_progress: '진행 상황 내보내기',
         reset_all: '모든 진행 상황 재설정',
-        cancel: '취소',
+        cancel: '취สอบ',
         reset: '재설정',
-        made_with_love: '호기심 많은 4세 어린이를 위해 ❤️로 만들었습니다',
+        madeWith: '호기심 많은',
+        forFourYearOlds: '4세 어린이를 위해 ❤️로 만들었습니다',
     },
 
     dashboard: {
@@ -24,14 +25,14 @@ export const ko: TranslationKeys = {
     },
 
     weeks: {
-        w1: '생물과 무생물',
-        w2: '숫자 1-5',
-        w3: '배고픈 물고기',
-        w4: '크고 작은',
-        w5: '패턴',
-        w6: '반대말',
-        w7: '바다 구조',
-        w8: '이야기 시간',
+        w1: { title: '생물과 무생물' },
+        w2: { title: '숫자 1-5' },
+        w3: { title: '배고픈 물고기' },
+        w4: { title: '크고 작은' },
+        w5: { title: '패턴' },
+        w6: { title: '반대말' },
+        w7: { title: '바다 구조' },
+        w8: { title: '이야기 시간' },
     },
 
     week1: {

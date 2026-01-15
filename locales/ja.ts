@@ -6,7 +6,7 @@ export const ja: TranslationKeys = {
         settings: '設定',
         reset_data: 'データをリセット',
         back_home: 'ホームに戻る',
-        student_name: '生徒名',
+        studentName: '生徒名',
         theme: 'テーマ',
         language: '言語',
         default: 'デフォルト',
@@ -15,7 +15,8 @@ export const ja: TranslationKeys = {
         reset_all: 'すべての進捗をリセット',
         cancel: 'キャンセル',
         reset: 'リセット',
-        made_with_love: '好奇心旺盛な4歳児のために ❤️ で作られました',
+        madeWith: '好奇心旺盛な',
+        forFourYearOlds: '4歳児のために ❤️ で作られました',
     },
 
     dashboard: {
@@ -24,14 +25,14 @@ export const ja: TranslationKeys = {
     },
 
     weeks: {
-        w1: '生き物と無生物',
-        w2: '数字 1-5',
-        w3: 'お腹を空かせた魚',
-        w4: '大きいと小さい',
-        w5: 'パターン',
-        w6: '反対語',
-        w7: '海の救助',
-        w8: 'お話の時間',
+        w1: { title: '生き物と無生物' },
+        w2: { title: '数字 1-5' },
+        w3: { title: 'お腹を空かせた魚' },
+        w4: { title: '大きいと小さい' },
+        w5: { title: 'パターン' },
+        w6: { title: '反対語' },
+        w7: { title: '海の救助' },
+        w8: { title: 'お話の時間' },
     },
 
     week1: {

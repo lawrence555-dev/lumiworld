@@ -3,9 +3,11 @@
 import { useProgress } from '@/hooks/useProgress';
 import { useLanguage } from '@/hooks/useLanguage';
 import { useRouter } from 'next/navigation';
-import { Home, RotateCcw, Download } from 'lucide-react';
+import { RotateCcw, Download } from 'lucide-react';
 import { useState } from 'react';
 import { LanguagePicker } from '@/components/ui/LanguagePicker';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Header } from "@/components/ui/Header";
 
 export default function SettingsPage() {
     const { progress, updateSettings, updateName, resetProgress } = useProgress();
@@ -30,115 +32,159 @@ export default function SettingsPage() {
     };
 
     return (
-        <div className="w-screen h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 overflow-auto">
-            <div className="max-w-4xl mx-auto p-8">
-                {/* Header */}
-                <header className="flex items-center justify-between mb-12">
-                    <h1 className="text-5xl font-black text-white">⚙️ {t.settings.title}</h1>
-                    <button
-                        onClick={() => router.push('/')}
-                        className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center"
-                    >
-                        <Home size={32} className="text-white" />
-                    </button>
-                </header>
+        <main className="landscape-container">
+            <Header showHome />
 
-                {/* Settings Cards */}
-                <div className="space-y-6">
-                    {/* Student Name */}
-                    <div className="bg-white/10 rounded-3xl p-8">
-                        <h2 className="text-2xl font-bold text-white mb-4">{t.settings.student_name_label}</h2>
+            <div className="flex-1 mt-32 overflow-y-auto pb-12 px-4 no-scrollbar">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
+                >
+                    {/* Student Name Section */}
+                    <section className="glass p-8 rounded-[2.5rem] flex flex-col gap-4">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="p-3 bg-indigo-500 rounded-2xl text-white shadow-lg shadow-indigo-500/20">
+                                <span className="text-xl">👤</span>
+                            </div>
+                            <h2 className="text-2xl font-extrabold text-white">
+                                {t.settings.student_name_label}
+                            </h2>
+                        </div>
                         <input
                             type="text"
                             value={progress.studentName}
                             onChange={(e) => updateName(e.target.value)}
-                            className="w-full px-6 py-4 rounded-xl text-2xl font-bold bg-white/20 text-white placeholder-white/50 border-2 border-white/30 focus:border-blue-400 outline-none"
+                            className="w-full px-6 py-4 rounded-2xl text-xl font-bold bg-white/5 text-white border-2 border-white/5 focus:border-indigo-400 focus:bg-white/10 outline-none transition-all placeholder:text-white/20"
                             placeholder={t.settings.student_name_placeholder}
                         />
-                    </div>
+                    </section>
 
-                    {/* Language */}
-                    <div className="bg-white/10 rounded-3xl p-8">
-                        <h2 className="text-2xl font-bold text-white mb-4">{t.settings.language_label}</h2>
+                    {/* Language Section */}
+                    <section className="glass p-8 rounded-[2.5rem] flex flex-col gap-4">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="p-3 bg-purple-500 rounded-2xl text-white shadow-lg shadow-purple-500/20">
+                                <span className="text-xl">🌍</span>
+                            </div>
+                            <h2 className="text-2xl font-extrabold text-white">
+                                {t.settings.language_label}
+                            </h2>
+                        </div>
                         <LanguagePicker />
-                    </div>
+                    </section>
 
-                    {/* Theme */}
-                    <div className="bg-white/10 rounded-3xl p-8">
-                        <h2 className="text-2xl font-bold text-white mb-4">{t.settings.theme_label}</h2>
+                    {/* Theme Section */}
+                    <section className="glass p-8 rounded-[2.5rem] flex flex-col gap-4">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="p-3 bg-pink-500 rounded-2xl text-white shadow-lg shadow-pink-500/20">
+                                <span className="text-xl">🎨</span>
+                            </div>
+                            <h2 className="text-2xl font-extrabold text-white">
+                                {t.settings.theme_label}
+                            </h2>
+                        </div>
                         <div className="flex gap-4">
-                            <button
-                                onClick={() => updateSettings({ theme: 'default' })}
-                                className={`flex-1 py-6 rounded-xl font-bold text-xl transition-all ${progress.settings.theme === 'default'
-                                        ? 'bg-blue-500 text-white'
-                                        : 'bg-white/20 text-white/70'
-                                    }`}
-                            >
-                                {t.ui.default}
-                            </button>
-                            <button
-                                onClick={() => updateSettings({ theme: 'high-contrast' })}
-                                className={`flex-1 py-6 rounded-xl font-bold text-xl transition-all ${progress.settings.theme === 'high-contrast'
-                                        ? 'bg-blue-500 text-white'
-                                        : 'bg-white/20 text-white/70'
-                                    }`}
-                            >
-                                {t.ui.high_contrast}
-                            </button>
+                            {['default', 'high-contrast'].map((themeType) => (
+                                <motion.button
+                                    key={themeType}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => updateSettings({ theme: themeType as any })}
+                                    className={`flex-1 py-4 rounded-2xl font-bold text-lg transition-all border ${progress.settings.theme === themeType
+                                        ? 'bg-white text-indigo-900 border-white shadow-lg shadow-white/10'
+                                        : 'bg-white/5 text-white/60 border-white/5 hover:bg-white/10'
+                                        }`}
+                                >
+                                    {themeType === 'default' ? t.ui.default : t.ui.high_contrast}
+                                </motion.button>
+                            ))}
                         </div>
-                    </div>
+                    </section>
 
-                    {/* Data Management */}
-                    <div className="bg-white/10 rounded-3xl p-8">
-                        <h2 className="text-2xl font-bold text-white mb-4">{t.settings.data_management}</h2>
-                        <div className="space-y-4">
-                            <button
+                    {/* Data Section */}
+                    <section className="glass p-8 rounded-[2.5rem] flex flex-col gap-4">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="p-3 bg-emerald-500 rounded-2xl text-white shadow-lg shadow-emerald-500/20">
+                                <span className="text-xl">🛡️</span>
+                            </div>
+                            <h2 className="text-2xl font-extrabold text-white">
+                                {t.settings.data_management}
+                            </h2>
+                        </div>
+                        <div className="flex gap-4">
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 onClick={handleExport}
-                                className="w-full py-6 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold text-xl flex items-center justify-center gap-3"
+                                className="flex-1 py-4 rounded-2xl bg-white/5 hover:bg-emerald-500 hover:text-white text-emerald-400 font-bold text-lg transition-all border border-white/5 flex items-center justify-center gap-2"
                             >
-                                <Download size={24} />
+                                <Download size={20} />
                                 {t.ui.export_progress}
-                            </button>
+                            </motion.button>
 
-                            <button
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 onClick={() => setShowResetConfirm(true)}
-                                className="w-full py-6 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold text-xl flex items-center justify-center gap-3"
+                                className="flex-1 py-4 rounded-2xl bg-white/5 hover:bg-rose-500 hover:text-white text-rose-400 font-bold text-lg transition-all border border-white/5 flex items-center justify-center gap-2"
                             >
-                                <RotateCcw size={24} />
+                                <RotateCcw size={20} />
                                 {t.ui.reset_all}
-                            </button>
+                            </motion.button>
                         </div>
-                    </div>
-                </div>
+                    </section>
+                </motion.div>
+            </div>
 
-                {/* Reset Confirmation Modal */}
+            {/* Reset Confirmation Modal */}
+            <AnimatePresence>
                 {showResetConfirm && (
-                    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-                        <div className="bg-white rounded-3xl p-8 max-w-md">
-                            <h3 className="text-3xl font-black text-gray-800 mb-4">
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setShowResetConfirm(false)}
+                            className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
+                        />
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            className="relative glass-card p-10 rounded-[3rem] max-w-md w-full shadow-2xl border border-white/10"
+                        >
+                            <div className="text-5xl text-center mb-6">⚠️</div>
+                            <h3 className="text-3xl font-black text-white text-center mb-4">
                                 {t.settings.reset_confirm_title}
                             </h3>
-                            <p className="text-xl text-gray-600 mb-8">
+                            <p className="text-white/60 text-center text-lg mb-8 leading-relaxed">
                                 {t.settings.reset_confirm_message}
                             </p>
-                            <div className="flex gap-4">
-                                <button
-                                    onClick={() => setShowResetConfirm(false)}
-                                    className="flex-1 py-4 rounded-xl bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold text-xl"
-                                >
-                                    {t.ui.cancel}
-                                </button>
-                                <button
+                            <div className="flex flex-col gap-3">
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
                                     onClick={handleReset}
-                                    className="flex-1 py-4 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold text-xl"
+                                    className="w-full py-4 rounded-2xl bg-rose-500 text-white font-bold text-xl shadow-lg shadow-rose-500/30"
                                 >
                                     {t.ui.reset}
-                                </button>
+                                </motion.button>
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => setShowResetConfirm(false)}
+                                    className="w-full py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-bold text-xl transition-colors"
+                                >
+                                    {t.ui.cancel}
+                                </motion.button>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 )}
-            </div>
-        </div>
+            </AnimatePresence>
+        </main>
     );
 }
+
+import { motion, AnimatePresence } from 'framer-motion';
+

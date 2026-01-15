@@ -6,7 +6,7 @@ export const zh: TranslationKeys = {
         settings: '設定',
         reset_data: '重置資料',
         back_home: '返回首頁',
-        student_name: '學生姓名',
+        studentName: '學生姓名',
         theme: '主題',
         language: '語言',
         default: '預設',
@@ -15,7 +15,8 @@ export const zh: TranslationKeys = {
         reset_all: '重置所有進度',
         cancel: '取消',
         reset: '重置',
-        made_with_love: '用 ❤️ 為好奇的 4 歲兒童製作',
+        madeWith: '用 ❤️ 為',
+        forFourYearOlds: '好奇的 4 歲兒童製作',
     },
 
     dashboard: {
@@ -24,14 +25,14 @@ export const zh: TranslationKeys = {
     },
 
     weeks: {
-        w1: '生物與非生物',
-        w2: '數字 1-5',
-        w3: '飢餓的小魚',
-        w4: '大與小',
-        w5: '圖案',
-        w6: '相反詞',
-        w7: '海洋救援',
-        w8: '故事時間',
+        w1: { title: '生物與非生物' },
+        w2: { title: '數字 1-5' },
+        w3: { title: '飢餓的小魚' },
+        w4: { title: '大與小' },
+        w5: { title: '圖案' },
+        w6: { title: '相反詞' },
+        w7: { title: '海洋救援' },
+        w8: { title: '故事時間' },
     },
 
     week1: {

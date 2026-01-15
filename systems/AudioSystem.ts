@@ -62,14 +62,25 @@ class AudioSystemClass {
                 resolve();
             };
 
-            utterance.onerror = (error) => {
-                console.error('[AudioSystem] Speech error:', error);
+            utterance.onerror = (event) => {
+                // Detailed error logging for SpeechSynthesisErrorEvent
+                // Ignore "canceled" as it's expected when interrupting speech
+                if (event.error !== 'canceled') {
+                    console.error('[AudioSystem] Speech error:', event.error, event);
+                }
                 this.currentUtterance = null;
-                reject(error);
+                // Resolve anyway to prevent blocking the game flow on speech errors
+                resolve();
             };
 
             this.currentUtterance = utterance;
-            window.speechSynthesis.speak(utterance);
+            try {
+                window.speechSynthesis.speak(utterance);
+            } catch (e) {
+                console.error('[AudioSystem] Speak failed:', e);
+                this.currentUtterance = null;
+                resolve();
+            }
         });
     }
 

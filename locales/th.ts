@@ -6,7 +6,7 @@ export const th: TranslationKeys = {
         settings: 'การตั้งค่า',
         reset_data: 'รีเซ็ตข้อมูล',
         back_home: 'กลับหน้าหลัก',
-        student_name: 'ชื่อนักเรียน',
+        studentName: 'ชื่อนักเรียน',
         theme: 'ธีม',
         language: 'ภาษา',
         default: 'ค่าเริ่มต้น',
@@ -15,7 +15,8 @@ export const th: TranslationKeys = {
         reset_all: 'รีเซ็ตความคืบหน้าทั้งหมด',
         cancel: 'ยกเลิก',
         reset: 'รีเซ็ต',
-        made_with_love: 'สร้างด้วย ❤️ สำหรับเด็กอายุ 4 ขวบที่อยากรู้อยากเห็น',
+        madeWith: 'สร้างด้วย ❤️ สำหรับ',
+        forFourYearOlds: 'เด็กอายุ 4 ขวบที่อยากรู้อยากเห็น',
     },
 
     dashboard: {
@@ -24,14 +25,14 @@ export const th: TranslationKeys = {
     },
 
     weeks: {
-        w1: 'สิ่งมีชีวิตและไม่มีชีวิต',
-        w2: 'ตัวเลข 1-5',
-        w3: 'ปลาหิว',
-        w4: 'ใหญ่และเล็ก',
-        w5: 'รูปแบบ',
-        w6: 'คำตรงข้าม',
-        w7: 'กู้ภัยทะเล',
-        w8: 'เวลาเล่านิทาน',
+        w1: { title: 'สิ่งมีชีวิตและไม่มีชีวิต' },
+        w2: { title: 'ตัวเลข 1-5' },
+        w3: { title: 'ปลาหิว' },
+        w4: { title: 'ใหญ่และเล็ก' },
+        w5: { title: 'รูปแบบ' },
+        w6: { title: 'คำตรงข้าม' },
+        w7: { title: 'กู้ภัยทะเล' },
+        w8: { title: 'เวลาเล่านิทาน' },
     },
 
     week1: {

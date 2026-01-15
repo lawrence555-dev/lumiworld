@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
+        <AnimatedBackground />
         <ProgressProvider>
           <LanguageProvider>
             {children}
