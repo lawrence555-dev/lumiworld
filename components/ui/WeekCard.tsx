@@ -26,69 +26,75 @@ export function WeekCard({
         <motion.button
             onClick={isUnlocked ? onClick : undefined}
             disabled={!isUnlocked}
-            whileHover={isUnlocked ? { scale: 1.05, y: -5 } : {}}
-            whileTap={isUnlocked ? { scale: 0.95 } : {}}
+            whileHover={isUnlocked ? { scale: 1.02, y: -8 } : {}}
+            whileTap={isUnlocked ? { scale: 0.96 } : {}}
             className={`
-                relative w-full aspect-square md:aspect-[4/5] rounded-[2.5rem] p-4 sm:p-6
-                flex flex-col items-center justify-between
+                relative w-full aspect-[4/5] rounded-[2.5rem] p-6 sm:p-8
+                flex flex-col items-center
                 transition-all duration-500
                 ${isUnlocked
-                    ? 'glass-card cursor-pointer shadow-indigo-500/10'
+                    ? 'glass-card cursor-pointer'
                     : 'bg-white/5 opacity-40 cursor-not-allowed border border-white/5'
                 }
             `}
         >
             {/* Background Accent for Unlocked */}
             {isUnlocked && (
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-600/10 rounded-[2.5rem] -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-600/5 rounded-[2.5rem] -z-10" />
             )}
 
-            {/* Week Number Indicator */}
-            <div className={`
-                w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-black
-                ${isUnlocked ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/30' : 'bg-white/10 text-white/20'}
-            `}>
-                {weekNumber}
+            {/* Week Number Indicator - Professional Pill Shape */}
+            <div className="mb-6">
+                <div className={`
+                    px-6 py-2 rounded-full flex items-center justify-center text-2xl font-black tracking-tighter
+                    ${isUnlocked
+                        ? 'bg-indigo-500 text-white shadow-xl shadow-indigo-500/40 ring-4 ring-indigo-500/20'
+                        : 'bg-white/10 text-white/20 ring-1 ring-white/5'}
+                `}>
+                    <span className="opacity-50 text-xs mr-1 font-bold uppercase tracking-widest">Level</span> {weekNumber}
+                </div>
             </div>
 
             {/* Week Content */}
-            <div className="flex-1 flex flex-col items-center justify-center gap-2">
+            <div className="flex-1 flex flex-col items-center justify-center w-full px-2">
                 {!isUnlocked ? (
-                    <div className="bg-white/10 p-4 rounded-full">
-                        <Lock size={32} className="text-white/40" />
+                    <div className="bg-white/5 p-5 rounded-3xl border border-white/5">
+                        <Lock size={36} className="text-white/20" />
                     </div>
                 ) : (
-                    <>
-                        <h3 className="text-xl font-extrabold text-white text-center leading-tight">
+                    <div className="space-y-4 w-full flex flex-col items-center">
+                        <h3 className="text-2xl font-black text-white text-center leading-[1.1] tracking-tight">
                             {title}
                         </h3>
                         {isCompleted && (
-                            <div className="flex gap-1.5 px-3 py-1.5 bg-white/5 rounded-2xl">
+                            <div className="flex gap-2 px-4 py-2 bg-white/5 rounded-2xl border border-white/5 backdrop-blur-sm">
                                 {[1, 2, 3].map((i) => (
                                     <Star
                                         key={i}
-                                        size={18}
-                                        className={i <= stars ? 'fill-yellow-400 text-yellow-400' : 'text-white/20'}
+                                        size={20}
+                                        className={i <= stars ? 'fill-yellow-400 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : 'text-white/10'}
                                     />
                                 ))}
                             </div>
                         )}
-                    </>
+                    </div>
                 )}
             </div>
 
-            {/* Status Badge */}
-            <div className="w-full">
+            {/* Status Badge - Commercial Style */}
+            <div className="w-full mt-6">
                 {isUnlocked ? (
                     <div className={`
-                        w-full py-3 rounded-2xl text-sm font-bold transition-colors
-                        ${isCompleted ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-indigo-500 text-white shadow-md shadow-indigo-500/20'}
+                        w-full py-4 rounded-3xl text-xs font-black uppercase tracking-[0.2em] transition-all
+                        ${isCompleted
+                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                            : 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-600'}
                     `}>
-                        {isCompleted ? '✓ Completed' : 'Let\'s Play!'}
+                        {isCompleted ? '✓ Mastery Achieved' : 'Begin Journey'}
                     </div>
                 ) : (
-                    <div className="w-full py-3 rounded-2xl text-sm font-bold bg-white/5 text-white/20 border border-white/5">
-                        Locked
+                    <div className="w-full py-4 rounded-3xl text-xs font-black uppercase tracking-[0.2em] bg-white/5 text-white/20 border border-white/5">
+                        Coming Soon
                     </div>
                 )}
             </div>

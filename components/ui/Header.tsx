@@ -27,10 +27,10 @@ export const Header = ({ showHome = false }: HeaderProps) => {
                         <span className="text-xl">🌟</span>
                     </motion.div>
                     <div>
-                        <h1 className="text-xl font-black tracking-tight text-white leading-tight">
+                        <h1 className="text-xl font-black tracking-tighter text-white leading-none bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
                             LumiWorld
                         </h1>
-                        <p className="text-[10px] text-white/50 font-bold uppercase tracking-wider">
+                        <p className="text-[10px] text-indigo-400/80 font-black uppercase tracking-[0.2em] mt-0.5">
                             {t.ui.studentName}: {progress.studentName}
                         </p>
                     </div>

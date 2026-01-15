@@ -31,11 +31,20 @@ export default function Dashboard() {
       <Header />
 
       {/* Scrollable Content Container */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-6 pt-32 pb-32">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-10 pt-40 pb-32">
+        <header className="mb-12 text-center md:text-left">
+          <h2 className="text-sm font-black uppercase tracking-[0.3em] text-indigo-400 opacity-60">
+            Curriculum Path
+          </h2>
+          <p className="text-white/40 text-xs font-bold mt-1">
+            Complete each level to master STEAM concepts
+          </p>
+        </header>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14"
         >
           {weeks_data.map((week) => (
             <div key={week.id} className="w-full">
