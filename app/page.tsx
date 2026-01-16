@@ -34,26 +34,23 @@ export default function Dashboard() {
 
   return (
     <div className="app-container items-center overflow-y-auto">
-      {/* Unified Content Wrapper - Centered with balanced side space */}
-      <div className="w-full max-w-[1100px] px-6 flex flex-col min-h-screen">
+      {/* Unified Content Wrapper - Perfectly Centered and Balanced */}
+      <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-10 sm:py-12">
 
-        {/* Header Block - Positioned higher */}
-        <div className="pt-2 sm:pt-4 pb-2">
+        {/* Header Block */}
+        <div className="pb-6 sm:pb-8">
           <Header showCurriculumPath={true} />
         </div>
 
-        {/* Separator / Gap between Header and Grid */}
-        <div className="h-4 sm:h-8" />
-
-        {/* Cards Grid Block - Optimized height */}
-        <main className="flex-1 w-full pb-8 sm:pb-12">
+        {/* Main Grid Section - Balanced Vertical Spacing */}
+        <main className="flex-1 flex items-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-14 w-full"
           >
             {weeks_data.map((week) => (
-              <div key={week.id} className="w-full">
+              <div key={week.id} className="w-full h-full">
                 <WeekCard
                   {...week}
                   weekId={week.id}
