@@ -37,12 +37,12 @@ export default function Dashboard() {
       {/* Header at Top */}
       <Header showCurriculumPath={true} />
 
-      {/* Cards Container with increased padding and centered layout */}
-      <main className="w-full max-w-[1400px] mx-auto px-12 sm:px-24 lg:px-32 pb-32 pt-12 sm:pt-16 lg:pt-20">
+      {/* Cards Container with extreme padding for iPad safety */}
+      <main className="w-full max-w-[1250px] mx-auto px-16 sm:px-32 lg:px-40 pb-32 pt-16 sm:pt-20 lg:pt-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-16"
         >
           {weeks_data.map((week) => (
             <div key={week.id} className="w-full">
