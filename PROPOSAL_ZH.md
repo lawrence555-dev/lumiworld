@@ -40,7 +40,7 @@
 | 週次 (Week) | 美式主題名稱 (Theme) | 跨學科焦點 (Cross-Curricular Focus) | 關鍵詞彙 (Key Vocab) |
 | :--- | :--- | :--- | :--- |
 | **W1** | **Scientific Classification** (科學分類) | [Science & Logic] 區分 Living 與 Non-Living。標準：觀察與分類屬性。 | Living, Non-living, Rock, Cat |
-| **W2** | **Introduction to Anatomy** (生物構造導論) | [ELA & Geometry] 孔雀魚的身體部位拼圖。標準：幾何形狀與字母 F (Phonics). | Fish, Fin, Tail, F (Letter) |
+| **W2** | **Introduction to Anatomy** (生物構造導論) | [ELA & Science] 認識魚類的身體部位。標準：字母 F (Phonics) 與生物構造。 | Fish, Fin, Tail, Letter F |
 | **W3** | **Number Sense & Needs** (數感與生存需求) | [Math] 計數與餵食任務 (1-20)。標準：一對一對應 (One-to-one Correspondence). | Count, Eat, Food, 1-20 |
 | **W4** | **Comparative Measurement** (比較測量) | [Math & Bio] 大象與老鼠：大小比較。標準：測量屬性 (Size Comparison). | Big, Small, Heavy, Elephant |
 | **W5** | **Habitat Exploration** (棲息地探索) | [Science & ELA] 老鷹與高空視角。標準：空間介系詞 (Spatial Prepositions). | Up, Down, Sky, Eagle |

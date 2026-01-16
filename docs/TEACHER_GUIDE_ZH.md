@@ -86,33 +86,26 @@ LumiWorld 不僅是遊戲，更是一個精密的教學引導系統：
 
 ### 🐟 Level 2：解剖學入門 (Introduction to Anatomy)
 
-**主題**：Fish Body Parts & Geometry (幾何形狀拼圖)
+**主題**：Fish Anatomy (魚類構造大挑戰)
 
 **遊戲玩法**：
-- 左側分類區：🐟 **Fish Puzzle（魚類拼圖）**
-- 右側分類區：🦁 **Other Items（其他項目）**
+- 左側分類區：🐟 **Fish Parts（魚類構造）**
+- 右側分類區：🦁 **Other Things（其他東西）**
 
 **30 個練習物品**：
-| 魚類拼圖 (15個) | 其他部位 (15個) |
+| 魚類構造 (15個) | 其他項目 (15個) |
 |----------------|----------------|
-| 📐 Triangle Fin 三角形鰭 | 🦅 Wing 翅膀 |
-| 💎 Diamond Scales 菱形鱗片 | 🦜 Beak 鳥嘴 |
-| ⬟ Pentagon Gills 五角形鰓 | 🐎 Hoof 蹄 |
-| ▮ Rectangle Tail 長方形尾 | 🦌 Horn 角 |
-| 🥚 Oval Shell 橢圓形殼 | 🪶 Feather 羽毛 |
-| 〰️ Curvy Tentacle 曲線觸手 | 🐘 Trunk 象鼻 |
-| 🌙 Crescent Claw 新月形蟹螯 | 🦁 Mane 鬃毛 |
-| ⭕ Circle Blowhole 圓形噴氣孔 | 🦘 Pouch 育兒袋 |
-| 👁️ Circle Eye 圓形眼睛 | 🐆 Spots 斑點 |
-| 👄 Oval Mouth 橢圓形魚嘴 | 🦓 Stripes 條紋 |
-| 🦴 Line Bones 線形魚骨 | 🦣 Tusk 獠牙 |
-| 🔼 Small Triangle Fin 小三角鰭 | 🐾 Paw 爪子 |
-| 🅵 Letter F (Phonics) 字母 F | 🐒 Monkey Tail 猴尾 |
-| 🌫️ Ink Cloud 墨汁雲 | 🦒 Long Neck 長脖子 |
-| ⚫ Dot Suckers 點狀吸盤 | 🐑 Fleece 羊毛 |
+| � Fin 魚鰭 | � Boot 靴子 |
+| 🧜 Scales 魚鱗 | ⛵ Boat 小船 |
+| 🐠 Gills 魚鰓 | ⚽ Ball 球 |
+| 🐟 Fish Tail 魚尾 | � Shell 貝殼 |
+| 👁️ Fish Eye 魚眼睛 | 🦀 Crab 螃蟹 |
+| 👄 Fish Mouth 魚嘴巴 | � Wing 翅膀 |
+| 🦴 Fish Bone 魚骨頭 | � Beak 鳥嘴 |
+| 🅵 Letter F 字母 F | � Hoof 蹄 |
 
 **學習目標**：
-1. ✅ 理解「幾何形狀」在生物構造中的應用
+1. ✅ 認識基礎海洋動物構造 (Fin, Tail, Eye)
 2. ✅ 建立 Letter-Sound Correspondence (F 與 /f/)
 3. ✅ 視覺拼圖邏輯與分類
 

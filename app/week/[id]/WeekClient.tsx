@@ -128,8 +128,8 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             setIsProcessing(true);
 
             confetti({
-                particleCount: 50,
-                spread: 50,
+                particleCount: 150, // Increased for better "Bingo!" feeling
+                spread: 70,
                 origin: { y: 0.7 }
             });
             AudioSystem.playSuccess(t.feedback.correct);
@@ -193,7 +193,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             <div className="w-screen h-screen bg-gradient-to-br from-emerald-600 to-indigo-900 flex items-center justify-center">
                 <div className="text-center">
                     <div className="text-9xl mb-8">🏆</div>
-                    <h1 className="text-7xl font-black text-white mb-4 tracking-tighter">{t.feedback.mastery_achieved}</h1>
+                    <h1 className="text-7xl font-black text-white mb-4 tracking-tighter">Bingo!</h1>
                     <p className="text-3xl text-white/80 font-bold uppercase tracking-[0.2em] mb-8">
                         {correctCount} / {randomizedItems.length} {t.feedback.correct}
                     </p>
@@ -226,7 +226,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                     </button>
                     <div>
                         <h2 className="text-white/40 text-xs font-black uppercase tracking-[0.3em] mb-1">
-                            {config.title}
+                            {t.weeks[id as keyof typeof t.weeks]?.title || config.title}
                         </h2>
                         <div className="text-3xl font-black text-white tracking-tighter">
                             Level {id.replace('w', '')}

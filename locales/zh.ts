@@ -46,11 +46,11 @@ export const zh: TranslationKeys = {
     },
 
     feedback: {
-        great_job: '做得好！',
+        great_job: 'Bingo!',
         try_again: '再試一次！',
-        amazing: '太棒了！你精通了',
-        you_did_it: '你做到了！',
-        correct: '正確',
+        amazing: 'Bingo! 你太棒了！',
+        you_did_it: 'Bingo!',
+        correct: 'Bingo!',
         hint: '將物品拖移到正確的分類中',
         mastery_achieved: '達成大師！',
     },
