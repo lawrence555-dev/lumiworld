@@ -108,6 +108,20 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
         };
     }, []);
 
+    // Preload images for better performance
+    useEffect(() => {
+        if (!config) return;
+
+        const imagesToPreload = config.items
+            .filter(item => item.image)
+            .map(item => item.image as string);
+
+        imagesToPreload.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    }, [config]);
+
     const handleDragEnd = async (itemId: string, x: number, y: number) => {
         // Prevent double-trigger with processing lock
         if (isProcessing) return;
