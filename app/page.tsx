@@ -38,11 +38,11 @@ export default function Dashboard() {
       <Header showCurriculumPath={true} />
 
       {/* Cards Container with top padding */}
-      <main className="w-full max-w-7xl mx-auto px-6 sm:px-8 pb-8 pt-4">
+      <main className="w-full max-w-7xl mx-auto px-8 sm:px-16 lg:px-24 pb-24 pt-8 sm:pt-12 lg:pt-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 sm:gap-x-6 sm:gap-y-8 lg:gap-x-8 lg:gap-y-10"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12"
         >
           {weeks_data.map((week) => (
             <div key={week.id} className="w-full">
