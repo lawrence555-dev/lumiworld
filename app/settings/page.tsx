@@ -34,23 +34,23 @@ export default function SettingsPage() {
     return (
         <div className="app-container items-center overflow-y-auto">
             {/* Unified Content Wrapper - Aligned with Homepage */}
-            <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-12 sm:py-16">
+            <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-6 sm:py-8">
 
                 {/* Header Block - Aligned with Homepage */}
-                <div className="pb-8 sm:pb-12">
+                <div className="pb-4 sm:pb-6">
                     <Header showHome showCurriculumPath />
                 </div>
 
-                <main className="flex-1 w-full flex flex-col">
+                <main className="flex-1 w-full flex flex-col justify-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col gap-10 w-full"
+                        className="flex flex-col gap-6 w-full"
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Student Name Section */}
-                            <section className="glass-card rounded-[2.5rem] p-10 flex flex-col gap-8">
-                                <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                            <section className="glass-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-6">
+                                <h2 className="text-xl font-black text-white flex items-center gap-3">
                                     👤 {t.settings.student_name_label}
                                 </h2>
                                 <div className="relative group">
@@ -58,32 +58,32 @@ export default function SettingsPage() {
                                         type="text"
                                         value={progress.studentName}
                                         onChange={(e) => updateName(e.target.value)}
-                                        className="w-full bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-5 text-2xl font-bold text-white outline-none focus:border-indigo-500/50 transition-all focus:bg-white/10"
+                                        className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-5 py-3 text-xl font-bold text-white outline-none focus:border-indigo-500/50 transition-all focus:bg-white/10"
                                         placeholder={t.settings.student_name_placeholder}
                                     />
                                 </div>
                             </section>
 
                             {/* Language Picker Section */}
-                            <section className="glass-card rounded-[2.5rem] p-10 flex flex-col gap-8">
-                                <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                            <section className="glass-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-6">
+                                <h2 className="text-xl font-black text-white flex items-center gap-3">
                                     🌍 {t.settings.language_label}
                                 </h2>
                                 <LanguagePicker />
                             </section>
 
                             {/* Theme Selection */}
-                            <section className="glass-card rounded-[2.5rem] p-10 flex flex-col gap-8">
-                                <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                            <section className="glass-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-6">
+                                <h2 className="text-xl font-black text-white flex items-center gap-3">
                                     🎨 {t.settings.theme_label}
                                 </h2>
-                                <div className="flex bg-white/5 p-2 rounded-2xl border border-white/5">
+                                <div className="flex bg-white/5 p-1.5 rounded-xl border border-white/5">
                                     {(['default', 'high-contrast'] as const).map((tId) => (
                                         <button
                                             key={tId}
                                             onClick={() => updateSettings({ theme: tId })}
-                                            className={`flex-1 py-4 px-6 rounded-xl font-black text-xl transition-all ${progress.settings.theme === tId
-                                                ? 'bg-white text-indigo-950 shadow-xl scale-[1.02]'
+                                            className={`flex-1 py-3 px-4 rounded-lg font-black text-lg transition-all ${progress.settings.theme === tId
+                                                ? 'bg-white text-indigo-950 shadow-lg scale-[1.02]'
                                                 : 'text-white/40 hover:text-white/60'
                                                 }`}
                                         >
@@ -94,33 +94,33 @@ export default function SettingsPage() {
                             </section>
 
                             {/* Data Management */}
-                            <section className="glass-card rounded-[2.5rem] p-10 flex flex-col gap-8">
-                                <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                            <section className="glass-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-6">
+                                <h2 className="text-xl font-black text-white flex items-center gap-3">
                                     🛡️ {t.settings.data_management}
                                 </h2>
                                 <div className="grid grid-cols-2 gap-4">
                                     <button
                                         onClick={handleExport}
-                                        className="bg-emerald-500/10 hover:bg-emerald-500/20 border-2 border-emerald-500/20 text-emerald-400 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-2 group"
+                                        className="bg-emerald-500/10 hover:bg-emerald-500/20 border-2 border-emerald-500/20 text-emerald-400 py-3 rounded-xl font-black text-base transition-all flex items-center justify-center gap-2 group"
                                     >
-                                        <Download className="group-hover:bounce" /> {t.ui.export_progress}
+                                        <Download size={18} className="group-hover:bounce" /> {t.ui.export_progress}
                                     </button>
                                     <button
                                         onClick={() => setShowResetConfirm(true)}
-                                        className="bg-rose-500/10 hover:bg-rose-500/20 border-2 border-rose-500/20 text-rose-400 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-2 group"
+                                        className="bg-rose-500/10 hover:bg-rose-500/20 border-2 border-rose-500/20 text-rose-400 py-3 rounded-xl font-black text-base transition-all flex items-center justify-center gap-2 group"
                                     >
-                                        <RotateCcw className="group-hover:rotate-180" /> {t.ui.reset_all}
+                                        <RotateCcw size={18} className="group-hover:rotate-180" /> {t.ui.reset_all}
                                     </button>
                                 </div>
                             </section>
                         </div>
 
                         {/* Learning Report Section */}
-                        <section className="glass-card rounded-[3rem] p-12 mt-4 mb-20">
-                            <h2 className="text-4xl font-black text-white mb-10 flex items-center gap-4">
+                        <section className="glass-card rounded-[2rem] p-8 mt-2">
+                            <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
                                 📊 {t.settings.learning_report}
                             </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                                 {Object.entries(progress.mastery || {}).map(([skillId, data]) => {
                                     // Map skillId to week title
                                     const skillKeyMap: Record<string, string> = {
@@ -145,8 +145,8 @@ export default function SettingsPage() {
 
                                     const getStatusColor = (status: string) => {
                                         switch (status) {
-                                            case 'mastered': return 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20';
-                                            case 'in-progress': return 'bg-amber-500 text-white shadow-lg shadow-amber-500/20';
+                                            case 'mastered': return 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20';
+                                            case 'in-progress': return 'bg-amber-500 text-white shadow-md shadow-amber-500/20';
                                             default: return 'bg-white/10 text-white/40';
                                         }
                                     };
@@ -162,17 +162,17 @@ export default function SettingsPage() {
                                     return (
                                         <motion.div
                                             key={skillId}
-                                            whileHover={{ y: -5 }}
-                                            className="bg-white/5 border border-white/10 rounded-[2rem] p-8 flex flex-col gap-6"
+                                            whileHover={{ y: -2 }}
+                                            className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col gap-3"
                                         >
-                                            <div className="text-lg font-black text-white/60 uppercase tracking-widest line-clamp-1">
+                                            <div className="text-[10px] font-black text-white/40 uppercase tracking-widest line-clamp-1">
                                                 {skillTitle}
                                             </div>
-                                            <div className="flex flex-col gap-4">
-                                                <div className="text-3xl font-mono font-black text-white">
+                                            <div className="flex flex-col gap-2">
+                                                <div className="text-xl font-mono font-black text-white">
                                                     {formatTime(data.totalTimeSeconds)}
                                                 </div>
-                                                <div className={`px-6 py-3 rounded-2xl text-sm font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
+                                                <div className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
                                                     {getStatusLabel(data.status)}
                                                 </div>
                                             </div>
