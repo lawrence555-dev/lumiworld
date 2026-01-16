@@ -28,9 +28,8 @@
 - **CCSS.MATH.CONTENT.K.G.A.1:** 描述環境中的物體形狀。
 
 ### 📖 英語語言藝術 (ELA) - 基於 CCSS ELA 標準
-- **CCSS.ELA-LITERACY.RF.K.1.D:** 識別並命名所有大小寫字母。
-- **CCSS.ELA-LITERACY.RF.K.3.A:** 演示對常見字母發音的一一對應知識 (Phonics)。
 - **CCSS.ELA-LITERACY.L.K.5.A:** 將物體分類並歸納概念 (Sorting & Categorization)。
+- **CCSS.ELA-LITERACY.SL.K.1:** 參與關於幼稚園主題和文本的多樣化合作對話。
 
 ---
 
@@ -40,7 +39,7 @@
 | 週次 (Week) | 美式主題名稱 (Theme) | 跨學科焦點 (Cross-Curricular Focus) | 關鍵詞彙 (Key Vocab) |
 | :--- | :--- | :--- | :--- |
 | **W1** | **Scientific Classification** (科學分類) | [Science & Logic] 區分 Living 與 Non-Living。標準：觀察與分類屬性。 | Living, Non-living, Rock, Cat |
-| **W2** | **Introduction to Anatomy** (生物構造導論) | [ELA & Science] 認識魚類的身體部位。標準：字母 F (Phonics) 與生物構造。 | Fish, Fin, Tail, Letter F |
+| **W2** | **Introduction to Anatomy** (生物構造導論) | [Science & ELA] 認識魚類的身體部位。標準：生物觀察與辨識外部特徵。 | Fish, Fin, Scales, Gills, Fish Tail |
 | **W3** | **Number Sense & Needs** (數感與生存需求) | [Math] 計數與餵食任務 (1-20)。標準：一對一對應 (One-to-one Correspondence). | Count, Eat, Food, 1-20 |
 | **W4** | **Comparative Measurement** (比較測量) | [Math & Bio] 大象與老鼠：大小比較。標準：測量屬性 (Size Comparison). | Big, Small, Heavy, Elephant |
 | **W5** | **Habitat Exploration** (棲息地探索) | [Science & ELA] 老鷹與高空視角。標準：空間介系詞 (Spatial Prepositions). | Up, Down, Sky, Eagle |
@@ -55,15 +54,16 @@
 
 ### 1. 差異化教學 (Differentiated Instruction)
 並非所有 4 歲孩子的進度都相同。系統內建 **"Adaptive Engine" (自適應引擎)**：
-- **Scaffolding (鷹架支援):** 當學生在數學題卡關時，系統會自動減少選項數量（例如從 3 選 1 變為 2 選 1），提供視覺提示，而非直接給答案。
+- **Scaffolding (鷹架支援):** 當學生卡關時，系統會提供視覺提示（脈衝動畫）。
+- **Option Reduction (選項減少):** 若錯誤持續發生，系統會自動禁用錯誤區域，引導學生向正確目標前進。
 
-### 2. 音素意識與視覺詞彙 (Phonemic Awareness & Sight Words)
-在 ELA (英語) 模組中，我們不強調死記硬背，而是強調 **"Letter-Sound Correspondence" (字母與發音的對應)**。
-- **互動機制：** 學生必須聽出 "Fish" 的首字母發音是 /f/，並找到字母 F 才能完成拼圖。這符合美式閱讀啟蒙的核心 (Science of Reading)。
+### 2. 多感官詞彙建構
+我們強調在有意義的情境中學習詞彙，而非孤立背誦。
+- **互動機制：** 學生在聽取發音的同時看到對應項目的圖標，強化物件與語言標籤之間的連結。內容支援 5 種語言即時切換。
 
 ### 3. 社交情緒學習 (SEL - Social Emotional Learning)
 根據 CASEL 框架，我們在第 7-8 週融入了同理心教育。
-- 當海豚被垃圾困住時，它會表現出 "Sad" (悲傷)，清理後變為 "Happy" (快樂)。這教導學生辨識情緒並培養對環境的 Empathy (同理心)。
+- 當海豚被垃圾困住時，它會表現出 "Sad" (悲傷)，清理後變為 "Happy" (快樂)。這教導學生辨識情緒並了解個人行為對環境產生的正向影響。
 
 ---
 
@@ -86,6 +86,12 @@ LumiWorld 的設計初衷是為了成為您課堂教學的有力延伸。我們�
 ### [附錄：技術規格]
 - **平台:** 瀏覽器即開即用 (Chrome/Safari)，支援課堂 iPad。
 - **隱私:** 符合 COPPA (兒童線上隱私保護法) 規範，無數據外洩風險。
+- **語言支援:** 提供英文、中文、日文、韓文、泰文完整內容。
+
+---
+
+## 📖 教師與家長指南
+如需更詳細的教學建議與每週內容說明，請參考專案中的 [docs/](docs/) 資料夾，內含 5 種語系之完整指南。
 
 ---
 

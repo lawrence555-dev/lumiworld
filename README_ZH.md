@@ -1,6 +1,6 @@
 # 🌟 LumiWorld - 幼兒 STEAM 教育 PWA
 
-> **版本:** 2.1.0  
+> **版本:** 2.2.0  
 > **類型:** 幼兒教育漸進式 Web 應用程式 (PWA)  
 > **技術棧:** Next.js 15, Tailwind CSS, LocalStorage (無後端)
 
@@ -33,6 +33,7 @@ LumiWorld 是一款專為 4 歲兒童設計的互動式教育 PWA，透過拖放
 | **8 週完整課程** | 每個關卡 30 題，共 240 道練習題 |
 | **5 種語言** | 英文、繁體中文、日本語、한국어、ภาษาไทย |
 | **多語言語音** | 用選擇的語言朗讀物品名稱 (Web Speech API) |
+| **多語系教學指南** | 提供 5 種語言的詳細老師與家長教學指南 |
 | **學習報告** | 詳細掌握度分析（時間統計、練習次數、能力狀態） |
 | **iPad 優化** | 高屏佔比響應式佈局 + iOS 音訊解鎖機制 |
 | **智慧拖放** | 需拖曳 30 像素以上才判定，防止誤觸 |
@@ -49,7 +50,7 @@ LumiWorld 是一款專為 4 歲兒童設計的互動式教育 PWA，透過拖放
 | 關卡 | 主題 | 分類方式 | 核心標準 |
 |:----:|------|----------|----------|
 | **1** | 科學分類 | 有生命 vs 無生命 | NGSS K-LS1-1 |
-| **2** | 解剖學入門 | 海洋部位 vs 陸地部位 | CCSS.ELA-LITERACY.RF.K.3.A |
+| **2** | 解剖學入門 | 魚類構造 vs 其他部位 | 生物觀察 / 解剖學 |
 | **3** | 數感發展 | 少量 vs 多量 | CCSS.MATH.CONTENT.K.CC.B.4 |
 | **4** | 比較測量 | 巨大 vs 微小 | CCSS.MATH.CONTENT.K.MD.A.2 |
 | **5** | 棲息地探索 | 天空 vs 地面 | NGSS 空間邏輯 |
@@ -57,13 +58,16 @@ LumiWorld 是一款專為 4 歲兒童設計的互動式教育 PWA，透過拖放
 | **7** | 環境科學 | 乾淨海洋 vs 垃圾 | NGSS K-ESS3-3 + CASEL SEL |
 | **8** | 生態系統管理 | 森林 vs 海洋 | STEAM 整合 |
 
-📖 **教師指南:** 詳見 [docs/TEACHER_GUIDE_ZH.md](docs/TEACHER_GUIDE_ZH.md)
+📖 **詳細指南:**  
+- 🇺🇸 [Teacher & Parent Guide (EN)](docs/TEACHER_GUIDE_EN.md)  
+- 🇹🇼 [老師與家長教學指南 (ZH)](docs/TEACHER_GUIDE_ZH.md)  
+- 🇯🇵 [指導ガイド (JA)](docs/TEACHER_GUIDE_JA.md)  
+- 🇰🇷 [교사 및 학부모 지침서 (KO)](docs/TEACHER_GUIDE_KO.md)  
+- 🇹🇭 [คู่มือแนะนำสำหรับครูและผู้ปกครอง (TH)](docs/TEACHER_GUIDE_TH.md)
 
 ---
 
 ## 🌐 多語言支援
-
-### 支援語言
 
 | 語言 | 代碼 | 語音 | 介面 |
 |------|------|------|------|
@@ -73,66 +77,19 @@ LumiWorld 是一款專為 4 歲兒童設計的互動式教育 PWA，透過拖放
 | 🇰🇷 한국어 | ko-KR | ✅ | ✅ |
 | 🇹🇭 ภาษาไทย | th-TH | ✅ | ✅ |
 
-### 運作方式
-- **顯示:** 物品名稱根據所選語言自動翻譯顯示
-- **語音:** 物品以選擇的語言朗讀發音
-- **iOS 支援:** 首次觸碰時自動解鎖音訊
-
----
-
-## 🚀 快速開始
-
-### 系統需求
-
-- Node.js 18+
-- npm 或 yarn
-
-### 安裝步驟
-
-```bash
-# 進入專案目錄
-cd lumiworld-persistent-system
-
-# 安裝依賴
-npm install
-
-# 啟動開發伺服器
-npm run dev
-
-# 開啟瀏覽器
-# http://localhost:3000
-```
-
-### 部署到 Render
-
-1. 連接 GitHub 倉庫
-2. **Build Command:** `npm run build`
-3. **Start Command:** `npm run start`
-
 ---
 
 ## 📁 專案結構
 
 ```
 lumiworld-persistent-system/
-├── app/                      # Next.js App Router
-│   ├── page.tsx             # 儀表板 (關卡選擇)
-│   ├── week/[id]/           # 遊戲關卡
-│   └── settings/            # 設定頁面
-├── components/
-│   ├── game/                # Draggable, DropZone
-│   └── ui/                  # Header, WeekCard
-├── systems/                 # 核心邏輯
-│   ├── SaveSystem.ts        # LocalStorage 存檔
-│   ├── AudioSystem.ts       # TTS + iOS 解鎖
-│   └── GameLogic.ts         # 碰撞檢測
-├── data/
-│   ├── Curriculum.json      # 關卡配置
-│   └── GameContent.ts       # 240 道練習題
+├── app/                      # Next.js App Router (頁面與路由)
+├── components/               # UI 與遊戲組件
+├── systems/                 # 核心邏輯 (存檔、音訊、遊戲邏輯)
+├── data/                    # GameContent.ts (240 道練習題)
 ├── hooks/                   # useProgress, useLanguage
-├── locales/                 # 5 種語言翻譯檔
-└── docs/
-    └── TEACHER_GUIDE_ZH.md  # 教師課程指南
+├── locales/                 # 5 種語言翻譯檔 (i18n)
+└── docs/                    # 多語系教師與家長指南
 ```
 
 ---

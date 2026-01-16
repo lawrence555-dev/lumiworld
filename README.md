@@ -1,6 +1,6 @@
 # 🌟 LumiWorld - Pre-K Educational PWA
 
-> **Version:** 2.1.0  
+> **Version:** 2.2.0  
 > **Type:** Pre-K Educational Progressive Web App  
 > **Stack:** Next.js 15, Tailwind CSS, LocalStorage (No Backend)
 
@@ -34,6 +34,7 @@ LumiWorld is an interactive educational PWA designed for 4-year-old children, fo
 | **8-Week Curriculum** | Complete 8-level STEAM curriculum with 30 items per level (240 total) |
 | **Multi-Language** | 5 languages: English, 繁體中文, 日本語, 한국어, ภาษาไทย |
 | **Multi-Language TTS** | Voice reads items in selected language (Web Speech API) |
+| **Teacher/Parent Guides**| Detailed guides available in all 5 supported languages |
 | **Learning Report** | Detailed mastery tracking (time spent, attempts, status) per skill |
 | **iPad Optimized** | Responsive layout for all tablet resolutions + iOS audio unlock |
 | **Drag-and-Drop** | Smooth drag-and-drop with 30px minimum distance check |
@@ -56,33 +57,6 @@ LumiWorld is an interactive educational PWA designed for 4-year-old children, fo
 | **Animation** | Framer Motion | Smooth transitions |
 | **Effects** | canvas-confetti | Celebration animations |
 
-### Data Schema
-
-```typescript
-interface UserProgress {
-  studentName: string;
-  settings: {
-    isMuted: boolean;
-    theme: 'default' | 'high-contrast';
-    language: 'en-US' | 'zh-TW' | 'ja-JP' | 'ko-KR' | 'th-TH';
-  };
-  weeks: {
-    [weekId: string]: {
-      isUnlocked: boolean;
-      isCompleted: boolean;
-      stars: number;
-    };
-  };
-  mastery: {
-    [skillId: string]: {
-      status: 'none' | 'in-progress' | 'mastered';
-      attempts: number;
-      totalTimeSeconds: number;
-    };
-  };
-}
-```
-
 ### Core Modules
 
 | Module | File | Purpose |
@@ -101,7 +75,7 @@ Each level contains **30 practice items** with drag-and-drop classification:
 | Level | Theme | Categories | Standard |
 |:-----:|-------|------------|----------|
 | **1** | Scientific Classification | Living vs Non-Living | NGSS K-LS1-1 |
-| **2** | Introduction to Anatomy | Sea Parts vs Land Parts | CCSS.ELA-LITERACY.RF.K.3.A |
+| **2** | Introduction to Anatomy | Fish Parts vs Other Parts | NGSS / Anatomy |
 | **3** | Number Sense & Needs | Small Group vs Big Group | CCSS.MATH.CONTENT.K.CC.B.4 |
 | **4** | Comparative Measurement | Huge vs Tiny | CCSS.MATH.CONTENT.K.MD.A.2 |
 | **5** | Habitat Exploration | Sky vs Earth | NGSS Spatial Logic |
@@ -109,13 +83,16 @@ Each level contains **30 practice items** with drag-and-drop classification:
 | **7** | Environmental Science | Clean Ocean vs Trash | NGSS K-ESS3-3 + CASEL SEL |
 | **8** | Ecosystem Management | Forest vs Ocean | STEAM Integration |
 
-📖 **For Teachers:** See [docs/TEACHER_GUIDE_ZH.md](docs/TEACHER_GUIDE_ZH.md) for detailed curriculum guide.
+📖 **Detailed Guides:**  
+- 🇺🇸 [Teacher & Parent Guide (EN)](docs/TEACHER_GUIDE_EN.md)  
+- 🇹🇼 [老師與家長教學指南 (ZH)](docs/TEACHER_GUIDE_ZH.md)  
+- 🇯🇵 [指導ガイド (JA)](docs/TEACHER_GUIDE_JA.md)  
+- 🇰🇷 [교사 및 학부모 지침서 (KO)](docs/TEACHER_GUIDE_KO.md)  
+- 🇹🇭 [คู่มือแนะนำสำหรับครูและผู้ปกครอง (TH)](docs/TEACHER_GUIDE_TH.md)
 
 ---
 
 ## 🌐 Multi-Language Support
-
-### Supported Languages
 
 | Language | Code | Voice | UI |
 |----------|------|-------|-----|
@@ -125,42 +102,6 @@ Each level contains **30 practice items** with drag-and-drop classification:
 | 🇰🇷 한국어 | ko-KR | ✅ | ✅ |
 | 🇹🇭 ภาษาไทย | th-TH | ✅ | ✅ |
 
-### How It Works
-- **Display:** Item names translated based on selected language
-- **Voice:** Items spoken in the selected language
-- **iOS Support:** Automatic audio unlock on first touch
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-
-### Installation
-
-```bash
-# Clone or navigate to project
-cd lumiworld-persistent-system
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Open browser
-# http://localhost:3000
-```
-
-### Deploy to Render
-
-1. Connect GitHub repository
-2. **Build Command:** `npm run build`
-3. **Start Command:** `npm run start`
-
 ---
 
 ## 📁 Project Structure
@@ -168,23 +109,12 @@ npm run dev
 ```
 lumiworld-persistent-system/
 ├── app/                      # Next.js App Router
-│   ├── page.tsx             # Dashboard (Level Selection)
-│   ├── week/[id]/           # Game Levels
-│   └── settings/            # Settings Page
-├── components/
-│   ├── game/                # Draggable, DropZone
-│   └── ui/                  # Header, WeekCard
-├── systems/                 # Core Logic
-│   ├── SaveSystem.ts        # LocalStorage
-│   ├── AudioSystem.ts       # TTS + iOS Unlock
-│   └── GameLogic.ts         # Collision Detection
-├── data/
-│   ├── Curriculum.json      # Level configurations
-│   └── GameContent.ts       # 240 curriculum items
+├── components/               # UI & Game Components
+├── systems/                 # Core Logic (Save, Audio, Game)
+├── data/                    # GameContent.ts (240 items)
 ├── hooks/                   # useProgress, useLanguage
-├── locales/                 # en.ts, zh.ts, ja.ts, ko.ts, th.ts
-└── docs/
-    └── TEACHER_GUIDE_ZH.md  # Teacher curriculum guide
+├── locales/                 # i18n translation files
+└── docs/                    # Multi-language Teacher & Parent Guides
 ```
 
 ---

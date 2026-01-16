@@ -27,9 +27,8 @@ The course design directly maps to key US early childhood education standards, e
 - **CCSS.MATH.CONTENT.K.G.A.1:** Describe objects in the environment using names of shapes.
 
 ### 📖 English Language Arts (Based on CCSS ELA Standards)
-- **CCSS.ELA-LITERACY.RF.K.1.D:** Recognize and name all upper- and lowercase letters of the alphabet.
-- **CCSS.ELA-LITERACY.RF.K.3.A:** Demonstrate basic-level knowledge of one-to-one letter-sound correspondences (Phonics).
 - **CCSS.ELA-LITERACY.L.K.5.A:** Sort common objects into categories to gain a sense of the concepts the categories represent.
+- **CCSS.ELA-LITERACY.SL.K.1:** Participate in collaborative conversations with diverse partners about kindergarten topics and texts.
 
 ---
 
@@ -39,7 +38,7 @@ We employ an **"Inquiry-Based Learning"** model, guiding students to transition 
 | Week | Theme | Cross-Curricular Focus | Key Vocab |
 | :--- | :--- | :--- | :--- |
 | **W1** | **Scientific Classification** | [Science & Logic] Distinguishing Living vs. Non-Living. Standard: Observing & classifying attributes. | Living, Non-living, Rock, Cat |
-| **W2** | **Introduction to Anatomy** | [ELA & Science] Fish body parts. Standard: Letter F (Phonics) & Body Parts. | Fin, Fish, Tail, Letter F |
+| **W2** | **Introduction to Anatomy** | [Science & ELA] Fish body parts. Standard: Biological observation and identifying external features. | Fin, Scales, Gills, Fish Tail |
 | **W3** | **Number Sense & Needs** | [Math] Counting & feeding tasks (1-20). Standard: One-to-one Correspondence. | Count, Eat, Food, 1-20 |
 | **W4** | **Comparative Measurement** | [Math & Bio] Elephant vs. Mouse: Size comparison. Standard: Comparative attributes. | Big, Small, Heavy, Elephant |
 | **W5** | **Habitat Exploration** | [Science & ELA] Eagle & aerial perspective. Standard: Spatial Prepositions. | Up, Down, Sky, Eagle |
@@ -54,17 +53,17 @@ To meet the expectations of elite US educational systems, our design incorporate
 
 ### 1. Differentiated Instruction
 Recognizing that not all 4-year-olds progress at the same rate, the system includes an **"Adaptive Engine"**:
-- **Scaffolding:** When a student struggles, the system provides visual hints.
+- **Scaffolding:** When a student struggles, the system provides visual hints (Pulse animations).
 - **Option Reduction:** If errors persist (3+), the system automatically disables incorrect drop zones to guide the student toward the correct target.
 
-### 2. Phonemic Awareness & Sight Words (Science of Reading)
-In the ELA modules, we emphasize **"Letter-Sound Correspondence"** rather than rote memorization.
-- **Mechanism:** Students must hear the initial sound of "Fish" /f/ and find the letter 'F' to complete the puzzle. This aligns with the core principles of early reading development.
+### 2. Multi-sensory Vocabulary Building
+We emphasize vocabulary acquisition through meaningful contexts rather than isolated memorization.
+- **Mechanism:** Students hear the word and see the icon simultaneously, reinforcing the connection between the object and its linguistic label across 5 different languages.
 
 ### 3. Social Emotional Learning (SEL)
 Informed by the CASEL framework, we integrate empathy education in Weeks 7-8.
 - When a dolphin is trapped in trash, it displays "Sad" emotions, changing to "Happy" after being cleaned.
-- **Ocean Health Indicator:** A visual health bar quantifies the positive impact of ecological stewardship.
+- **Interaction Logic:** Children learn that their individual actions (cleaning the ocean) have a measurable impact on the well-being of others.
 
 ---
 
@@ -87,6 +86,7 @@ There is no pressure of a "standard answer" here. Instead, we encourage children
 ### [Appendix: Technical Specifications]
 - **Platform:** Browser-based (Chrome/Safari), iPad optimized.
 - **Privacy:** Fully COPPA compliant; no personal data collection or external leakage risks.
+- **Language Support:** Full content available in English, Chinese, Japanese, Korean, and Thai.
 
 ---
 
