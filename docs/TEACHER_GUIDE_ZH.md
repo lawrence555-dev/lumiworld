@@ -86,30 +86,35 @@ LumiWorld 不僅是遊戲，更是一個精密的教學引導系統：
 
 ### 🐟 Level 2：解剖學入門 (Introduction to Anatomy)
 
-**主題**：Fish Body Parts & Phonics（魚類身體部位與語音）
+**主題**：Fish Body Parts & Geometry (幾何形狀拼圖)
 
 **遊戲玩法**：
-- 左側分類區：🐟 **Sea Parts（海洋部位）**
-- 右側分類區：🦁 **Land/Other（陸地/其他部位）**
+- 左側分類區：🐟 **Fish Puzzle（魚類拼圖）**
+- 右側分類區：🦁 **Other Items（其他項目）**
 
 **30 個練習物品**：
-| 海洋部位 (15個) | 陸地部位 (15個) |
+| 魚類拼圖 (15個) | 其他部位 (15個) |
 |----------------|----------------|
-| 🦈 Fin 鰭 | 🦅 Wing 翅膀 |
-| 🧜 Scales 鱗片 | 🦜 Beak 鳥嘴 |
-| 🐠 Gills 鰓 | 🐎 Hoof 蹄 |
-| 🐟 Fish Tail 魚尾 | 🦌 Horn 角 |
-| 🐚 Shell 貝殼 | 🪶 Feather 羽毛 |
-| 🐙 Tentacle 觸手 | 🐘 Trunk 象鼻 |
-| 🦀 Crab Claw 蟹鉗 | 🦁 Mane 鬃毛 |
-| ⚪ Pearl 珍珠 | 🦘 Pouch 育兒袋 |
-| 🪸 Coral 珊瑚 | 🐆 Spots 斑點 |
-| 🦞 Pincer 鉗子 | 🦓 Stripes 條紋 |
-| 🐋 Blowhole 噴氣孔 | 🦣 Tusk 獠牙 |
-| 🦑 Ink 墨汁 | 🐾 Paw 爪子 |
-| 🐙 Sucker 吸盤 | 🐒 Monkey Tail 猴尾 |
-| 🦆 Webbed Foot 蹼足 | 🦒 Long Neck 長脖子 |
-| 🐬 Tiny Fin 小鰭 | 🐑 Fleece 羊毛 |
+| 📐 Triangle Fin 三角形鰭 | 🦅 Wing 翅膀 |
+| 💎 Diamond Scales 菱形鱗片 | 🦜 Beak 鳥嘴 |
+| ⬟ Pentagon Gills 五角形鰓 | 🐎 Hoof 蹄 |
+| ▮ Rectangle Tail 長方形尾 | 🦌 Horn 角 |
+| 🥚 Oval Shell 橢圓形殼 | 🪶 Feather 羽毛 |
+| 〰️ Curvy Tentacle 曲線觸手 | 🐘 Trunk 象鼻 |
+| 🌙 Crescent Claw 新月形蟹螯 | 🦁 Mane 鬃毛 |
+| ⭕ Circle Blowhole 圓形噴氣孔 | 🦘 Pouch 育兒袋 |
+| 👁️ Circle Eye 圓形眼睛 | 🐆 Spots 斑點 |
+| 👄 Oval Mouth 橢圓形魚嘴 | 🦓 Stripes 條紋 |
+| 🦴 Line Bones 線形魚骨 | 🦣 Tusk 獠牙 |
+| 🔼 Small Triangle Fin 小三角鰭 | 🐾 Paw 爪子 |
+| 🅵 Letter F (Phonics) 字母 F | 🐒 Monkey Tail 猴尾 |
+| 🌫️ Ink Cloud 墨汁雲 | 🦒 Long Neck 長脖子 |
+| ⚫ Dot Suckers 點狀吸盤 | 🐑 Fleece 羊毛 |
+
+**學習目標**：
+1. ✅ 理解「幾何形狀」在生物構造中的應用
+2. ✅ 建立 Letter-Sound Correspondence (F 與 /f/)
+3. ✅ 視覺拼圖邏輯與分類
 
 **學習目標**：
 1. ✅ 認識魚類的外部構造（鰭、尾、鰓）
@@ -123,11 +128,11 @@ LumiWorld 不僅是遊戲，更是一個精密的教學引導系統：
 
 ### 🔢 Level 3：數感發展 (Number Sense & Needs)
 
-**主題**：Counting & Feeding（數數與餵養）
+**主題**：Counting & Feeding (1-20 數數與餵養)
 
 **遊戲玩法**：
-- 左側分類區：1️⃣ **Small Group（少量 1-3）**
-- 右側分類區：🔟 **Big Group（多量 5-10）**
+- 左側分類區：1️⃣ **Small Group（少量 1-10）**
+- 右側分類區：🔟 **Big Group（多量 11-20）**
 
 **30 個練習物品**：
 | 少量 (15個) | 多量 (15個) |

@@ -39,7 +39,7 @@ We employ an **"Inquiry-Based Learning"** model, guiding students to transition 
 | Week | Theme | Cross-Curricular Focus | Key Vocab |
 | :--- | :--- | :--- | :--- |
 | **W1** | **Scientific Classification** | [Science & Logic] Distinguishing Living vs. Non-Living. Standard: Observing & classifying attributes. | Living, Non-living, Rock, Cat |
-| **W2** | **Introduction to Anatomy** | [ELA & Geometry] Guppy body part puzzle. Standard: Geometric shapes & Letter F (Phonics). | Fish, Fin, Tail, F (Letter) |
+| **W2** | **Introduction to Anatomy** | [ELA & Geometry] Fish body part puzzle. Standard: Geometric shapes & Letter F (Phonics). | Triangle, Circle, Diamond, Letter F |
 | **W3** | **Number Sense & Needs** | [Math] Counting & feeding tasks (1-20). Standard: One-to-one Correspondence. | Count, Eat, Food, 1-20 |
 | **W4** | **Comparative Measurement** | [Math & Bio] Elephant vs. Mouse: Size comparison. Standard: Comparative attributes. | Big, Small, Heavy, Elephant |
 | **W5** | **Habitat Exploration** | [Science & ELA] Eagle & aerial perspective. Standard: Spatial Prepositions. | Up, Down, Sky, Eagle |
@@ -54,7 +54,8 @@ To meet the expectations of elite US educational systems, our design incorporate
 
 ### 1. Differentiated Instruction
 Recognizing that not all 4-year-olds progress at the same rate, the system includes an **"Adaptive Engine"**:
-- **Scaffolding:** When a student struggles with a math task, the system automatically reduces options (e.g., from 3 to 2) and provides visual hints rather than just giving the answer.
+- **Scaffolding:** When a student struggles, the system provides visual hints.
+- **Option Reduction:** If errors persist (3+), the system automatically disables incorrect drop zones to guide the student toward the correct target.
 
 ### 2. Phonemic Awareness & Sight Words (Science of Reading)
 In the ELA modules, we emphasize **"Letter-Sound Correspondence"** rather than rote memorization.
@@ -62,7 +63,8 @@ In the ELA modules, we emphasize **"Letter-Sound Correspondence"** rather than r
 
 ### 3. Social Emotional Learning (SEL)
 Informed by the CASEL framework, we integrate empathy education in Weeks 7-8.
-- When a dolphin is trapped in trash, it displays "Sad" emotions, changing to "Happy" after being cleaned. This teaches students to recognize emotions and cultivate empathy for the environment.
+- When a dolphin is trapped in trash, it displays "Sad" emotions, changing to "Happy" after being cleaned.
+- **Ocean Health Indicator:** A visual health bar quantifies the positive impact of ecological stewardship.
 
 ---
 
