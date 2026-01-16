@@ -84,8 +84,10 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             // Phonics Reinforcement (Week 2): Add /f/ sound for Fish-related items
             let speechText = localizedLabel;
             if (id === 'w2' && (currentItem.id.startsWith('alpha_f') || currentItem.id.startsWith('fish'))) {
-                // Prepend phonics sound (assuming 'f' or similar)
-                speechText = language === 'en-US' ? `f, f, ${localizedLabel}` : `${localizedLabel}`;
+                // Prepend phonics sound (assuming 'f' or similar) for English only
+                if (language === 'en-US') {
+                    speechText = `f, f, ${localizedLabel}`;
+                }
             }
 
             // Small delay to ensure audio context is ready on iOS
@@ -242,18 +244,34 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 </div>
             </header>
 
-            {/* SEL Character (Week 7) */}
+            {/* SEL Character (Week 7: Dolphin) */}
             {id === 'w7' && (
-                <motion.div
-                    animate={{
-                        y: characterEmotion === 'sad' ? [0, 10, 0] : [0, -20, 0],
-                        scale: characterEmotion === 'happy' ? 1.2 : 1
-                    }}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[180%] text-9xl z-10"
-                >
-                    {characterEmotion === 'sad' ? '😢' : characterEmotion === 'happy' ? '🐬✨' : '🐬'}
-                </motion.div>
+                <div className="absolute top-[32%] left-1/2 -translate-x-1/2 z-10 flex flex-col items-center">
+                    <motion.div
+                        animate={{
+                            y: characterEmotion === 'sad' ? [0, 5, 0] : [0, -10, 0],
+                            rotate: characterEmotion === 'sad' ? [0, -5, 5, 0] : [0, 0, 0],
+                            scale: characterEmotion === 'happy' ? [1, 1.2, 1] : 1
+                        }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: characterEmotion === 'neutral' ? 3 : 0.5,
+                            ease: "easeInOut"
+                        }}
+                        className="text-[12rem] relative filter drop-shadow-[0_0_30px_rgba(56,189,248,0.4)]"
+                    >
+                        {characterEmotion === 'sad' ? '😢' : characterEmotion === 'happy' ? '🐬' : '🐬'}
+                        {characterEmotion === 'happy' && (
+                            <motion.span
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="absolute -top-4 -right-4 text-5xl"
+                            >
+                                ✨
+                            </motion.span>
+                        )}
+                    </motion.div>
+                </div>
             )}
 
             {/* Drop Zones */}

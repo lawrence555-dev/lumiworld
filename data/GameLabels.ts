@@ -48,6 +48,7 @@ export const GAME_LABELS: Record<string, Record<string, string>> = {
     'webbed': { 'en-US': 'Webbed Foot', 'zh-TW': '腳蹼', 'ja-JP': 'みずかき', 'ko-KR': '물갈퀴', 'th-TH': 'ตีนเป็ด' },
     'fin_mini': { 'en-US': 'Tiny Fin', 'zh-TW': '小鰭', 'ja-JP': 'ちいさなひれ', 'ko-KR': '작은 지느러미', 'th-TH': 'ครีบเล็ก' },
     'alpha_f': { 'en-US': 'Letter F', 'zh-TW': '字母 F', 'ja-JP': 'F（えふ）', 'ko-KR': '문자 F', 'th-TH': 'ตัวอักษร F' },
+    'alpha_a': { 'en-US': 'Letter A', 'zh-TW': '字母 A', 'ja-JP': 'A（えー）', 'ko-KR': '문자 A', 'th-TH': 'ตัวอักษร A' },
     'fish_eye': { 'en-US': 'Fish Eye', 'zh-TW': '魚眼睛', 'ja-JP': 'さかなのめ', 'ko-KR': '물고기 눈', 'th-TH': 'ตาปลา' },
     'fish_mouth': { 'en-US': 'Fish Mouth', 'zh-TW': '魚嘴巴', 'ja-JP': 'さかなのくち', 'ko-KR': '물고기 입', 'th-TH': 'ปากปลา' },
     'fish_bone': { 'en-US': 'Fish Bone', 'zh-TW': '魚骨頭', 'ja-JP': 'さかなのほね', 'ko-KR': '물고기 뼈', 'th-TH': 'ก้างปลา' },
