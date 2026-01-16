@@ -32,26 +32,29 @@ export default function SettingsPage() {
     };
 
     return (
-        <main className="landscape-container">
-            <Header showHome />
+        <div className="app-container items-center overflow-y-auto">
+            {/* Unified Content Wrapper - Aligned with Homepage */}
+            <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-10 sm:py-12">
 
-            <div className="flex-1 overflow-y-auto no-scrollbar">
-                {/* Header Spacer */}
-                <div className="h-24 md:h-28" />
+                {/* Header Block - Aligned with Homepage */}
+                <div className="pb-6 sm:pb-8">
+                    <Header showHome />
+                </div>
 
-                <div className="px-8 pb-16">
+                {/* Settings Grid Section */}
+                <main className="flex-1 w-full pb-16 sm:pb-20">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-8"
                     >
                         {/* Student Name Section */}
-                        <section className="glass p-8 rounded-[2.5rem] flex flex-col gap-4">
-                            <div className="flex items-center gap-3 mb-2">
-                                <div className="p-3 bg-indigo-500 rounded-2xl text-white shadow-lg shadow-indigo-500/20">
-                                    <span className="text-xl">👤</span>
+                        <section className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="p-4 bg-indigo-500 rounded-2xl text-white shadow-lg shadow-indigo-500/20">
+                                    <span className="text-2xl">👤</span>
                                 </div>
-                                <h2 className="text-2xl font-extrabold text-white">
+                                <h2 className="text-2xl font-black text-white">
                                     {t.settings.student_name_label}
                                 </h2>
                             </div>
@@ -59,18 +62,18 @@ export default function SettingsPage() {
                                 type="text"
                                 value={progress.studentName}
                                 onChange={(e) => updateName(e.target.value)}
-                                className="w-full px-6 py-4 rounded-2xl text-xl font-bold bg-white/5 text-white border-2 border-white/5 focus:border-indigo-400 focus:bg-white/10 outline-none transition-all placeholder:text-white/20"
+                                className="w-full px-6 py-5 rounded-2xl text-2xl font-bold bg-white/5 text-white border-2 border-white/5 focus:border-indigo-400 focus:bg-white/10 outline-none transition-all placeholder:text-white/20"
                                 placeholder={t.settings.student_name_placeholder}
                             />
                         </section>
 
                         {/* Language Section */}
-                        <section className="glass p-8 rounded-[2.5rem] flex flex-col gap-4">
-                            <div className="flex items-center gap-3 mb-2">
-                                <div className="p-3 bg-purple-500 rounded-2xl text-white shadow-lg shadow-purple-500/20">
-                                    <span className="text-xl">🌍</span>
+                        <section className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="p-4 bg-purple-500 rounded-2xl text-white shadow-lg shadow-purple-500/20">
+                                    <span className="text-2xl">🌍</span>
                                 </div>
-                                <h2 className="text-2xl font-extrabold text-white">
+                                <h2 className="text-2xl font-black text-white">
                                     {t.settings.language_label}
                                 </h2>
                             </div>
@@ -78,12 +81,12 @@ export default function SettingsPage() {
                         </section>
 
                         {/* Theme Section */}
-                        <section className="glass p-8 rounded-[2.5rem] flex flex-col gap-4">
-                            <div className="flex items-center gap-3 mb-2">
-                                <div className="p-3 bg-pink-500 rounded-2xl text-white shadow-lg shadow-pink-500/20">
-                                    <span className="text-xl">🎨</span>
+                        <section className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="p-4 bg-pink-500 rounded-2xl text-white shadow-lg shadow-pink-500/20">
+                                    <span className="text-2xl">🎨</span>
                                 </div>
-                                <h2 className="text-2xl font-extrabold text-white">
+                                <h2 className="text-2xl font-black text-white">
                                     {t.settings.theme_label}
                                 </h2>
                             </div>
@@ -94,9 +97,9 @@ export default function SettingsPage() {
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => updateSettings({ theme: themeType as any })}
-                                        className={`flex-1 py-4 rounded-2xl font-bold text-lg transition-all border ${progress.settings.theme === themeType
-                                            ? 'bg-white text-indigo-900 border-white shadow-lg shadow-white/10'
-                                            : 'bg-white/5 text-white/60 border-white/5 hover:bg-white/10'
+                                        className={`flex-1 py-5 rounded-2xl font-bold text-xl transition-all border ${progress.settings.theme === themeType
+                                            ? 'bg-white text-indigo-900 border-white shadow-xl shadow-white/10'
+                                            : 'bg-white/5 text-white/40 border-white/5 hover:bg-white/10 hover:text-white'
                                             }`}
                                     >
                                         {themeType === 'default' ? t.ui.default : t.ui.high_contrast}
@@ -106,12 +109,12 @@ export default function SettingsPage() {
                         </section>
 
                         {/* Data Section */}
-                        <section className="glass p-8 rounded-[2.5rem] flex flex-col gap-4">
-                            <div className="flex items-center gap-3 mb-2">
-                                <div className="p-3 bg-emerald-500 rounded-2xl text-white shadow-lg shadow-emerald-500/20">
-                                    <span className="text-xl">🛡️</span>
+                        <section className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="p-4 bg-emerald-500 rounded-2xl text-white shadow-lg shadow-emerald-500/20">
+                                    <span className="text-2xl">🛡️</span>
                                 </div>
-                                <h2 className="text-2xl font-extrabold text-white">
+                                <h2 className="text-2xl font-black text-white">
                                     {t.settings.data_management}
                                 </h2>
                             </div>
@@ -120,9 +123,9 @@ export default function SettingsPage() {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     onClick={handleExport}
-                                    className="flex-1 py-4 rounded-2xl bg-white/5 hover:bg-emerald-500 hover:text-white text-emerald-400 font-bold text-lg transition-all border border-white/5 flex items-center justify-center gap-2"
+                                    className="flex-1 py-5 rounded-2xl bg-white/5 hover:bg-emerald-500 hover:text-white text-emerald-400 font-bold text-xl transition-all border border-white/5 flex items-center justify-center gap-3"
                                 >
-                                    <Download size={20} />
+                                    <Download size={24} />
                                     {t.ui.export_progress}
                                 </motion.button>
 
@@ -130,15 +133,15 @@ export default function SettingsPage() {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => setShowResetConfirm(true)}
-                                    className="flex-1 py-4 rounded-2xl bg-white/5 hover:bg-rose-500 hover:text-white text-rose-400 font-bold text-lg transition-all border border-white/5 flex items-center justify-center gap-2"
+                                    className="flex-1 py-5 rounded-2xl bg-white/5 hover:bg-rose-500 hover:text-white text-rose-400 font-bold text-xl transition-all border border-white/5 flex items-center justify-center gap-3"
                                 >
-                                    <RotateCcw size={20} />
+                                    <RotateCcw size={24} />
                                     {t.ui.reset_all}
                                 </motion.button>
                             </div>
                         </section>
                     </motion.div>
-                </div>
+                </main>
 
                 {/* Reset Confirmation Modal */}
                 <AnimatePresence>
@@ -155,21 +158,21 @@ export default function SettingsPage() {
                                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                                 animate={{ scale: 1, opacity: 1, y: 0 }}
                                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                                className="relative glass-card p-10 rounded-[3rem] max-w-md w-full shadow-2xl border border-white/10"
+                                className="relative glass-card p-12 rounded-[3rem] max-w-md w-full shadow-2xl border border-white/10"
                             >
-                                <div className="text-5xl text-center mb-6">⚠️</div>
-                                <h3 className="text-3xl font-black text-white text-center mb-4">
+                                <div className="text-6xl text-center mb-6">⚠️</div>
+                                <h3 className="text-3xl font-black text-white text-center mb-4 leading-tight">
                                     {t.settings.reset_confirm_title}
                                 </h3>
-                                <p className="text-white/60 text-center text-lg mb-8 leading-relaxed">
+                                <p className="text-white/60 text-center text-xl mb-10 leading-relaxed">
                                     {t.settings.reset_confirm_message}
                                 </p>
-                                <div className="flex flex-col gap-3">
+                                <div className="flex flex-col gap-4">
                                     <motion.button
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={handleReset}
-                                        className="w-full py-4 rounded-2xl bg-rose-500 text-white font-bold text-xl shadow-lg shadow-rose-500/30"
+                                        className="w-full py-5 rounded-2xl bg-rose-500 text-white font-black text-xl shadow-xl shadow-rose-500/30"
                                     >
                                         {t.ui.reset}
                                     </motion.button>
@@ -177,7 +180,7 @@ export default function SettingsPage() {
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => setShowResetConfirm(false)}
-                                        className="w-full py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-bold text-xl transition-colors"
+                                        className="w-full py-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-bold text-xl transition-colors"
                                     >
                                         {t.ui.cancel}
                                     </motion.button>
@@ -187,6 +190,6 @@ export default function SettingsPage() {
                     )}
                 </AnimatePresence>
             </div>
-        </main>
+        </div>
     );
 }
