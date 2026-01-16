@@ -96,6 +96,39 @@ export const en = {
         minutes_abbr: 'm',
         reset_confirm_title: 'Reset All Progress?',
         reset_confirm_message: 'This will delete all stars and progress. This cannot be undone.',
+        audio: 'Audio',
+        bgm_volume: 'Background Music',
+        sfx_volume: 'Sound Effects',
+        mute_all: 'Mute All',
+        about: 'About',
+        version: 'Version',
+        privacy_policy: 'Privacy Policy',
+        terms_of_service: 'Terms of Service',
+        parent_dashboard: 'Parent Dashboard',
+    },
+
+    // Loading
+    loading: {
+        tip1: 'Tap and drag items to sort them!',
+        tip2: 'Listen carefully to learn new words!',
+        tip3: 'Earn stars by completing levels!',
+        tip4: 'Try all 5 languages!',
+        loading: 'Loading',
+    },
+
+    // Parent Dashboard
+    parent: {
+        title: 'Parent Dashboard',
+        progress_overview: 'Progress Overview',
+        levels_completed: 'Levels Completed',
+        stars_earned: 'Stars Earned',
+        total_time: 'Total Time',
+        weekly_breakdown: 'Weekly Breakdown',
+        completed: 'Completed',
+        in_progress: 'In Progress',
+        not_started: 'Not Started',
+        reset_progress: 'Reset Progress',
+        back_to_game: 'Back to Game',
     },
 
     // Languages

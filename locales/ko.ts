@@ -92,6 +92,39 @@ export const ko: TranslationKeys = {
         minutes_abbr: '분',
         reset_confirm_title: '모든 진행 상황을 재설정하시겠습니까?',
         reset_confirm_message: '모든 별과 진행 상황이 삭제됩니다. 이 작업은 취소할 수 없습니다.',
+        audio: '오디오',
+        bgm_volume: '배경 음악',
+        sfx_volume: '효과음',
+        mute_all: '모두 음소거',
+        about: '정보',
+        version: '버전',
+        privacy_policy: '개인정보 보호정책',
+        terms_of_service: '서비스 약관',
+        parent_dashboard: '부모 대시보드',
+    },
+
+    // Loading
+    loading: {
+        tip1: '항목을 탭하고 드래그하여 분류하세요!',
+        tip2: '주의 깊게 들으며 새로운 단어를 배워보세요!',
+        tip3: '레벨을 완료하여 별을 획득하세요!',
+        tip4: '5개 언어를 모두 시도해보세요!',
+        loading: '로딩 중',
+    },
+
+    // Parent Dashboard
+    parent: {
+        title: '부모 대시보드',
+        progress_overview: '진행 상황 개요',
+        levels_completed: '완료한 레벨',
+        stars_earned: '획듩한 별',
+        total_time: '총 시간',
+        weekly_breakdown: '주간 세부 정보',
+        completed: '완료',
+        in_progress: '진행 중',
+        not_started: '시작 안 함',
+        reset_progress: '진행 상황 재설정',
+        back_to_game: '게임으로 돌아가기',
     },
 
     languages: {

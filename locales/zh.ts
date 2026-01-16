@@ -92,6 +92,39 @@ export const zh: TranslationKeys = {
         minutes_abbr: '分',
         reset_confirm_title: '重置所有進度？',
         reset_confirm_message: '這將刪除所有星星和進度。此操作無法撤銷。',
+        audio: '音訊',
+        bgm_volume: '背景音樂',
+        sfx_volume: '音效',
+        mute_all: '全部靜音',
+        about: '關於',
+        version: '版本',
+        privacy_policy: '隱私權政策',
+        terms_of_service: '服務條款',
+        parent_dashboard: '家長控制面板',
+    },
+
+    // Loading
+    loading: {
+        tip1: '點擊並拖曳項目進行分類！',
+        tip2: '仔細聾聽，學習新單詞！',
+        tip3: '完成關卡獲得星星！',
+        tip4: '試試所有 5 種語言！',
+        loading: '載入中',
+    },
+
+    // Parent Dashboard
+    parent: {
+        title: '家長控制面板',
+        progress_overview: '進度總覽',
+        levels_completed: '已完成關卡',
+        stars_earned: '獲得星星',
+        total_time: '總時間',
+        weekly_breakdown: '每週詳情',
+        completed: '已完成',
+        in_progress: '進行中',
+        not_started: '尚未開始',
+        reset_progress: '重置進度',
+        back_to_game: '返回遊戲',
     },
 
     languages: {

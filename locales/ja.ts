@@ -92,6 +92,39 @@ export const ja: TranslationKeys = {
         minutes_abbr: '分',
         reset_confirm_title: 'すべての進捗をリセットしますか？',
         reset_confirm_message: 'これにより、すべての星と進捗が削除されます。元に戻すことはできません。',
+        audio: '音声',
+        bgm_volume: '背景音楽',
+        sfx_volume: '効果音',
+        mute_all: 'すべてミュート',
+        about: 'アプリについて',
+        version: 'バージョン',
+        privacy_policy: 'プライバシーポリシー',
+        terms_of_service: '利用規約',
+        parent_dashboard: '保護者ダッシュボード',
+    },
+
+    // Loading
+    loading: {
+        tip1: 'アイテムをタップしてドラッグして分類しよう！',
+        tip2: 'よく聞いて新しい言葉を学ぼう！',
+        tip3: 'レベルをクリアして星を集めよう！',
+        tip4: '5つの言語を試してみよう！',
+        loading: '読み込み中',
+    },
+
+    // Parent Dashboard
+    parent: {
+        title: '保護者ダッシュボード',
+        progress_overview: '進捗概要',
+        levels_completed: '完了レベル',
+        stars_earned: '獲得した星',
+        total_time: '合計時間',
+        weekly_breakdown: '週別詳細',
+        completed: '完了',
+        in_progress: '学習中',
+        not_started: '未開始',
+        reset_progress: '進捗をリセット',
+        back_to_game: 'ゲームに戻る',
     },
 
     languages: {

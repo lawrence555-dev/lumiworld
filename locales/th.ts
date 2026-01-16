@@ -92,6 +92,39 @@ export const th: TranslationKeys = {
         minutes_abbr: 'นาที',
         reset_confirm_title: 'รีเซ็ตความคืบหน้าทั้งหมด?',
         reset_confirm_message: 'การดำเนินการนี้จะลบดาวและความคืบหน้าทั้งหมด ไม่สามารถยกเลิกได้',
+        audio: 'เสียง',
+        bgm_volume: 'เพลงประกอบ',
+        sfx_volume: 'เสียงเอฟเฟกต์',
+        mute_all: 'ปิดเสียงทั้งหมด',
+        about: 'เกี่ยวกับ',
+        version: 'เวอร์ชัน',
+        privacy_policy: 'นโยบายความเป็นส่วนตัว',
+        terms_of_service: 'ข้อกำหนดการให้บริการ',
+        parent_dashboard: 'แดชบอร์ดสำหรับผู้ปกครอง',
+    },
+
+    // Loading
+    loading: {
+        tip1: 'แตะและลากไอเท็มเพื่อจัดหมวดหมู่!',
+        tip2: 'ฟังอย่างตั้งใจเพื่อเรียนรู้คำศัพท์ใหม่!',
+        tip3: 'ทำด่านให้สำเร็จเพื่อรับดาว!',
+        tip4: 'ลองทั้ง 5 ภาษา!',
+        loading: 'กำลังโหลด',
+    },
+
+    // Parent Dashboard
+    parent: {
+        title: 'แดชบอร์ดสำหรับผู้ปกครอง',
+        progress_overview: 'ภาพรวมความคืบหน้า',
+        levels_completed: 'ด่านที่สำเร็จ',
+        stars_earned: 'ดาวที่ได้รับ',
+        total_time: 'เวลาทั้งหมด',
+        weekly_breakdown: 'รายละเอียดรายสัปดาห์',
+        completed: 'สำเร็จแล้ว',
+        in_progress: 'กำลังดำเนินการ',
+        not_started: 'ยังไม่เริ่ม',
+        reset_progress: 'รีเซ็ตความคืบหน้า',
+        back_to_game: 'กลับไปเล่นเกม',
     },
 
     languages: {
