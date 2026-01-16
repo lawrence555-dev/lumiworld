@@ -238,30 +238,32 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             <div className="blob opacity-20 left-[10%] top-[10%]" />
             <div className="blob-secondary opacity-20 right-[10%] bottom-[10%]" />
 
-            {/* Header */}
-            <header className="absolute top-8 left-10 right-10 flex justify-between items-end z-20">
+            {/* Header - Aligned with Global Style */}
+            <header className="absolute top-0 left-0 right-0 px-8 sm:px-12 pt-10 sm:pt-14 flex justify-between items-start z-20">
                 <div className="flex items-center gap-6">
                     <button
                         onClick={() => router.push('/')}
-                        className="w-16 h-16 rounded-3xl glass hover:bg-white/10 flex items-center justify-center transition-all active:scale-95 shadow-2xl"
+                        className="w-16 h-16 rounded-[2rem] glass-card hover:bg-white/10 flex items-center justify-center transition-all active:scale-95 shadow-2xl group border border-white/10"
                     >
-                        <Home size={32} className="text-white" />
+                        <Home size={32} className="text-white group-hover:scale-110 transition-transform" />
                     </button>
-                    <div>
-                        <h2 className="text-white/40 text-xs font-black uppercase tracking-[0.3em] mb-1">
+                    <div className="flex flex-col gap-1">
+                        <h2 className="text-white/40 text-xs font-black uppercase tracking-[0.3em]">
                             {t.weeks[id as keyof typeof t.weeks]?.title || config.title}
                         </h2>
-                        <div className="text-3xl font-black text-white tracking-tighter">
+                        <div className="text-4xl font-black text-white tracking-tighter">
                             Level {id.replace('w', '')}
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-white/5 px-8 py-4 rounded-3xl border border-white/5 backdrop-blur-xl">
-                    <div className="flex items-center gap-3">
-                        <span className="text-white/40 font-black text-sm uppercase tracking-widest">Progress</span>
-                        <div className="text-3xl font-black text-indigo-400 tabular-nums">
-                            {currentItemIndex + 1} <span className="text-white/20 text-xl mx-1">/</span> {randomizedItems.length}
+                <div className="glass-card px-10 py-5 rounded-[2.5rem] border border-white/10 shadow-2xl">
+                    <div className="flex flex-col items-center gap-1">
+                        <span className="text-white/40 font-black text-[10px] uppercase tracking-[0.2em]">{t.parent.weekly_breakdown}</span>
+                        <div className="text-3xl font-black text-indigo-400 tabular-nums flex items-baseline gap-2">
+                            {currentItemIndex + 1}
+                            <span className="text-white/20 text-xl">/</span>
+                            <span className="text-white/40 text-2xl">{randomizedItems.length}</span>
                         </div>
                     </div>
                 </div>

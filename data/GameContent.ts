@@ -10,8 +10,20 @@ export interface WeekConfig {
     title: string;
     mode: string;
     thumbnail?: string;
-    leftZone: { id: string; label: string; icon: string; color: 'green' | 'blue' | 'purple' | 'emerald' | 'cyan' | 'gray' };
-    rightZone: { id: string; label: string; icon: string; color: 'green' | 'blue' | 'purple' | 'emerald' | 'cyan' | 'gray' };
+    leftZone: {
+        id: string;
+        label: string;
+        icon: string;
+        color: 'green' | 'blue' | 'purple' | 'emerald' | 'cyan' | 'gray';
+        selectionImage?: string; // Image for the selection logic (Left/Right)
+    };
+    rightZone: {
+        id: string;
+        label: string;
+        icon: string;
+        color: 'green' | 'blue' | 'purple' | 'emerald' | 'cyan' | 'gray';
+        selectionImage?: string; // Image for the selection logic (Left/Right)
+    };
     items: GameItem[];
 }
 

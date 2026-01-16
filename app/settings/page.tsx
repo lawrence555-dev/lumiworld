@@ -34,137 +34,176 @@ export default function SettingsPage() {
     return (
         <div className="app-container items-center overflow-y-auto">
             {/* Unified Content Wrapper - Aligned with Homepage */}
-            <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-10 sm:py-12">
+            <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-12 sm:py-16">
 
                 {/* Header Block - Aligned with Homepage */}
-                <div className="pb-6 sm:pb-8">
+                <div className="pb-8 sm:pb-12">
                     <Header showHome />
                 </div>
 
-                {/* Settings Grid Section */}
-                <main className="flex-1 w-full pb-16 sm:pb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                    >
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex flex-col gap-10 w-full"
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         {/* Student Name Section */}
-                        <section className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6">
-                            <div className="flex items-center gap-4">
-                                <div className="p-4 bg-indigo-500 rounded-2xl text-white shadow-lg shadow-indigo-500/20">
-                                    <span className="text-2xl">👤</span>
-                                </div>
-                                <h2 className="text-2xl font-black text-white">
-                                    {t.settings.student_name_label}
-                                </h2>
+                        <section className="glass-card rounded-[2.5rem] p-10 flex flex-col gap-8">
+                            <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                                👤 {t.settings.student_name_label}
+                            </h2>
+                            <div className="relative group">
+                                <input
+                                    type="text"
+                                    value={progress.studentName}
+                                    onChange={(e) => updateName(e.target.value)}
+                                    className="w-full bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-5 text-2xl font-bold text-white outline-none focus:border-indigo-500/50 transition-all focus:bg-white/10"
+                                    placeholder={t.settings.student_name_placeholder}
+                                />
                             </div>
-                            <input
-                                type="text"
-                                value={progress.studentName}
-                                onChange={(e) => updateName(e.target.value)}
-                                className="w-full px-6 py-5 rounded-2xl text-2xl font-bold bg-white/5 text-white border-2 border-white/5 focus:border-indigo-400 focus:bg-white/10 outline-none transition-all placeholder:text-white/20"
-                                placeholder={t.settings.student_name_placeholder}
-                            />
                         </section>
 
-                        {/* Language Section */}
-                        <section className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6">
-                            <div className="flex items-center gap-4">
-                                <div className="p-4 bg-purple-500 rounded-2xl text-white shadow-lg shadow-purple-500/20">
-                                    <span className="text-2xl">🌍</span>
-                                </div>
-                                <h2 className="text-2xl font-black text-white">
-                                    {t.settings.language_label}
-                                </h2>
-                            </div>
+                        {/* Language Picker Section */}
+                        <section className="glass-card rounded-[2.5rem] p-10 flex flex-col gap-8">
+                            <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                                🌍 {t.settings.language_label}
+                            </h2>
                             <LanguagePicker />
                         </section>
 
-                        {/* Theme Section */}
-                        <section className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6">
-                            <div className="flex items-center gap-4">
-                                <div className="p-4 bg-pink-500 rounded-2xl text-white shadow-lg shadow-pink-500/20">
-                                    <span className="text-2xl">🎨</span>
-                                </div>
-                                <h2 className="text-2xl font-black text-white">
-                                    {t.settings.theme_label}
-                                </h2>
-                            </div>
-                            <div className="flex gap-4">
-                                {['default', 'high-contrast'].map((themeType) => (
-                                    <motion.button
-                                        key={themeType}
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        onClick={() => updateSettings({ theme: themeType as any })}
-                                        className={`flex-1 py-5 rounded-2xl font-bold text-xl transition-all border ${progress.settings.theme === themeType
-                                            ? 'bg-white text-indigo-900 border-white shadow-xl shadow-white/10'
-                                            : 'bg-white/5 text-white/40 border-white/5 hover:bg-white/10 hover:text-white'
+                        {/* Theme Selection */}
+                        <section className="glass-card rounded-[2.5rem] p-10 flex flex-col gap-8">
+                            <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                                🎨 {t.settings.theme_label}
+                            </h2>
+                            <div className="flex bg-white/5 p-2 rounded-2xl border border-white/5">
+                                {(['default', 'high-contrast'] as const).map((tId) => (
+                                    <button
+                                        key={tId}
+                                        onClick={() => updateSettings({ theme: tId })}
+                                        className={`flex-1 py-4 px-6 rounded-xl font-black text-xl transition-all ${progress.settings.theme === tId
+                                            ? 'bg-white text-indigo-950 shadow-xl scale-[1.02]'
+                                            : 'text-white/40 hover:text-white/60'
                                             }`}
                                     >
-                                        {themeType === 'default' ? t.ui.default : t.ui.high_contrast}
-                                    </motion.button>
+                                        {tId === 'default' ? t.ui.default : t.ui.high_contrast}
+                                    </button>
                                 ))}
                             </div>
                         </section>
 
-                        {/* Data Section */}
-                        <section className="glass-card p-10 rounded-[2.5rem] flex flex-col gap-6">
-                            <div className="flex items-center gap-4">
-                                <div className="p-4 bg-emerald-500 rounded-2xl text-white shadow-lg shadow-emerald-500/20">
-                                    <span className="text-2xl">🛡️</span>
-                                </div>
-                                <h2 className="text-2xl font-black text-white">
-                                    {t.settings.data_management}
-                                </h2>
-                            </div>
-                            <div className="flex gap-4">
-                                <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
+                        {/* Data Management */}
+                        <section className="glass-card rounded-[2.5rem] p-10 flex flex-col gap-8">
+                            <h2 className="text-3xl font-black text-white flex items-center gap-3">
+                                🛡️ {t.settings.data_management}
+                            </h2>
+                            <div className="grid grid-cols-2 gap-4">
+                                <button
                                     onClick={handleExport}
-                                    className="flex-1 py-5 rounded-2xl bg-white/5 hover:bg-emerald-500 hover:text-white text-emerald-400 font-bold text-xl transition-all border border-white/5 flex items-center justify-center gap-3"
+                                    className="bg-emerald-500/10 hover:bg-emerald-500/20 border-2 border-emerald-500/20 text-emerald-400 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-2 group"
                                 >
-                                    <Download size={24} />
-                                    {t.ui.export_progress}
-                                </motion.button>
-
-                                <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
+                                    <Download className="group-hover:bounce" /> {t.ui.export_progress}
+                                </button>
+                                <button
                                     onClick={() => setShowResetConfirm(true)}
-                                    className="flex-1 py-5 rounded-2xl bg-white/5 hover:bg-rose-500 hover:text-white text-rose-400 font-bold text-xl transition-all border border-white/5 flex items-center justify-center gap-3"
+                                    className="bg-rose-500/10 hover:bg-rose-500/20 border-2 border-rose-500/20 text-rose-400 py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-2 group"
                                 >
-                                    <RotateCcw size={24} />
-                                    {t.ui.reset_all}
-                                </motion.button>
+                                    <RotateCcw className="group-hover:rotate-180" /> {t.ui.reset_all}
+                                </button>
                             </div>
                         </section>
-                    </motion.div>
-                </main>
+                    </div>
+
+                    {/* Learning Report Section */}
+                    <section className="glass-card rounded-[3rem] p-12 mt-4 mb-20">
+                        <h2 className="text-4xl font-black text-white mb-10 flex items-center gap-4">
+                            📊 {t.settings.learning_report}
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {Object.entries(progress.mastery || {}).map(([skillId, data]) => {
+                                // Map skillId to week title
+                                const skillKeyMap: Record<string, string> = {
+                                    'classification': 'w1',
+                                    'anatomy': 'w2',
+                                    'number-sense': 'w3',
+                                    'measurement': 'w4',
+                                    'habitats': 'w5',
+                                    'botany': 'w6',
+                                    'pollution': 'w7',
+                                    'ecosystems': 'w8',
+                                };
+                                const weekKey = skillKeyMap[skillId] as keyof typeof t.weeks;
+                                const skillTitle = t.weeks[weekKey]?.title || skillId;
+
+                                const formatTime = (seconds: number) => {
+                                    const m = Math.floor(seconds / 60);
+                                    const s = seconds % 60;
+                                    if (m > 0) return `${m}${t.settings.minutes_abbr}${s}${t.settings.seconds_abbr}`;
+                                    return `${s}${t.settings.seconds_abbr}`;
+                                };
+
+                                const getStatusColor = (status: string) => {
+                                    switch (status) {
+                                        case 'mastered': return 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20';
+                                        case 'in-progress': return 'bg-amber-500 text-white shadow-lg shadow-amber-500/20';
+                                        default: return 'bg-white/10 text-white/40';
+                                    }
+                                };
+
+                                const getStatusLabel = (status: string) => {
+                                    switch (status) {
+                                        case 'mastered': return t.settings.status_mastered;
+                                        case 'in-progress': return t.settings.status_in_progress;
+                                        default: return t.settings.status_needs_support;
+                                    }
+                                };
+
+                                return (
+                                    <motion.div
+                                        key={skillId}
+                                        whileHover={{ y: -5 }}
+                                        className="bg-white/5 border border-white/10 rounded-[2rem] p-8 flex flex-col gap-6"
+                                    >
+                                        <div className="text-lg font-black text-white/60 uppercase tracking-widest line-clamp-1">
+                                            {skillTitle}
+                                        </div>
+                                        <div className="flex flex-col gap-4">
+                                            <div className="text-3xl font-mono font-black text-white">
+                                                {formatTime(data.totalTimeSeconds)}
+                                            </div>
+                                            <div className={`px-6 py-3 rounded-2xl text-sm font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
+                                                {getStatusLabel(data.status)}
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+                    </section>
+                </motion.div>
 
                 {/* Reset Confirmation Modal */}
                 <AnimatePresence>
                     {showResetConfirm && (
-                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 onClick={() => setShowResetConfirm(false)}
-                                className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
+                                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
                             />
                             <motion.div
-                                initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                                animate={{ scale: 1, opacity: 1, y: 0 }}
-                                exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                                className="relative glass-card p-12 rounded-[3rem] max-w-md w-full shadow-2xl border border-white/10"
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                                className="relative w-full max-w-lg bg-[#1A1C1E] border-2 border-white/10 rounded-[2.5rem] p-10 overflow-hidden shadow-2xl"
                             >
-                                <div className="text-6xl text-center mb-6">⚠️</div>
-                                <h3 className="text-3xl font-black text-white text-center mb-4 leading-tight">
+                                <div className="absolute top-0 left-0 w-full h-2 bg-rose-500" />
+                                <h3 className="text-3xl font-black text-white mb-4">
                                     {t.settings.reset_confirm_title}
                                 </h3>
-                                <p className="text-white/60 text-center text-xl mb-10 leading-relaxed">
+                                <p className="text-xl text-white/60 mb-10 leading-relaxed">
                                     {t.settings.reset_confirm_message}
                                 </p>
                                 <div className="flex flex-col gap-4">
@@ -176,14 +215,12 @@ export default function SettingsPage() {
                                     >
                                         {t.ui.reset}
                                     </motion.button>
-                                    <motion.button
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
+                                    <button
                                         onClick={() => setShowResetConfirm(false)}
-                                        className="w-full py-5 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-bold text-xl transition-colors"
+                                        className="w-full py-5 rounded-2xl bg-white/5 text-white/60 font-black text-xl hover:bg-white/10 transition-all"
                                     >
                                         {t.ui.cancel}
-                                    </motion.button>
+                                    </button>
                                 </div>
                             </motion.div>
                         </div>

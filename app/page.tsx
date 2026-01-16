@@ -35,10 +35,10 @@ export default function Dashboard() {
   return (
     <div className="app-container items-center overflow-y-auto">
       {/* Unified Content Wrapper - Perfectly Centered and Balanced */}
-      <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-10 sm:py-12">
+      <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-12 sm:py-16">
 
         {/* Header Block */}
-        <div className="pb-6 sm:pb-8">
+        <div className="pb-8 sm:pb-12">
           <Header showCurriculumPath={true} />
         </div>
 
@@ -47,7 +47,7 @@ export default function Dashboard() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-14 w-full"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-16 w-full"
           >
             {weeks_data.map((week) => (
               <div key={week.id} className="w-full h-full">

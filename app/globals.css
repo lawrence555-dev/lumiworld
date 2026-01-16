@@ -78,9 +78,9 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 
-  /* Support for iOS Dynamic Toolbars and Safe Areas with Minimum Padding */
-  padding-top: max(env(safe-area-inset-top), 0.5rem);
-  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+  /* Support for iOS Dynamic Toolbars and Safe Areas - Standardized Padding */
+  padding-top: max(env(safe-area-inset-top), 1rem);
+  padding-bottom: max(env(safe-area-inset-bottom), 1rem);
   padding-left: env(safe-area-inset-left, 0px);
   padding-right: env(safe-area-inset-right, 0px);
 }
@@ -107,12 +107,14 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(30, 41, 59, 0.6);
+  /* Slightly more opaque background to prevent overlap feel */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  /* More distinct border */
   box-shadow:
-    0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 25px -5px rgba(0, 0, 0, 0.5),
     var(--inner-glow);
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
