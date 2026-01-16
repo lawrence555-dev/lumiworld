@@ -40,7 +40,7 @@ We employ an **"Inquiry-Based Learning"** model, guiding students to transition 
 | :--- | :--- | :--- | :--- |
 | **W1** | **Scientific Classification** | [Science & Logic] Distinguishing Living vs. Non-Living. Standard: Observing & classifying attributes. | Living, Non-living, Rock, Cat |
 | **W2** | **Introduction to Anatomy** | [ELA & Geometry] Guppy body part puzzle. Standard: Geometric shapes & Letter F (Phonics). | Fish, Fin, Tail, F (Letter) |
-| **W3** | **Number Sense & Needs** | [Math] Counting & feeding tasks (1-5). Standard: One-to-one Correspondence. | Count, Eat, Food, 1-2-3 |
+| **W3** | **Number Sense & Needs** | [Math] Counting & feeding tasks (1-20). Standard: One-to-one Correspondence. | Count, Eat, Food, 1-20 |
 | **W4** | **Comparative Measurement** | [Math & Bio] Elephant vs. Mouse: Size comparison. Standard: Comparative attributes. | Big, Small, Heavy, Elephant |
 | **W5** | **Habitat Exploration** | [Science & ELA] Eagle & aerial perspective. Standard: Spatial Prepositions. | Up, Down, Sky, Eagle |
 | **W6** | **Botany Basics** | [Science & Logic] Plant life cycle sequencing. Standard: Logical sequencing. | Seed, Grow, Sun, Water |
@@ -68,7 +68,7 @@ Informed by the CASEL framework, we integrate empathy education in Weeks 7-8.
 
 ## 5. Assessment & Data Insights
 The system provides **Formative Assessment** data similar to established educational reports:
-- **Mastery Tracking:** Has the student mastered "Counting 1-5"? (Yes / In Progress / Needs Support)
+- **Mastery Tracking:** Has the student mastered "Counting 1-20"? (Yes / In Progress / Needs Support)
 - **Engagement Metrics:** Time spent on "Logical Sequencing" tasks, helping educators identify individual student interests and strengths.
 
 ---

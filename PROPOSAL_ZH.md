@@ -41,7 +41,7 @@
 | :--- | :--- | :--- | :--- |
 | **W1** | **Scientific Classification** (科學分類) | [Science & Logic] 區分 Living 與 Non-Living。標準：觀察與分類屬性。 | Living, Non-living, Rock, Cat |
 | **W2** | **Introduction to Anatomy** (生物構造導論) | [ELA & Geometry] 孔雀魚的身體部位拼圖。標準：幾何形狀與字母 F (Phonics). | Fish, Fin, Tail, F (Letter) |
-| **W3** | **Number Sense & Needs** (數感與生存需求) | [Math] 計數與餵食任務 (1-5)。標準：一對一對應 (One-to-one Correspondence). | Count, Eat, Food, 1-2-3 |
+| **W3** | **Number Sense & Needs** (數感與生存需求) | [Math] 計數與餵食任務 (1-20)。標準：一對一對應 (One-to-one Correspondence). | Count, Eat, Food, 1-20 |
 | **W4** | **Comparative Measurement** (比較測量) | [Math & Bio] 大象與老鼠：大小比較。標準：測量屬性 (Size Comparison). | Big, Small, Heavy, Elephant |
 | **W5** | **Habitat Exploration** (棲息地探索) | [Science & ELA] 老鷹與高空視角。標準：空間介系詞 (Spatial Prepositions). | Up, Down, Sky, Eagle |
 | **W6** | **Botany Basics** (植物學基礎) | [Science & Logic] 植物生長週期排序。標準：序列邏輯 (Sequencing). | Seed, Grow, Sun, Water |
@@ -69,7 +69,7 @@
 
 ## 5. 學習評量與數據 (Assessment & Data)
 本系統提供類似美式學校的 **Formative Assessment (形成性評量)** 數據，而非單純的分數：
-- **Mastery Tracking:** 學生是否已掌握「1-5 數數」？（Yes/In Progress/Needs Support）
+- **Mastery Tracking:** 學生是否已掌握「1-20 數數」？（Yes/In Progress/Needs Support）
 - **Engagement Metrics:** 學生在「邏輯排序」任務中花費了多少時間？這有助於老師識別學生的興趣與強項。
 
 ---

@@ -9,7 +9,7 @@
 |:----:|------|----------|:----:|----------|
 | Level 1 | 科學分類 | 有生命 vs 無生命 | 30 | NGSS K-LS1-1 |
 | Level 2 | 解剖學入門 | 海洋部位 vs 陸地部位 | 30 | CCSS.ELA-LITERACY.RF.K.3.A |
-| Level 3 | 數感發展 | 少量 vs 多量 | 30 | CCSS.MATH.CONTENT.K.CC.B.4 |
+| Level 3 | 數感發展 | 少量 (1-10) vs 多量 (11-20) | 30 | CCSS.MATH.CONTENT.K.CC.B.4 |
 | Level 4 | 比較測量 | 巨大 vs 微小 | 30 | CCSS.MATH.CONTENT.K.MD.A.2 |
 | Level 5 | 棲息地探索 | 天空 vs 地面 | 30 | NGSS/CCSS 空間邏輯 |
 | Level 6 | 植物學基礎 | 植物需要 vs 不需要 | 30 | NGSS 生命週期 |

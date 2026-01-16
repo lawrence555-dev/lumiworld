@@ -57,16 +57,13 @@
                     "CCSS.MATH.CONTENT.K.CC.B.4"
                 ],
                 "learningObjectives": [
-                    "Count items 1-5 with one-to-one correspondence",
+                    "Count items 1-20 with one-to-one correspondence",
                     "Match quantity to numerical symbols",
                     "Understand feeding as a biological need"
                 ],
                 "vocabulary": [
-                    "One",
-                    "Two",
-                    "Three",
-                    "Four",
-                    "Five",
+                    "One-Twenty",
+                    "Count",
                     "Feed"
                 ]
             },
