@@ -32,20 +32,20 @@
             {
                 "weekNumber": 2,
                 "title": "Introduction to Anatomy",
-                "theme": "Fish Body Parts & Phonics",
+                "theme": "Fish Anatomy & Phonics",
                 "standards": [
                     "CCSS.ELA-LITERACY.RF.K.3.A"
                 ],
                 "learningObjectives": [
-                    "Identify external anatomy of a fish using geometric shapes",
+                    "Identify external anatomy of a fish (Fin, Tail, Gills)",
                     "Recognize letter F sound/shape (Phonics)",
-                    "Apply visual spatial logic in puzzle-based sorting"
+                    "Apply logic in anatomy-based sorting"
                 ],
                 "vocabulary": [
-                    "Triangle",
-                    "Circle",
-                    "Diamond",
-                    "Rectangle",
+                    "Fin",
+                    "Tail",
+                    "Scales",
+                    "Eye",
                     "Letter F"
                 ]
             },
