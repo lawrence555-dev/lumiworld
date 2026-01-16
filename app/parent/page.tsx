@@ -24,7 +24,7 @@ export default function ParentDashboard() {
     );
 
     const weeks = [1, 2, 3, 4, 5, 6, 7, 8].map(num => {
-        const weekId = `w${num}` as keyof typeof progress.weeks;
+        const weekId = `w${num}` as keyof typeof t.weeks;
         const weekData = progress.weeks[weekId];
         return {
             id: weekId,
@@ -139,10 +139,10 @@ export default function ParentDashboard() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 + index * 0.05 }}
                                 className={`p-4 rounded-xl border-2 transition-all ${week.isCompleted
-                                        ? 'border-green-500 bg-green-50'
-                                        : week.stars > 0
-                                            ? 'border-yellow-500 bg-yellow-50'
-                                            : 'border-gray-200 bg-gray-50'
+                                    ? 'border-green-500 bg-green-50'
+                                    : week.stars > 0
+                                        ? 'border-yellow-500 bg-yellow-50'
+                                        : 'border-gray-200 bg-gray-50'
                                     }`}
                             >
                                 <div className="flex items-center justify-between mb-2">
@@ -165,10 +165,10 @@ export default function ParentDashboard() {
                                     {week.title}
                                 </h4>
                                 <div className={`text-xs font-bold px-2 py-1 rounded-full inline-block ${week.isCompleted
-                                        ? 'bg-green-500 text-white'
-                                        : week.stars > 0
-                                            ? 'bg-yellow-500 text-white'
-                                            : 'bg-gray-300 text-gray-600'
+                                    ? 'bg-green-500 text-white'
+                                    : week.stars > 0
+                                        ? 'bg-yellow-500 text-white'
+                                        : 'bg-gray-300 text-gray-600'
                                     }`}>
                                     {week.isCompleted
                                         ? t.parent.completed
