@@ -99,6 +99,15 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
         }
     }, [currentItemIndex, currentItem, isGameComplete, isProcessing, language]);
 
+    // Background Music management
+    useEffect(() => {
+        AudioSystem.playBGM();
+        return () => {
+            // Optional: stop BGM when leaving the game, but usually keeping it across levels is better.
+            // For now, let's keep it playing as long as we are in the app.
+        };
+    }, []);
+
     const handleDragEnd = async (itemId: string, x: number, y: number) => {
         // Prevent double-trigger with processing lock
         if (isProcessing) return;
@@ -333,6 +342,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                         type={currentItem.type}
                         label={GAME_LABELS[currentItem.id]?.[language as keyof typeof GAME_LABELS[string]] || currentItem.label}
                         emoji={currentItem.emoji}
+                        image={currentItem.image}
                         initialX={typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 0}
                         initialY={150}
                         onDragEnd={handleDragEnd}

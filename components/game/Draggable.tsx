@@ -8,6 +8,7 @@ interface DraggableProps {
     type: string;
     label: string;
     emoji: string;
+    image?: string;
     onDragEnd: (id: string, x: number, y: number) => void;
     onDragStart?: (id: string) => void;
     initialX?: number;
@@ -19,6 +20,7 @@ export function Draggable({
     type,
     label,
     emoji,
+    image,
     onDragEnd,
     onDragStart,
     initialX = 0,
@@ -126,7 +128,17 @@ export function Draggable({
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
         >
-            <div className="text-6xl">{emoji}</div>
+            {image ? (
+                <div className="w-20 h-20 relative flex items-center justify-center">
+                    <img
+                        src={image}
+                        alt={label}
+                        className="w-full h-full object-contain pointer-events-none"
+                    />
+                </div>
+            ) : (
+                <div className="text-6xl">{emoji}</div>
+            )}
             <div className="text-lg font-bold text-gray-800 text-center">{label}</div>
         </motion.div>
     );

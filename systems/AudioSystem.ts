@@ -13,6 +13,7 @@ class AudioSystemClass {
     private currentUtterance: SpeechSynthesisUtterance | null = null;
     private currentLanguage: SupportedLanguage = 'en-US';
     private isAudioUnlocked: boolean = false;
+    private bgmAudio: HTMLAudioElement | null = null;
 
     constructor() {
         if (typeof window !== 'undefined') {
@@ -213,7 +214,36 @@ class AudioSystemClass {
      */
     toggleMusic(): boolean {
         this.musicEnabled = !this.musicEnabled;
+        if (!this.musicEnabled) {
+            this.stopBGM();
+        } else {
+            this.playBGM();
+        }
         return this.musicEnabled;
+    }
+
+    /**
+     * Start background music (looping)
+     */
+    playBGM() {
+        if (!this.musicEnabled || typeof window === 'undefined') return;
+
+        if (!this.bgmAudio) {
+            this.bgmAudio = new Audio('/audio/bgm.mp3');
+            this.bgmAudio.loop = true;
+            this.bgmAudio.volume = 0.3; // Softer background
+        }
+
+        this.bgmAudio.play().catch(e => console.warn('[AudioSystem] BGM failed:', e));
+    }
+
+    /**
+     * Stop background music
+     */
+    stopBGM() {
+        if (this.bgmAudio) {
+            this.bgmAudio.pause();
+        }
     }
 
     /**

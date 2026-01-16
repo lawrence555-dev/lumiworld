@@ -3,6 +3,7 @@ export interface GameItem {
     type: string;
     label: string;
     emoji: string;
+    image?: string; // Optional illustration URL
 }
 
 export interface WeekConfig {
