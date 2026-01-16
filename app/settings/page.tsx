@@ -41,41 +41,43 @@ export default function SettingsPage() {
                     <Header showHome showCurriculumPath />
                 </div>
 
-                <main className="flex-1 w-full flex flex-col justify-center">
+                <main className="flex-1 w-full flex flex-col justify-start pt-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col gap-6 w-full"
+                        className="flex flex-col gap-4 w-full"
                     >
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {/* Student Name Section */}
-                            <section className="glass-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-6">
-                                <h2 className="text-xl font-black text-white flex items-center gap-3">
-                                    👤 {t.settings.student_name_label}
-                                </h2>
+                            <section className="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+                                <h1 className="text-xl font-black text-white/90">
+                                    {t.settings.student_name_label}
+                                </h1>
                                 <div className="relative group">
                                     <input
                                         type="text"
                                         value={progress.studentName}
                                         onChange={(e) => updateName(e.target.value)}
-                                        className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-5 py-3 text-xl font-bold text-white outline-none focus:border-indigo-500/50 transition-all focus:bg-white/10"
+                                        className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-6 py-3 text-xl font-bold text-white outline-none focus:border-indigo-500/50 transition-all focus:bg-white/10"
                                         placeholder={t.settings.student_name_placeholder}
                                     />
                                 </div>
                             </section>
 
                             {/* Language Picker Section */}
-                            <section className="glass-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-6">
-                                <h2 className="text-xl font-black text-white flex items-center gap-3">
-                                    🌍 {t.settings.language_label}
+                            <section className="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+                                <h2 className="text-xl font-black text-white/90">
+                                    {t.settings.language_label}
                                 </h2>
-                                <LanguagePicker />
+                                <div className="px-2">
+                                    <LanguagePicker />
+                                </div>
                             </section>
 
                             {/* Theme Selection */}
-                            <section className="glass-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-6">
-                                <h2 className="text-xl font-black text-white flex items-center gap-3">
-                                    🎨 {t.settings.theme_label}
+                            <section className="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+                                <h2 className="text-xl font-black text-white/90">
+                                    {t.settings.theme_label}
                                 </h2>
                                 <div className="flex bg-white/5 p-1.5 rounded-xl border border-white/5">
                                     {(['default', 'high-contrast'] as const).map((tId) => (
@@ -94,11 +96,11 @@ export default function SettingsPage() {
                             </section>
 
                             {/* Data Management */}
-                            <section className="glass-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-6">
-                                <h2 className="text-xl font-black text-white flex items-center gap-3">
-                                    🛡️ {t.settings.data_management}
+                            <section className="glass-card rounded-[2rem] p-8 flex flex-col gap-4">
+                                <h2 className="text-xl font-black text-white/90">
+                                    {t.settings.data_management}
                                 </h2>
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-2 gap-4 px-2">
                                     <button
                                         onClick={handleExport}
                                         className="bg-emerald-500/10 hover:bg-emerald-500/20 border-2 border-emerald-500/20 text-emerald-400 py-3 rounded-xl font-black text-base transition-all flex items-center justify-center gap-2 group"
@@ -116,9 +118,9 @@ export default function SettingsPage() {
                         </div>
 
                         {/* Learning Report Section */}
-                        <section className="glass-card rounded-[2rem] p-8 mt-2">
-                            <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
-                                📊 {t.settings.learning_report}
+                        <section className="glass-card rounded-[2.5rem] p-10 px-12 mt-1">
+                            <h2 className="text-2xl font-black text-white/90 mb-6">
+                                {t.settings.learning_report}
                             </h2>
                             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                                 {Object.entries(progress.mastery || {}).map(([skillId, data]) => {

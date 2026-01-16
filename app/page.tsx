@@ -35,10 +35,10 @@ export default function Dashboard() {
   return (
     <div className="app-container items-center overflow-y-auto">
       {/* Unified Content Wrapper - Perfectly Centered and Balanced */}
-      <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-6 sm:py-8">
+      <div className="w-full max-w-[1160px] px-6 flex flex-col flex-1 py-4 sm:py-5">
 
         {/* Header Block */}
-        <div className="pb-4 sm:pb-6">
+        <div className="pb-3 sm:pb-4">
           <Header />
         </div>
 

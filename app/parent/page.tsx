@@ -47,31 +47,30 @@ export default function ParentDashboard() {
                     <Header showHome showCurriculumPath />
                 </div>
 
-                <main className="flex-1 flex flex-col w-full justify-center">
+                <main className="flex-1 flex flex-col w-full justify-start pt-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col gap-6 w-full pb-10"
+                        className="flex flex-col gap-4 w-full pb-8"
                     >
                         {/* Progress Overview Cards */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {/* Levels Completed */}
                             <motion.div
                                 whileHover={{ y: -3 }}
-                                className="glass-card rounded-[2rem] p-6 sm:p-8 relative overflow-hidden group"
+                                className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className="text-4xl group-hover:scale-110 transition-transform">✅</span>
+                                    <h3 className="text-lg font-black text-white/90">{t.parent.levels_completed}</h3>
                                     <span className="text-3xl font-black text-white">
                                         {completedWeeks}<span className="text-white/30 text-xl font-bold">/{totalWeeks}</span>
                                     </span>
                                 </div>
-                                <h3 className="text-lg font-black text-white/90">{t.parent.levels_completed}</h3>
                                 <div className="mt-4 h-3 bg-white/5 rounded-full overflow-hidden">
                                     <motion.div
                                         initial={{ width: 0 }}
                                         animate={{ width: `${(completedWeeks / totalWeeks) * 100}%` }}
-                                        className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                                        className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
                                     />
                                 </div>
                             </motion.div>
@@ -79,15 +78,14 @@ export default function ParentDashboard() {
                             {/* Stars Earned */}
                             <motion.div
                                 whileHover={{ y: -3 }}
-                                className="glass-card rounded-[2rem] p-6 sm:p-8 relative overflow-hidden group"
+                                className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className="text-4xl group-hover:scale-110 transition-transform">⭐</span>
+                                    <h3 className="text-lg font-black text-white/90">{t.parent.stars_earned}</h3>
                                     <span className="text-3xl font-black text-white">
                                         {totalStars}<span className="text-white/30 text-xl font-bold">/{maxStars}</span>
                                     </span>
                                 </div>
-                                <h3 className="text-lg font-black text-white/90">{t.parent.stars_earned}</h3>
                                 <div className="mt-4 h-3 bg-white/5 rounded-full overflow-hidden">
                                     <motion.div
                                         initial={{ width: 0 }}
@@ -100,10 +98,10 @@ export default function ParentDashboard() {
                             {/* Total Time */}
                             <motion.div
                                 whileHover={{ y: -3 }}
-                                className="glass-card rounded-[2rem] p-6 sm:p-8 relative overflow-hidden group"
+                                className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
-                                    <span className="text-4xl group-hover:scale-110 transition-transform">⏱️</span>
+                                    <h3 className="text-lg font-black text-white/90">{t.parent.total_time}</h3>
                                     <div className="flex flex-col items-end">
                                         <span className="text-3xl font-black text-white">
                                             {totalTimeMinutes}
@@ -113,14 +111,13 @@ export default function ParentDashboard() {
                                         </span>
                                     </div>
                                 </div>
-                                <h3 className="text-lg font-black text-white/90">{t.parent.total_time}</h3>
                             </motion.div>
                         </div>
 
                         {/* Weekly Breakdown */}
-                        <div className="glass-card rounded-[2.5rem] p-8 sm:p-10">
-                            <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
-                                📅 {t.parent.weekly_breakdown}
+                        <div className="glass-card rounded-[2.5rem] p-10 px-12">
+                            <h2 className="text-xl font-black text-white/90 mb-6">
+                                {t.parent.weekly_breakdown}
                             </h2>
                             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                                 {weeks.map((week) => (
@@ -172,9 +169,9 @@ export default function ParentDashboard() {
                         </div>
 
                         {/* Detailed Mastery Report */}
-                        <div className="glass-card rounded-[2.5rem] p-8 sm:p-10">
-                            <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
-                                📝 {t.settings.learning_report}
+                        <div className="glass-card rounded-[2.5rem] p-10 px-12">
+                            <h2 className="text-xl font-black text-white/90 mb-6">
+                                {t.settings.learning_report}
                             </h2>
                             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                                 {Object.entries(progress.mastery || {}).map(([skillId, data]) => {
