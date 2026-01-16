@@ -40,7 +40,7 @@ export function WeekCard({
             whileHover={isUnlocked ? { scale: 1.02, y: -4 } : {}}
             whileTap={isUnlocked ? { scale: 0.96 } : {}}
             className={`
-                relative w-full aspect-[4/5.6] rounded-[2.5rem] overflow-hidden
+                relative w-full aspect-[4/5.2] rounded-[2.5rem] overflow-hidden
                 flex flex-col shadow-2xl transition-all duration-500
                 ${isUnlocked
                     ? 'glass-card cursor-pointer shadow-indigo-500/10'
