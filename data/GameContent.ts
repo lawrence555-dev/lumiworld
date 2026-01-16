@@ -305,6 +305,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
     w8: {
         title: "Ecosystem Management",
         mode: "classification",
+        thumbnail: "/assets/levels/week8.png",
         leftZone: { id: "forest", label: "Forest", icon: "🌲", color: "green" },
         rightZone: { id: "ocean", label: "Ocean", icon: "🌊", color: "blue" },
         items: [

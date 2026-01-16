@@ -79,12 +79,12 @@ export function WeekCard({
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="w-full aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-indigo-500/10 border-4 border-white/10"
+                                className="w-full aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-indigo-500/10 border-4 border-white/10 bg-white"
                             >
                                 <img
                                     src={thumbnail}
                                     alt={title}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain p-2"
                                 />
                             </motion.div>
                         )}
