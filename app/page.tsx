@@ -33,19 +33,21 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="min-h-screen relative">
-      {/* Header at Top */}
-      <Header showCurriculumPath={true} />
+    <div className="app-container">
+      {/* Header at Top - Using pt-4 for extra breathing room on PWA */}
+      <div className="pt-4 sm:pt-6">
+        <Header showCurriculumPath={true} />
+      </div>
 
-      {/* Cards Container with extreme padding for iPad safety */}
-      <main className="w-full max-w-[1250px] mx-auto px-16 sm:px-32 lg:px-40 pb-32 pt-16 sm:pt-20 lg:pt-24">
+      {/* Cards Container - Using responsive padding that adapts to iPad */}
+      <main className="flex-1 w-full max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-20 pb-20 pt-10 sm:pt-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-16"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-14"
         >
           {weeks_data.map((week) => (
-            <div key={week.id} className="w-full">
+            <div key={week.id} className="w-full h-full">
               <WeekCard
                 {...week}
                 weekId={week.id}
