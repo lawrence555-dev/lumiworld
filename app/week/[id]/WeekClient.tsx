@@ -9,6 +9,7 @@ import { useProgress } from '@/hooks/useProgress';
 import { AudioSystem } from '@/systems/AudioSystem';
 import { GameLogic } from '@/systems/GameLogic';
 import confetti from 'canvas-confetti';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Home } from 'lucide-react';
 import { use } from 'react';
 import { WEEK_GAME_DATA, GameItem } from '@/data/GameContent';
@@ -34,6 +35,8 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
     // Game state
     const [currentItemIndex, setCurrentItemIndex] = useState(0);
     const [correctCount, setCorrectCount] = useState(0);
+    const [consecutiveErrors, setConsecutiveErrors] = useState(0);
+    const [characterEmotion, setCharacterEmotion] = useState<'neutral' | 'happy' | 'sad'>('neutral');
     const [leftFilled, setLeftFilled] = useState(false);
     const [rightFilled, setRightFilled] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -78,10 +81,17 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             // Get localized label
             const localizedLabel = GAME_LABELS[currentItem.id]?.[language] || currentItem.label;
 
+            // Phonics Reinforcement (Week 2): Add /f/ sound for Fish-related items
+            let speechText = localizedLabel;
+            if (id === 'w2' && (currentItem.id.startsWith('alpha_f') || currentItem.id.startsWith('fish'))) {
+                // Prepend phonics sound (assuming 'f' or similar)
+                speechText = language === 'en-US' ? `f, f, ${localizedLabel}` : `${localizedLabel}`;
+            }
+
             // Small delay to ensure audio context is ready on iOS
             const timer = setTimeout(() => {
-                console.log('[Game] Speaking item:', localizedLabel);
-                AudioSystem.speak(localizedLabel);
+                console.log('[Game] Speaking item:', speechText);
+                AudioSystem.speak(speechText);
             }, 300);
             return () => clearTimeout(timer);
         }
@@ -131,9 +141,19 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 setLeftFilled(false);
                 setRightFilled(false);
                 setIsProcessing(false);
+                setConsecutiveErrors(0); // Reset scaffolding on success
+                setCharacterEmotion('happy');
+                setTimeout(() => setCharacterEmotion('neutral'), 1500);
             }, 800);
         } else if (isInLeftZone || isInRightZone) {
             AudioSystem.playError(t.feedback.try_again);
+            setConsecutiveErrors(prev => prev + 1); // Trigger scaffolding on error
+
+            // Week 7: SEL Emotions - Dolphin gets sad when dragging trash or error
+            if (id === 'w7') {
+                setCharacterEmotion('sad');
+                setTimeout(() => setCharacterEmotion('neutral'), 2000);
+            }
         }
     };
 
@@ -222,6 +242,20 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 </div>
             </header>
 
+            {/* SEL Character (Week 7) */}
+            {id === 'w7' && (
+                <motion.div
+                    animate={{
+                        y: characterEmotion === 'sad' ? [0, 10, 0] : [0, -20, 0],
+                        scale: characterEmotion === 'happy' ? 1.2 : 1
+                    }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[180%] text-9xl z-10"
+                >
+                    {characterEmotion === 'sad' ? '😢' : characterEmotion === 'happy' ? '🐬✨' : '🐬'}
+                </motion.div>
+            )}
+
             {/* Drop Zones */}
             <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-12 sm:gap-20">
                 <div ref={leftZoneRef} className="transition-transform hover:scale-105">
@@ -232,6 +266,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                         acceptTypes={[config.leftZone.id]}
                         color={config.leftZone.color}
                         filled={leftFilled}
+                        highlight={consecutiveErrors >= 2 && currentItem.type === config.leftZone.id}
                     />
                 </div>
 
@@ -243,6 +278,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                         acceptTypes={[config.rightZone.id]}
                         color={config.rightZone.color}
                         filled={rightFilled}
+                        highlight={consecutiveErrors >= 2 && currentItem.type === config.rightZone.id}
                     />
                 </div>
             </div>

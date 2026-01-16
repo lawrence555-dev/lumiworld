@@ -10,6 +10,7 @@ interface DropZoneProps {
     acceptTypes: string[];
     color: 'green' | 'blue' | 'purple' | 'emerald' | 'cyan' | 'gray';
     filled: boolean;
+    highlight?: boolean;
     onDrop?: (itemId: string) => void;
 }
 
@@ -20,6 +21,7 @@ export function DropZone({
     acceptTypes,
     color,
     filled,
+    highlight,
     onDrop,
 }: DropZoneProps) {
     const [isHovered, setIsHovered] = useState(false);
@@ -54,7 +56,17 @@ export function DropZone({
                 height: '320px',
             }}
             animate={{
-                scale: isHovered ? 1.05 : 1,
+                scale: isHovered ? 1.05 : highlight ? [1, 1.05, 1] : 1,
+                boxShadow: highlight ? [
+                    '0 0 0px rgba(255,255,255,0)',
+                    '0 0 40px rgba(255,255,255,0.6)',
+                    '0 0 0px rgba(255,255,255,0)'
+                ] : 'none'
+            }}
+            transition={{
+                duration: highlight ? 1.5 : 0.3,
+                repeat: highlight ? Infinity : 0,
+                ease: "easeInOut"
             }}
         >
             {/* Icon */}

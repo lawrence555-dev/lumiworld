@@ -137,8 +137,8 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
     w4: {
         title: "Comparative Measurement",
         mode: "classification",
-        leftZone: { id: "huge", label: "Huge", icon: "🏢", color: "purple" },
-        rightZone: { id: "tiny", label: "Tiny", icon: "🐜", color: "emerald" },
+        leftZone: { id: "huge", label: "Huge (Heavy)", icon: "🏢", color: "purple" },
+        rightZone: { id: "tiny", label: "Tiny (Light)", icon: "🐜", color: "emerald" },
         items: [
             // Huge (15)
             { id: 'elephant', type: 'huge', label: 'Elephant', emoji: '🐘' },
@@ -217,7 +217,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
     w6: {
         title: "Botany Basics",
         mode: "classification",
-        leftZone: { id: "need", label: "Plant Needs", icon: "🌱", color: "green" },
+        leftZone: { id: "need", label: "Growth Needs", icon: "🌱", color: "green" },
         rightZone: { id: "not_need", label: "Not Needed", icon: "❌", color: "gray" },
         items: [
             // Needs (15)
