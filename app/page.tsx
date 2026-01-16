@@ -33,21 +33,21 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="app-container">
+    <div className="app-container items-center overflow-y-auto">
       {/* Unified Content Wrapper - Forced Centering for iPad Air 4 */}
-      <div className="w-full max-w-[1080px] mx-auto px-6 sm:px-12 flex flex-col min-h-screen">
+      <div className="w-full max-w-[1020px] px-6 sm:px-10 flex flex-col min-h-screen">
 
-        {/* Header - No extra pt here, reliance on safe-area and container padding */}
-        <div className="pt-8 sm:pt-12">
+        {/* Header - Significant Top Padding for PWA Status Bar */}
+        <div className="pt-12 sm:pt-16 pb-4">
           <Header showCurriculumPath={true} />
         </div>
 
         {/* Main Grid Section */}
-        <main className="flex-1 w-full py-12 sm:py-16">
+        <main className="flex-1 w-full py-8 sm:py-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-14"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10"
           >
             {weeks_data.map((week) => (
               <div key={week.id} className="w-full h-full">
