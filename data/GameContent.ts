@@ -46,7 +46,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
             { id: 'book', type: 'non-living', label: 'Book', emoji: '📖' },
             { id: 'spoon', type: 'non-living', label: 'Spoon', emoji: '🥄' },
             { id: 'chair', type: 'non-living', label: 'Chair', emoji: '🪑' },
-            { id: 'table', type: 'non-living', label: 'Table', emoji: '🏷️' },
+            { id: 'umbrella', type: 'non-living', label: 'Umbrella', emoji: '🌂' },
             { id: 'pencil', type: 'non-living', label: 'Pencil', emoji: '✏️' },
             { id: 'key', type: 'non-living', label: 'Key', emoji: '🔑' },
             { id: 'toy', type: 'non-living', label: 'Toy', emoji: '🧸' },
