@@ -19,8 +19,8 @@ export const Header = ({ showHome = false, showCurriculumPath = false }: HeaderP
 
     return (
         <header className="relative w-full flex justify-center z-[100]">
-            <div className="glass px-5 py-2 rounded-xl flex items-center justify-between shadow-2xl border border-white/10 bg-slate-900/60 transition-colors w-full">
-                <div className="flex items-center gap-4">
+            <div className="glass px-5 py-2.5 rounded-2xl flex items-center justify-between shadow-2xl border border-white/10 bg-slate-900/60 transition-colors w-full min-h-[84px]">
+                <div className="flex items-center gap-5">
                     {/* Logo */}
                     <motion.div
                         whileHover={{ rotate: 10, scale: 1.1 }}

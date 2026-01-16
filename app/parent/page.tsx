@@ -44,199 +44,202 @@ export default function ParentDashboard() {
 
                 {/* Header Block - Aligned with Homepage */}
                 <div className="pb-8 sm:pb-12">
-                    <Header showHome />
+                    <Header showHome showCurriculumPath />
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex flex-col gap-10 w-full pb-20"
-                >
-                    {/* Progress Overview Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Levels Completed */}
-                        <motion.div
-                            whileHover={{ y: -5 }}
-                            className="glass-card rounded-[2.5rem] p-10 relative overflow-hidden group"
-                        >
-                            <div className="flex items-center justify-between mb-6">
-                                <span className="text-6xl group-hover:scale-110 transition-transform">✅</span>
-                                <span className="text-5xl font-black text-white">
-                                    {completedWeeks}<span className="text-white/30 text-3xl font-bold">/{totalWeeks}</span>
-                                </span>
-                            </div>
-                            <h3 className="text-2xl font-black text-white/90">{t.parent.levels_completed}</h3>
-                            <div className="mt-6 h-4 bg-white/5 rounded-full overflow-hidden">
-                                <motion.div
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${(completedWeeks / totalWeeks) * 100}%` }}
-                                    className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
-                                />
-                            </div>
-                        </motion.div>
-
-                        {/* Stars Earned */}
-                        <motion.div
-                            whileHover={{ y: -5 }}
-                            className="glass-card rounded-[2.5rem] p-10 relative overflow-hidden group"
-                        >
-                            <div className="flex items-center justify-between mb-6">
-                                <span className="text-6xl group-hover:scale-110 transition-transform">⭐</span>
-                                <span className="text-5xl font-black text-white">
-                                    {totalStars}<span className="text-white/30 text-3xl font-bold">/{maxStars}</span>
-                                </span>
-                            </div>
-                            <h3 className="text-2xl font-black text-white/90">{t.parent.stars_earned}</h3>
-                            <div className="mt-6 h-4 bg-white/5 rounded-full overflow-hidden">
-                                <motion.div
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${(totalStars / maxStars) * 100}%` }}
-                                    className="h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"
-                                />
-                            </div>
-                        </motion.div>
-
-                        {/* Total Time */}
-                        <motion.div
-                            whileHover={{ y: -5 }}
-                            className="glass-card rounded-[2.5rem] p-10 relative overflow-hidden group"
-                        >
-                            <div className="flex items-center justify-between mb-6">
-                                <span className="text-6xl group-hover:scale-110 transition-transform">⏱️</span>
-                                <div className="flex flex-col items-end">
+                {/* Main Content Sections - Balanced Vertical Spacing */}
+                <main className="flex-1 flex flex-col w-full">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex flex-col gap-10 w-full pb-20"
+                    >
+                        {/* Progress Overview Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {/* Levels Completed */}
+                            <motion.div
+                                whileHover={{ y: -5 }}
+                                className="glass-card rounded-[2.5rem] p-10 relative overflow-hidden group"
+                            >
+                                <div className="flex items-center justify-between mb-6">
+                                    <span className="text-6xl group-hover:scale-110 transition-transform">✅</span>
                                     <span className="text-5xl font-black text-white">
-                                        {totalTimeMinutes}
-                                    </span>
-                                    <span className="text-white/40 font-bold uppercase tracking-widest text-sm">
-                                        {t.settings.minutes_abbr}
+                                        {completedWeeks}<span className="text-white/30 text-3xl font-bold">/{totalWeeks}</span>
                                     </span>
                                 </div>
-                            </div>
-                            <h3 className="text-2xl font-black text-white/90">{t.parent.total_time}</h3>
-                        </motion.div>
-                    </div>
-
-                    {/* Weekly Breakdown */}
-                    <div className="glass-card rounded-[3rem] p-12">
-                        <h2 className="text-4xl font-black text-white mb-10 flex items-center gap-4">
-                            📅 {t.parent.weekly_breakdown}
-                        </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {weeks.map((week) => (
-                                <motion.div
-                                    key={week.id}
-                                    whileHover={{ y: -5 }}
-                                    className={`p-8 rounded-[2rem] border-2 transition-all flex flex-col gap-6 ${week.isCompleted
-                                        ? 'border-emerald-500/30 bg-emerald-500/5'
-                                        : week.stars > 0
-                                            ? 'border-yellow-500/30 bg-yellow-500/5'
-                                            : 'border-white/5 bg-white/3'
-                                        }`}
-                                >
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-sm font-black text-white/40 uppercase tracking-widest">
-                                            {t.ui.level} {week.number}
-                                        </span>
-                                        <div className="flex gap-1.5">
-                                            {[1, 2, 3].map((star) => (
-                                                <span
-                                                    key={star}
-                                                    className={`text-2xl ${star <= week.stars ? 'drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : 'opacity-10 grayscale'
-                                                        }`}
-                                                >
-                                                    ⭐
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <h4 className="text-xl font-black text-white leading-tight flex-1">
-                                        {week.title}
-                                    </h4>
-                                    <div className={`text-sm font-black px-6 py-3 rounded-2xl text-center uppercase tracking-wider ${week.isCompleted
-                                        ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
-                                        : week.stars > 0
-                                            ? 'bg-yellow-500 text-black shadow-lg shadow-yellow-500/20'
-                                            : 'bg-white/10 text-white/40'
-                                        }`}>
-                                        {week.isCompleted
-                                            ? t.parent.completed
-                                            : week.stars > 0
-                                                ? t.parent.in_progress
-                                                : t.parent.not_started
-                                        }
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Detailed Mastery Report */}
-                    <div className="glass-card rounded-[3rem] p-12">
-                        <h2 className="text-4xl font-black text-white mb-10 flex items-center gap-4">
-                            📝 {t.settings.learning_report}
-                        </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {Object.entries(progress.mastery || {}).map(([skillId, data]) => {
-                                // Map skillId to week title
-                                const skillKeyMap: Record<string, string> = {
-                                    'classification': 'w1',
-                                    'anatomy': 'w2',
-                                    'number-sense': 'w3',
-                                    'measurement': 'w4',
-                                    'habitats': 'w5',
-                                    'botany': 'w6',
-                                    'pollution': 'w7',
-                                    'ecosystems': 'w8',
-                                };
-                                const weekKey = skillKeyMap[skillId] as keyof typeof t.weeks;
-                                const skillTitle = t.weeks[weekKey]?.title || skillId;
-
-                                const formatTime = (seconds: number) => {
-                                    const m = Math.floor(seconds / 60);
-                                    const s = seconds % 60;
-                                    if (m > 0) return `${m}${t.settings.minutes_abbr}${s}${t.settings.seconds_abbr}`;
-                                    return `${s}${t.settings.seconds_abbr}`;
-                                };
-
-                                const getStatusColor = (status: string) => {
-                                    switch (status) {
-                                        case 'mastered': return 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20';
-                                        case 'in-progress': return 'bg-amber-500 text-white shadow-lg shadow-amber-500/20';
-                                        default: return 'bg-white/10 text-white/40';
-                                    }
-                                };
-
-                                const getStatusLabel = (status: string) => {
-                                    switch (status) {
-                                        case 'mastered': return t.settings.status_mastered;
-                                        case 'in-progress': return t.settings.status_in_progress;
-                                        default: return t.settings.status_needs_support;
-                                    }
-                                };
-
-                                return (
+                                <h3 className="text-2xl font-black text-white/90">{t.parent.levels_completed}</h3>
+                                <div className="mt-6 h-4 bg-white/5 rounded-full overflow-hidden">
                                     <motion.div
-                                        key={skillId}
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${(completedWeeks / totalWeeks) * 100}%` }}
+                                        className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
+                                    />
+                                </div>
+                            </motion.div>
+
+                            {/* Stars Earned */}
+                            <motion.div
+                                whileHover={{ y: -5 }}
+                                className="glass-card rounded-[2.5rem] p-10 relative overflow-hidden group"
+                            >
+                                <div className="flex items-center justify-between mb-6">
+                                    <span className="text-6xl group-hover:scale-110 transition-transform">⭐</span>
+                                    <span className="text-5xl font-black text-white">
+                                        {totalStars}<span className="text-white/30 text-3xl font-bold">/{maxStars}</span>
+                                    </span>
+                                </div>
+                                <h3 className="text-2xl font-black text-white/90">{t.parent.stars_earned}</h3>
+                                <div className="mt-6 h-4 bg-white/5 rounded-full overflow-hidden">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${(totalStars / maxStars) * 100}%` }}
+                                        className="h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full"
+                                    />
+                                </div>
+                            </motion.div>
+
+                            {/* Total Time */}
+                            <motion.div
+                                whileHover={{ y: -5 }}
+                                className="glass-card rounded-[2.5rem] p-10 relative overflow-hidden group"
+                            >
+                                <div className="flex items-center justify-between mb-6">
+                                    <span className="text-6xl group-hover:scale-110 transition-transform">⏱️</span>
+                                    <div className="flex flex-col items-end">
+                                        <span className="text-5xl font-black text-white">
+                                            {totalTimeMinutes}
+                                        </span>
+                                        <span className="text-white/40 font-bold uppercase tracking-widest text-sm">
+                                            {t.settings.minutes_abbr}
+                                        </span>
+                                    </div>
+                                </div>
+                                <h3 className="text-2xl font-black text-white/90">{t.parent.total_time}</h3>
+                            </motion.div>
+                        </div>
+
+                        {/* Weekly Breakdown */}
+                        <div className="glass-card rounded-[3rem] p-12">
+                            <h2 className="text-4xl font-black text-white mb-10 flex items-center gap-4">
+                                📅 {t.parent.weekly_breakdown}
+                            </h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                {weeks.map((week) => (
+                                    <motion.div
+                                        key={week.id}
                                         whileHover={{ y: -5 }}
-                                        className="bg-white/5 border border-white/10 rounded-[2rem] p-8 flex flex-col gap-6"
+                                        className={`p-8 rounded-[2rem] border-2 transition-all flex flex-col gap-6 ${week.isCompleted
+                                            ? 'border-emerald-500/30 bg-emerald-500/5'
+                                            : week.stars > 0
+                                                ? 'border-yellow-500/30 bg-yellow-500/5'
+                                                : 'border-white/5 bg-white/3'
+                                            }`}
                                     >
-                                        <div className="text-lg font-black text-white/60 uppercase tracking-widest line-clamp-1">
-                                            {skillTitle}
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-sm font-black text-white/40 uppercase tracking-widest">
+                                                {t.ui.level} {week.number}
+                                            </span>
+                                            <div className="flex gap-1.5">
+                                                {[1, 2, 3].map((star) => (
+                                                    <span
+                                                        key={star}
+                                                        className={`text-2xl ${star <= week.stars ? 'drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]' : 'opacity-10 grayscale'
+                                                            }`}
+                                                    >
+                                                        ⭐
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
-                                        <div className="flex flex-col gap-4">
-                                            <div className="text-3xl font-mono font-black text-white">
-                                                {formatTime(data.totalTimeSeconds)}
-                                            </div>
-                                            <div className={`px-6 py-3 rounded-2xl text-sm font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
-                                                {getStatusLabel(data.status)}
-                                            </div>
+                                        <h4 className="text-xl font-black text-white leading-tight flex-1">
+                                            {week.title}
+                                        </h4>
+                                        <div className={`text-sm font-black px-6 py-3 rounded-2xl text-center uppercase tracking-wider ${week.isCompleted
+                                            ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20'
+                                            : week.stars > 0
+                                                ? 'bg-yellow-500 text-black shadow-lg shadow-yellow-500/20'
+                                                : 'bg-white/10 text-white/40'
+                                            }`}>
+                                            {week.isCompleted
+                                                ? t.parent.completed
+                                                : week.stars > 0
+                                                    ? t.parent.in_progress
+                                                    : t.parent.not_started
+                                            }
                                         </div>
                                     </motion.div>
-                                );
-                            })}
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </motion.div>
+
+                        {/* Detailed Mastery Report */}
+                        <div className="glass-card rounded-[3rem] p-12">
+                            <h2 className="text-4xl font-black text-white mb-10 flex items-center gap-4">
+                                📝 {t.settings.learning_report}
+                            </h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                                {Object.entries(progress.mastery || {}).map(([skillId, data]) => {
+                                    // Map skillId to week title
+                                    const skillKeyMap: Record<string, string> = {
+                                        'classification': 'w1',
+                                        'anatomy': 'w2',
+                                        'number-sense': 'w3',
+                                        'measurement': 'w4',
+                                        'habitats': 'w5',
+                                        'botany': 'w6',
+                                        'pollution': 'w7',
+                                        'ecosystems': 'w8',
+                                    };
+                                    const weekKey = skillKeyMap[skillId] as keyof typeof t.weeks;
+                                    const skillTitle = t.weeks[weekKey]?.title || skillId;
+
+                                    const formatTime = (seconds: number) => {
+                                        const m = Math.floor(seconds / 60);
+                                        const s = seconds % 60;
+                                        if (m > 0) return `${m}${t.settings.minutes_abbr}${s}${t.settings.seconds_abbr}`;
+                                        return `${s}${t.settings.seconds_abbr}`;
+                                    };
+
+                                    const getStatusColor = (status: string) => {
+                                        switch (status) {
+                                            case 'mastered': return 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20';
+                                            case 'in-progress': return 'bg-amber-500 text-white shadow-lg shadow-amber-500/20';
+                                            default: return 'bg-white/10 text-white/40';
+                                        }
+                                    };
+
+                                    const getStatusLabel = (status: string) => {
+                                        switch (status) {
+                                            case 'mastered': return t.settings.status_mastered;
+                                            case 'in-progress': return t.settings.status_in_progress;
+                                            default: return t.settings.status_needs_support;
+                                        }
+                                    };
+
+                                    return (
+                                        <motion.div
+                                            key={skillId}
+                                            whileHover={{ y: -5 }}
+                                            className="bg-white/5 border border-white/10 rounded-[2rem] p-8 flex flex-col gap-6"
+                                        >
+                                            <div className="text-lg font-black text-white/60 uppercase tracking-widest line-clamp-1">
+                                                {skillTitle}
+                                            </div>
+                                            <div className="flex flex-col gap-4">
+                                                <div className="text-3xl font-mono font-black text-white">
+                                                    {formatTime(data.totalTimeSeconds)}
+                                                </div>
+                                                <div className={`px-6 py-3 rounded-2xl text-sm font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
+                                                    {getStatusLabel(data.status)}
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </motion.div>
+                </main>
             </div>
         </div>
     );
