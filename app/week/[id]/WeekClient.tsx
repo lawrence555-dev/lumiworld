@@ -244,9 +244,26 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 </div>
             </header>
 
-            {/* SEL Character (Week 7: Dolphin) */}
+            {/* SEL Character & Ocean Health (Week 7: Dolphin) */}
             {id === 'w7' && (
-                <div className="absolute top-[32%] left-1/2 -translate-x-1/2 z-10 flex flex-col items-center">
+                <div className="absolute top-[25%] left-1/2 -translate-x-1/2 z-10 flex flex-col items-center">
+                    {/* Ocean Health Bar */}
+                    <div className="mb-8 w-64 h-4 bg-white/10 rounded-full border border-white/5 p-1 relative overflow-hidden backdrop-blur-md shadow-inner">
+                        <motion.div
+                            initial={{ width: "20%" }}
+                            animate={{
+                                width: `${Math.min(100, 20 + (correctCount / randomizedItems.length) * 80)}%`,
+                                backgroundColor: correctCount > 20 ? "#10b981" : correctCount > 10 ? "#3b82f6" : "#ef4444"
+                            }}
+                            className="h-full rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-[10px] font-black text-white uppercase tracking-tighter drop-shadow-md">
+                                Ocean Health
+                            </span>
+                        </div>
+                    </div>
+
                     <motion.div
                         animate={{
                             y: characterEmotion === 'sad' ? [0, 5, 0] : [0, -10, 0],
@@ -276,7 +293,10 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
 
             {/* Drop Zones */}
             <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-12 sm:gap-20">
-                <div ref={leftZoneRef} className="transition-transform hover:scale-105">
+                <div
+                    ref={leftZoneRef}
+                    className={`transition-all duration-500 ${consecutiveErrors >= 3 && currentItem.type !== config.leftZone.id ? 'opacity-30 pointer-events-none grayscale scale-95' : 'hover:scale-105'}`}
+                >
                     <DropZone
                         id={config.leftZone.id}
                         label={(t.zones as any)[config.leftZone.id] || config.leftZone.label}
@@ -288,7 +308,10 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                     />
                 </div>
 
-                <div ref={rightZoneRef} className="transition-transform hover:scale-105">
+                <div
+                    ref={rightZoneRef}
+                    className={`transition-all duration-500 ${consecutiveErrors >= 3 && currentItem.type !== config.rightZone.id ? 'opacity-30 pointer-events-none grayscale scale-95' : 'hover:scale-105'}`}
+                >
                     <DropZone
                         id={config.rightZone.id}
                         label={(t.zones as any)[config.rightZone.id] || config.rightZone.label}
