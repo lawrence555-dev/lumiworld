@@ -18,8 +18,8 @@ export const Header = ({ showHome = false, showCurriculumPath = false }: HeaderP
     const isMuted = progress.settings.isMuted;
 
     return (
-        <header className="relative w-full flex justify-center pt-2 z-[100]">
-            <div className="glass px-5 py-2 rounded-xl flex items-center justify-between shadow-2xl border border-white/10 bg-slate-900/60 transition-colors w-[95%] max-w-4xl">
+        <header className="relative w-full flex justify-center z-[100]">
+            <div className="glass px-5 py-2 rounded-xl flex items-center justify-between shadow-2xl border border-white/10 bg-slate-900/60 transition-colors w-full">
                 <div className="flex items-center gap-4">
                     {/* Logo */}
                     <motion.div
