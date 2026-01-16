@@ -181,6 +181,72 @@ export default function ParentDashboard() {
                         ))}
                     </div>
                 </motion.div>
+
+                {/* Detailed Mastery Report */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="bg-white rounded-2xl shadow-lg p-6 mt-8"
+                >
+                    <h2 className="text-2xl font-bold text-gray-800 mb-6">{t.settings.learning_report}</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {Object.entries(progress.mastery || {}).map(([skillId, data]) => {
+                            // Map skillId to week title
+                            const skillKeyMap: Record<string, string> = {
+                                'classification': 'w1',
+                                'anatomy': 'w2',
+                                'number-sense': 'w3',
+                                'measurement': 'w4',
+                                'habitats': 'w5',
+                                'botany': 'w6',
+                                'pollution': 'w7',
+                                'ecosystems': 'w8',
+                            };
+                            const weekKey = skillKeyMap[skillId] as keyof typeof t.weeks;
+                            const skillTitle = t.weeks[weekKey]?.title || skillId;
+
+                            const formatTime = (seconds: number) => {
+                                const m = Math.floor(seconds / 60);
+                                const s = seconds % 60;
+                                if (m > 0) return `${m}${t.settings.minutes_abbr} ${s}${t.settings.seconds_abbr}`;
+                                return `${s}${t.settings.seconds_abbr}`;
+                            };
+
+                            const getStatusColor = (status: string) => {
+                                switch (status) {
+                                    case 'mastered': return 'bg-emerald-100 text-emerald-700 border-emerald-300';
+                                    case 'in-progress': return 'bg-amber-100 text-amber-700 border-amber-300';
+                                    default: return 'bg-gray-100 text-gray-600 border-gray-300';
+                                }
+                            };
+
+                            const getStatusLabel = (status: string) => {
+                                switch (status) {
+                                    case 'mastered': return t.settings.status_mastered;
+                                    case 'in-progress': return t.settings.status_in_progress;
+                                    default: return t.settings.status_needs_support;
+                                }
+                            };
+
+                            return (
+                                <div key={skillId} className="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col gap-2">
+                                    <div className="text-sm font-bold text-gray-700 truncate uppercase tracking-wider">
+                                        {skillTitle}
+                                    </div>
+                                    <div className="flex justify-between items-end mt-1">
+                                        <div className={`px-2 py-0.5 rounded-full text-[10px] font-black uppercase border ${getStatusColor(data.status)}`}>
+                                            {getStatusLabel(data.status)}
+                                        </div>
+                                        <div className="text-xs font-mono text-gray-500">
+                                            ⏱️ {formatTime(data.totalTimeSeconds)}
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </motion.div>
             </motion.div>
         </div>
     );
