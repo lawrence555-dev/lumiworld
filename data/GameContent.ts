@@ -9,6 +9,7 @@ export interface GameItem {
 export interface WeekConfig {
     title: string;
     mode: string;
+    thumbnail?: string;
     leftZone: { id: string; label: string; icon: string; color: 'green' | 'blue' | 'purple' | 'emerald' | 'cyan' | 'gray' };
     rightZone: { id: string; label: string; icon: string; color: 'green' | 'blue' | 'purple' | 'emerald' | 'cyan' | 'gray' };
     items: GameItem[];
@@ -18,6 +19,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
     w1: {
         title: "Scientific Classification",
         mode: "classification",
+        thumbnail: "/assets/levels/week1.png",
         leftZone: { id: "living", label: "Living", icon: "❤️", color: "green" },
         rightZone: { id: "non-living", label: "Non-Living", icon: "🪨", color: "gray" },
         items: [
@@ -58,6 +60,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
     w2: {
         title: "Introduction to Anatomy",
         mode: "classification",
+        thumbnail: "/assets/levels/week2.png",
         leftZone: { id: "fish-parts", label: "Fish Parts", icon: "🐟", color: "blue" },
         rightZone: { id: "other-parts", label: "Other Parts", icon: "🦁", color: "emerald" },
         items: [
@@ -97,6 +100,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
     w3: {
         title: "Number Sense & Needs",
         mode: "classification",
+        thumbnail: "/assets/levels/week3.png",
         leftZone: { id: "n-low", label: "Group 1-10", icon: "1️⃣", color: "cyan" },
         rightZone: { id: "n-high", label: "Group 11-20", icon: "🔟", color: "blue" },
         items: [
@@ -137,6 +141,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
     w4: {
         title: "Comparative Measurement",
         mode: "classification",
+        thumbnail: "/assets/levels/week4.png",
         leftZone: { id: "huge", label: "Huge (Heavy)", icon: "🏢", color: "purple" },
         rightZone: { id: "tiny", label: "Tiny (Light)", icon: "🐜", color: "emerald" },
         items: [
@@ -175,8 +180,9 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         ]
     },
     w5: {
-        title: "Habitat Exploration",
+        title: "Habitats Exploration",
         mode: "classification",
+        thumbnail: "/assets/levels/week5.png",
         leftZone: { id: "sky", label: "Sky", icon: "☁️", color: "blue" },
         rightZone: { id: "earth", label: "Earth", icon: "🌱", color: "green" },
         items: [
@@ -201,7 +207,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
             { id: 'grass_e', type: 'earth', label: 'Grass', emoji: '🌿' },
             { id: 'rabbit_e', type: 'earth', label: 'Rabbit', emoji: '🐰' },
             { id: 'worm', type: 'earth', label: 'Worm', emoji: '🪱' },
-            { id: 'dirt', type: 'earth', label: 'Dirt', emoji: '🟟' },
+            { id: 'dirt', type: 'earth', label: 'Dirt', emoji: '🟫' },
             { id: 'rock_e', type: 'earth', label: 'Rock', emoji: '🪨' },
             { id: 'tree_e', type: 'earth', label: 'Tree', emoji: '🌳' },
             { id: 'fox', type: 'earth', label: 'Fox', emoji: '🦊' },
@@ -215,8 +221,9 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         ]
     },
     w6: {
-        title: "Botany Basics",
+        title: "Botanical Basics",
         mode: "classification",
+        thumbnail: "/assets/levels/week6.png",
         leftZone: { id: "need", label: "Growth Needs", icon: "🌱", color: "green" },
         rightZone: { id: "not_need", label: "Not Needed", icon: "❌", color: "gray" },
         items: [
@@ -257,6 +264,7 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
     w7: {
         title: "Environmental Science",
         mode: "classification",
+        thumbnail: "/assets/levels/week7.png",
         leftZone: { id: "clean", label: "Clean Ocean", icon: "🐬", color: "cyan" },
         rightZone: { id: "trash", label: "Trash", icon: "🗑️", color: "gray" },
         items: [

@@ -8,14 +8,19 @@ import { motion } from "framer-motion";
 
 import { Header } from "@/components/ui/Header";
 
+import { WEEK_GAME_DATA } from '@/data/GameContent';
+
 export default function Dashboard() {
   const { progress } = useProgress();
   const { t } = useLanguage();
   const router = useRouter();
 
   const weeks_data = [1, 2, 3, 4, 5, 6, 7, 8].map(num => {
-    const weekId = `w${num}` as keyof typeof t.weeks;
+    const weekIdStr = `w${num}`;
+    const weekId = weekIdStr as keyof typeof t.weeks;
     const weekProgress = progress.weeks[weekId];
+    const weekConfig = WEEK_GAME_DATA[weekIdStr];
+
     return {
       id: weekId,
       number: num,
@@ -23,6 +28,7 @@ export default function Dashboard() {
       isUnlocked: weekProgress?.isUnlocked || true,
       isCompleted: weekProgress?.isCompleted ?? false,
       stars: weekProgress?.stars ?? 0,
+      thumbnail: weekConfig?.thumbnail,
     };
   });
 
