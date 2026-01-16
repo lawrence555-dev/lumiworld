@@ -75,6 +75,16 @@ export const Header = ({ showHome = false, showCurriculumPath = false }: HeaderP
                         {isMuted ? <VolumeX size={22} /> : <Volume2 size={22} />}
                     </motion.button>
 
+                    <Link href="/parent">
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="w-11 h-11 rounded-2xl bg-purple-500 text-white shadow-lg shadow-purple-500/40 hover:bg-purple-600 transition-all border border-purple-400/20 flex items-center justify-center"
+                        >
+                            <span className="text-lg">📊</span>
+                        </motion.button>
+                    </Link>
+
                     <Link href="/settings">
                         <motion.button
                             whileHover={{ scale: 1.1, rotate: 45 }}
