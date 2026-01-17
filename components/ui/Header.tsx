@@ -21,12 +21,27 @@ export const Header = ({ showHome = false, showCurriculumPath = false }: HeaderP
         <header className="relative w-full flex justify-center z-[100] mt-1">
             <div className="glass px-5 py-2 rounded-2xl flex items-center justify-between shadow-2xl border border-white/10 bg-slate-900/40 backdrop-blur-md transition-colors w-full min-h-[72px]">
                 <div className="flex items-center gap-4">
-                    {/* Logo */}
+                    {/* Logo - Integrated Brand Identity */}
                     <motion.div
-                        whileHover={{ rotate: 10, scale: 1.1 }}
-                        className="bg-indigo-500 w-10 h-10 rounded-xl shadow-lg shadow-indigo-500/20 flex items-center justify-center"
+                        whileHover={{ rotate: 5, scale: 1.05 }}
+                        className="relative w-12 h-12 flex items-center justify-center group"
                     >
-                        <span className="text-xl">🌟</span>
+                        <div className="absolute inset-0 bg-indigo-500/20 rounded-2xl blur-xl group-hover:bg-indigo-500/40 transition-all duration-500" />
+                        <div className="relative w-full h-full bg-slate-800/50 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden shadow-xl">
+                            <img
+                                src="/assets/brand/logo.png"
+                                alt="LumiWorld"
+                                className="w-[85%] h-[85%] object-contain drop-shadow-lg"
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                    const fallback = (e.target as HTMLImageElement).parentElement?.querySelector('.fallback-icon');
+                                    if (fallback) (fallback as HTMLElement).style.display = 'flex';
+                                }}
+                            />
+                            <div className="fallback-icon hidden w-full h-full items-center justify-center text-2xl">
+                                🌟
+                            </div>
+                        </div>
                     </motion.div>
                     <div>
                         <h1 className="text-xl font-black tracking-tighter text-white leading-none bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">

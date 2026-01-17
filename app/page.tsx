@@ -67,14 +67,29 @@ export default function Dashboard() {
       {!isPreloaded ? (
         <div key="loader" className="fixed inset-0 bg-slate-950 z-[1000] flex items-center justify-center">
           <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-4"
+            animate={{ scale: [1, 1.05, 1], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-6"
           >
-            <div className="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center text-4xl shadow-2xl">
-              🌟
+            <div className="relative w-24 h-24 flex items-center justify-center">
+              <div className="absolute inset-0 bg-indigo-500/20 rounded-full blur-2xl animate-pulse" />
+              <div className="relative w-full h-full bg-slate-900/50 rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl backdrop-blur-xl">
+                <img
+                  src="/assets/brand/logo.png"
+                  alt="LumiWorld"
+                  className="w-[80%] h-[80%] object-contain drop-shadow-2xl"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = 'none';
+                    const fallback = (e.target as HTMLImageElement).parentElement?.querySelector('.fallback-logo');
+                    if (fallback) (fallback as HTMLElement).style.display = 'flex';
+                  }}
+                />
+                <div className="fallback-logo hidden w-full h-full items-center justify-center text-5xl">
+                  🌟
+                </div>
+              </div>
             </div>
-            <div className="text-white/40 font-black tracking-[0.3em] uppercase text-xs">
+            <div className="text-white/40 font-black tracking-[0.4em] uppercase text-xs">
               LumiWorld
             </div>
           </motion.div>
