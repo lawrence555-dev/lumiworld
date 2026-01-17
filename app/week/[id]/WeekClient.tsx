@@ -48,7 +48,9 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
     // If config doesn't exist, show Coming Soon
     if (!config) {
         return (
-            <div className="w-screen h-screen bg-gradient-to-br from-indigo-900 to-purple-900 flex flex-col items-center justify-center p-8 text-white">
+            <div className="w-screen h-screen bg-gradient-to-br from-indigo-900 to-purple-900 flex flex-col items-center justify-center p-8 text-white relative overflow-hidden">
+                {/* iOS Status Bar Gutter */}
+                <div className="absolute top-0 left-0 right-0 h-[env(safe-area-inset-top,44px)] min-h-[44px]" />
                 <button
                     onClick={() => router.push('/')}
                     className="absolute top-8 left-8 w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center"
@@ -215,7 +217,9 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
 
     if (isGameComplete) {
         return (
-            <div className="w-screen h-screen bg-gradient-to-br from-emerald-600 to-indigo-900 flex items-center justify-center">
+            <div className="w-screen h-screen bg-gradient-to-br from-emerald-600 to-indigo-900 flex flex-col items-center justify-center relative overflow-hidden">
+                {/* iOS Status Bar Gutter */}
+                <div className="absolute top-0 left-0 right-0 h-[env(safe-area-inset-top,44px)] min-h-[44px]" />
                 <div className="text-center">
                     <div className="text-9xl mb-8">🏆</div>
                     <h1 className="text-7xl font-black text-white mb-4 tracking-tighter">Bingo!</h1>
@@ -241,31 +245,36 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             <div className="blob-secondary opacity-20 right-[10%] bottom-[10%]" />
 
             {/* Header - Aligned with Global Style */}
-            <header className="absolute top-0 left-0 right-0 px-8 sm:px-12 pt-10 sm:pt-14 flex justify-between items-start z-20">
-                <div className="flex items-center gap-6">
-                    <button
-                        onClick={() => router.push('/')}
-                        className="w-16 h-16 rounded-[2rem] glass-card hover:bg-white/10 flex items-center justify-center transition-all active:scale-95 shadow-2xl group border border-white/10"
-                    >
-                        <Home size={32} className="text-white group-hover:scale-110 transition-transform" />
-                    </button>
-                    <div className="flex flex-col gap-1">
-                        <h2 className="text-white/40 text-xs font-black uppercase tracking-[0.3em]">
-                            {t.weeks[id as keyof typeof t.weeks]?.title || config.title}
-                        </h2>
-                        <div className="text-4xl font-black text-white tracking-tighter">
-                            Level {id.replace('w', '')}
+            <header className="absolute top-0 left-0 right-0 px-8 sm:px-12 flex flex-col z-20">
+                {/* iOS Status Bar Gutter - Ensures no overlap with clock/battery */}
+                <div className="h-[env(safe-area-inset-top,44px)] min-h-[44px] shrink-0" />
+
+                <div className="flex justify-between items-start pt-2">
+                    <div className="flex items-center gap-6">
+                        <button
+                            onClick={() => router.push('/')}
+                            className="w-16 h-16 rounded-[2rem] glass-card hover:bg-white/10 flex items-center justify-center transition-all active:scale-95 shadow-2xl group border border-white/10"
+                        >
+                            <Home size={32} className="text-white group-hover:scale-110 transition-transform" />
+                        </button>
+                        <div className="flex flex-col gap-1">
+                            <h2 className="text-white/40 text-xs font-black uppercase tracking-[0.3em]">
+                                {t.weeks[id as keyof typeof t.weeks]?.title || config.title}
+                            </h2>
+                            <div className="text-4xl font-black text-white tracking-tighter">
+                                Level {id.replace('w', '')}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="glass-card px-10 py-5 rounded-[2.5rem] border border-white/10 shadow-2xl">
-                    <div className="flex flex-col items-center gap-1">
-                        <span className="text-white/40 font-black text-[10px] uppercase tracking-[0.2em]">{t.parent.weekly_breakdown}</span>
-                        <div className="text-3xl font-black text-indigo-400 tabular-nums flex items-baseline gap-2">
-                            {currentItemIndex + 1}
-                            <span className="text-white/20 text-xl">/</span>
-                            <span className="text-white/40 text-2xl">{randomizedItems.length}</span>
+                    <div className="glass-card px-10 py-5 rounded-[2.5rem] border border-white/10 shadow-2xl">
+                        <div className="flex flex-col items-center gap-1">
+                            <span className="text-white/40 font-black text-[10px] uppercase tracking-[0.2em]">{t.parent.weekly_breakdown}</span>
+                            <div className="text-3xl font-black text-indigo-400 tabular-nums flex items-baseline gap-2">
+                                {currentItemIndex + 1}
+                                <span className="text-white/20 text-xl">/</span>
+                                <span className="text-white/40 text-2xl">{randomizedItems.length}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -364,7 +373,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                         emoji={currentItem.emoji}
                         image={currentItem.image}
                         initialX={typeof window !== 'undefined' ? window.innerWidth / 2 - 100 : 0}
-                        initialY={140}
+                        initialY={typeof window !== 'undefined' ? (window.innerHeight < 850 ? 160 : 180) : 0}
                         onDragEnd={handleDragEnd}
                     />
                 </div>
