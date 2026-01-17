@@ -99,7 +99,7 @@ export default function Dashboard() {
           {/* Unified Content Wrapper - Aligned with Homepage */}
           <div className="w-full max-w-[1280px] h-full flex flex-col pb-6 sm:pb-8 lg:pb-10">
             {/* Header Block - Compact for iPad height */}
-            <div className="w-full mb-6 sm:mb-8 shrink-0">
+            <div className="w-full mb-4 sm:mb-6 shrink-0">
               <Header />
             </div>
 
