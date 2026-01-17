@@ -35,16 +35,16 @@ The course design directly maps to key US early childhood education standards, e
 ## 3. Scope and Sequence (8-Week Roadmap)
 We employ an **"Inquiry-Based Learning"** model, guiding students to transition from observers to active participants.
 
-| Week | Theme | Cross-Curricular Focus | Key Vocab |
+| Week | Theme | Primary Visual Guide (AI) | Key Vocab |
 | :--- | :--- | :--- | :--- |
-| **W1** | **Scientific Classification** | [Science & Logic] Distinguishing Living vs. Non-Living. Standard: Observing & classifying attributes. | Living, Non-living, Rock, Cat |
-| **W2** | **Introduction to Anatomy** | [Science & ELA] Fish body parts. Standard: Biological observation and identifying external features. | Fin, Scales, Gills, Fish Tail |
-| **W3** | **Number Sense & Needs** | [Math] Counting & feeding tasks (1-20). Standard: One-to-one Correspondence. | Count, Eat, Food, 1-20 |
-| **W4** | **Comparative Measurement** | [Math & Bio] Elephant vs. Mouse: Size comparison. Standard: Comparative attributes. | Big, Small, Heavy, Elephant |
-| **W5** | **Habitat Exploration** | [Science & ELA] Eagle & aerial perspective. Standard: Spatial Prepositions. | Up, Down, Sky, Eagle |
-| **W6** | **Botany Basics** | [Science & Logic] Plant life cycle sequencing. Standard: Logical sequencing. | Seed, Grow, Sun, Water |
-| **W7** | **Environmental Science** | [Social Studies] Impact of pollution on marine life. Standard: Cause and Effect. | Trash, Clean, Dirty, Dolphin |
-| **W8** | **Capstone Project** | [STEAM Integration] Multi-tasking ecosystem management. Standard: Executive Function. | Care, Help, Planet, Hero |
+| **W1** | **Scientific Classification** | [Scene] Lush Garden vs. Toy Desk | Living, Non-living, Cat |
+| **W2** | **Introduction to Anatomy** | [Scene] Detailed Fish vs. Land Animals | Fin, Scales, Gills, Lion |
+| **W3** | **Number Sense & Needs** | [Scene] Few Apples vs. Many Berries | Count, Few, Many, 1-20 |
+| **W4** | **Comparative Measurement** | [Scene] Giant Elephant vs. Small Seed | Big, Small, Heavy, Tiny |
+| **W5** | **Habitat Exploration** | [Scene] Blue Sky vs. Warm Earth | Up, Down, Sky, Habitat |
+| **W6** | **Botany Basics** | [Scene] Sprouting Seed vs. Human-made Items| Seed, Grow, Sun, Sprout |
+| **W7** | **Environmental Science** | [Scene] Coral Reef vs. Marine Debris | Plastic, Clean, Help, Dolphin |
+| **W8** | **Capstone Project** | [Scene] Misty Forest vs. Deep Ocean | Ecosystem, Protect, Global |
 
 ---
 

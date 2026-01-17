@@ -21,16 +21,16 @@ This system is more than just a classification game. it incorporates professiona
 
 ## 📚 8-Week Curriculum Blueprint
 
-| Week | Theme | Scientific Domain | Classification Logic | Key Learning Objectives |
+| Week | Theme | Scientific Domain | Visual Scene (AI) | Key Learning Objectives |
 | :--- | :--- | :--- | :--- | :--- |
-| **Week 1** | Mystery of Life | Biology | Living vs. Non-Living | Understand that living things grow, eat, and move. |
-| **Week 2** | Fish Anatomy Discovery | Anatomy | Fish Parts vs. Others | Recognize external features and train fine visual observation. |
-| **Week 3** | Number Sense Feeder | Mathematics | Group 1-10 vs. 11-20 | Establish basic count concepts and group recognition. |
-| **Week 4** | Giants & Fairies | Physics/Measurement | Huge/Heavy vs. Tiny/Light | Learn relative size concepts and comparative vocabulary. |
-| **Week 5** | Eagle's Perspective | Geography/Spatial | Sky vs. Earth | Develop spatial orientation and habitat concepts. |
-| **Week 6** | Seed Growth Diary | Botany | Plant Needs vs. Not Needed | Learn about life cycles and ecological dependence. |
-| **Week 7** | Marine Conservation | Env. Science/SEL | Clean Ocean vs. Trash | Cultivate environmental awareness and empathy (observing animal emotions). |
-| **Week 8** | Ecosystem Manager | Systems Integration | Forest vs. Ocean | Synthesize knowledge and understand the uniqueness of different environments. |
+| **Week 1** | Mystery of Life | Biology | Lush Garden vs. Toy Desk | Understand that living things grow, eat, and move. |
+| **Week 2** | Fish Anatomy | Anatomy | Detailed Fish vs. Land Animals | Recognize external features and train fine visual observation. |
+| **Week 3** | Number Feeder | Mathematics | Few Apples vs. Many Berries | Establish basic count concepts and group recognition (1-20). |
+| **Week 4** | Giants & Fairies | Physics | Giant Elephant vs. Tiny Seed | Learn relative size concepts and comparative vocabulary. |
+| **Week 5** | Eagle's View | Geography | Blue Sky vs. Warm Earth | Develop spatial orientation and habitat concepts. |
+| **Week 6** | Seed Growth | Botany | Sprouting Seed vs. Human-made | Learn about life cycles and ecological dependence. |
+| **Week 7** | Marine Care | Env. Science | Coral Reef vs. Marine Waste | Cultivate environmental awareness and empathy development. |
+| **Week 8** | Eco Manager | Systems | Misty Forest vs. Deep Ocean | Synthesize knowledge and understand ecological uniqueness. |
 
 ---
 

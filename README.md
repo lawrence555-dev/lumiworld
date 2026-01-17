@@ -1,8 +1,8 @@
 # 🌟 LumiWorld - Pre-K Educational PWA
 
-> **Version:** 2.2.0  
+> **Version:** 2.4.0  
 > **Type:** Pre-K Educational Progressive Web App  
-> **Stack:** Next.js 15, Tailwind CSS, LocalStorage (No Backend)
+> **Stack:** Next.js 15, Tailwind CSS, LocalStorage (No Backend), AI Illustration Engine
 
 ---
 
@@ -32,15 +32,15 @@ LumiWorld is an interactive educational PWA designed for 4-year-old children, fo
 | Feature | Description |
 |---------|-------------|
 | **8-Week Curriculum** | Complete 8-level STEAM curriculum with 30 items per level (240 total) |
+| **AI Illustrations** | 240+ custom illustrations for all items + 16 selection scenes |
 | **Multi-Language** | 5 languages: English, 繁體中文, 日本語, 한국어, ภาษาไทย |
-| **Multi-Language TTS** | Voice reads items in selected language (Web Speech API) |
+| **Multi-Language TTS** | Natural voice engine for items in all 5 languages (localized fixes) |
 | **Teacher/Parent Guides**| Detailed guides available in all 5 supported languages |
-| **Learning Report** | Detailed mastery tracking (time spent, attempts, status) per skill |
-| **iPad Optimized** | Responsive layout for all tablet resolutions + iOS audio unlock |
-| **Drag-and-Drop** | Smooth drag-and-drop with 30px minimum distance check |
-| **Progress Tracking** | Star rating system (1-3 stars) with LocalStorage persistence |
-| **Offline-First** | No backend required, works without internet |
-| **COPPA Compliant** | No data collection, no tracking, child-safe |
+| **Learning Report** | Comprehensive dashboard (time, progress, skill mastery) |
+| **iPad Optimized** | Single-screen layout for iPad Air/Pro (PWA mode), 0-scrolling |
+| **Drag-and-Drop** | Multi-sensory feedback with intelligent collision detection |
+| **Progress Tracking** | Star-based persistence (1-3 stars) via LocalStorage |
+| **Privacy First** | No backend, no cookies, COPPA compliant |
 
 ---
 

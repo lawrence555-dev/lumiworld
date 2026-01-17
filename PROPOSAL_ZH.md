@@ -36,16 +36,16 @@
 ## 3. 8 週課程範疇與順序 (Scope and Sequence)
 我們採用 **"Inquiry-Based Learning" (探究式學習)** 模式，引導學生從觀察者變為行動者。
 
-| 週次 (Week) | 美式主題名稱 (Theme) | 跨學科焦點 (Cross-Curricular Focus) | 關鍵詞彙 (Key Vocab) |
+| 週次 (Week) | 美式主題名稱 (Theme) | 核心視覺引導 (AI 生成場景) | 關鍵詞彙 (Key Vocab) |
 | :--- | :--- | :--- | :--- |
-| **W1** | **Scientific Classification** (科學分類) | [Science & Logic] 區分 Living 與 Non-Living。標準：觀察與分類屬性。 | Living, Non-living, Rock, Cat |
-| **W2** | **Introduction to Anatomy** (生物構造導論) | [Science & ELA] 認識魚類的身體部位。標準：生物觀察與辨識外部特徵。 | Fish, Fin, Scales, Gills, Fish Tail |
-| **W3** | **Number Sense & Needs** (數感與生存需求) | [Math] 計數與餵食任務 (1-20)。標準：一對一對應 (One-to-one Correspondence). | Count, Eat, Food, 1-20 |
-| **W4** | **Comparative Measurement** (比較測量) | [Math & Bio] 大象與老鼠：大小比較。標準：測量屬性 (Size Comparison). | Big, Small, Heavy, Elephant |
-| **W5** | **Habitat Exploration** (棲息地探索) | [Science & ELA] 老鷹與高空視角。標準：空間介系詞 (Spatial Prepositions). | Up, Down, Sky, Eagle |
-| **W6** | **Botany Basics** (植物學基礎) | [Science & Logic] 植物生長週期排序。標準：序列邏輯 (Sequencing). | Seed, Grow, Sun, Water |
-| **W7** | **Environmental Science** (環境科學) | [Social Studies] 污染對海洋生物的影響。標準：因果關係 (Cause and Effect). | Trash, Clean, Dirty, Dolphin |
-| **W8** | **Capstone Project** (總結性專題) | [STEAM Integration] 多工生態系統管理。標準：綜合應用與執行功能。 | Care, Help, Planet, Hero |
+| **W1** | **Scientific Classification** | 繁盛花園 (生物) vs. 靜物桌面 (非生物) | Living, Non-living, Rock, Cat |
+| **W2** | **Introduction to Anatomy** | 熱帶魚構造 vs. 陸地生物特徵 | Fish, Fin, Scales, Gills, Lion |
+| **W3** | **Number Sense & Needs** | 少量蘋果 (1-10) vs. 大量漿果 (11-20) | Count, Few, Many, Number |
+| **W4** | **Comparative Measurement** | 雄偉巨象與山脈 vs. 微型螞蟻與種子 | Big, Small, Heavy, Elephant |
+| **W5** | **Habitat Exploration** | 晴朗天際與飛鳥 vs. 溫暖土地與兔穴 | Up, Down, Sky, Habitat |
+| **W6** | **Botany Basics** | 陽光下的幼苗 vs. 人造物品 (電子產品) | Seed, Grow, Sun, Sprout |
+| **W7** | **Environmental Science** | 繽紛珊瑚礁 vs. 漂浮塑料垃圾 | Trash, Clean, Waste, Dolphin |
+| **W8** | **Capstone Project** | 雲霧森林生態 vs. 湛藍深海底世界 | Care, Help, Ocean, Forest |
 
 ---
 
