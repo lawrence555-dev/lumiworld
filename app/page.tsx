@@ -4,16 +4,46 @@ import { useProgress } from '@/hooks/useProgress';
 import { useLanguage } from '@/hooks/useLanguage';
 import { WeekCard } from '@/components/ui/WeekCard';
 import { useRouter } from 'next/navigation';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from 'react';
 
 import { Header } from "@/components/ui/Header";
-
 import { WEEK_GAME_DATA } from '@/data/GameContent';
 
 export default function Dashboard() {
   const { progress } = useProgress();
   const { t } = useLanguage();
   const router = useRouter();
+  const [isPreloaded, setIsPreloaded] = useState(false);
+
+  // Precision Image Preloading for Professional Entry
+  useEffect(() => {
+    const images = Object.values(WEEK_GAME_DATA)
+      .map(config => config.thumbnail)
+      .filter(Boolean) as string[];
+
+    let loadedCount = 0;
+    if (images.length === 0) {
+      setIsPreloaded(true);
+      return;
+    }
+
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === images.length) {
+          // Small delay for smooth transition
+          setTimeout(() => setIsPreloaded(true), 100);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++; // Count error as "done" to unblock
+        if (loadedCount === images.length) setIsPreloaded(true);
+      };
+    });
+  }, []);
 
   const weeks_data = [1, 2, 3, 4, 5, 6, 7, 8].map(num => {
     const weekIdStr = `w${num}`;
@@ -33,33 +63,67 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="app-container items-center overflow-y-auto w-full">
-      <div className="w-full max-w-[1240px] px-8 sm:px-12 flex flex-col items-center py-12 sm:py-20 lg:py-24">
-        {/* Header Block - Massive spacing to ensure no overlap */}
-        <div className="w-full mb-16 sm:mb-24 shrink-0 px-4">
-          <Header />
-        </div>
-
-        {/* Main Grid Section - Ensure bottom padding is visible on all iPads */}
-        <main className="w-full pb-32">
+    <AnimatePresence>
+      {!isPreloaded ? (
+        <div key="loader" className="fixed inset-0 bg-slate-950 z-[1000] flex items-center justify-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12"
+            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex flex-col items-center gap-4"
           >
-            {weeks_data.map((week) => (
-              <div key={week.id} className="w-full h-full">
-                <WeekCard
-                  {...week}
-                  weekId={week.id}
-                  weekNumber={week.number}
-                  onClick={() => router.push(`/week/${week.id}`)}
-                />
-              </div>
-            ))}
+            <div className="w-16 h-16 bg-indigo-500 rounded-2xl flex items-center justify-center text-4xl shadow-2xl">
+              🌟
+            </div>
+            <div className="text-white/40 font-black tracking-[0.3em] uppercase text-xs">
+              LumiWorld
+            </div>
           </motion.div>
-        </main>
-      </div>
-    </div>
+        </div>
+      ) : (
+        <div key="content" className="app-container h-screen overflow-hidden px-6 sm:px-12 flex flex-col items-center">
+          {/* Dynamic Safe Area Padding for iOS */}
+          <div className="w-full max-w-[1280px] h-full flex flex-col py-6 sm:py-8 lg:py-10">
+            {/* Header Block - Compact for iPad height */}
+            <div className="w-full mb-6 sm:mb-8 shrink-0">
+              <Header />
+            </div>
+
+            {/* Main Grid Section - Zero-Scroll Strategy */}
+            <main className="flex-1 w-full min-h-0 flex items-center">
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.1 }
+                  }
+                }}
+                className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full h-full max-h-[70vh] sm:max-h-[75vh]"
+              >
+                {weeks_data.map((week) => (
+                  <motion.div
+                    key={week.id}
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.9, y: 20 },
+                      visible: { opacity: 1, scale: 1, y: 0 }
+                    }}
+                    className="w-full h-full min-h-0"
+                  >
+                    <WeekCard
+                      {...week}
+                      weekId={week.id}
+                      weekNumber={week.number}
+                      onClick={() => router.push(`/week/${week.id}`)}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </main>
+          </div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }

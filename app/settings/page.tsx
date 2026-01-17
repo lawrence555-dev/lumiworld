@@ -32,20 +32,20 @@ export default function SettingsPage() {
     };
 
     return (
-        <div className="app-container items-center overflow-y-auto">
+        <div className="app-container h-screen overflow-hidden items-center">
             {/* Unified Content Wrapper - Aligned with Homepage */}
-            <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-6 sm:py-8">
+            <div className="w-full max-w-[1240px] px-8 sm:px-12 flex flex-col h-full py-6 sm:py-8 lg:py-10">
 
-                {/* Header Block - Increased spacing for clear separation */}
-                <div className="mb-14 sm:mb-20 pt-4 shrink-0">
+                {/* Header Block - Compact for iPad height */}
+                <div className="mb-6 sm:mb-8 shrink-0">
                     <Header showHome showCurriculumPath />
                 </div>
 
-                <main className="flex-1 w-full pb-20">
+                <main className="flex-1 w-full min-h-0 overflow-y-auto pr-2 custom-scrollbar">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col gap-4 w-full"
+                        className="flex flex-col gap-6 w-full pb-10"
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {/* Student Name Section */}
