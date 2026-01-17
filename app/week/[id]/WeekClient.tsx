@@ -45,36 +45,15 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
     const leftZoneRef = useRef<HTMLDivElement>(null);
     const rightZoneRef = useRef<HTMLDivElement>(null);
 
-    // If config doesn't exist, show Coming Soon
-    if (!config) {
-        return (
-            <div className="w-screen h-screen bg-gradient-to-br from-indigo-900 to-purple-900 flex flex-col items-center justify-center p-8 text-white relative overflow-hidden">
-                {/* iOS Status Bar Gutter */}
-                <div className="absolute top-0 left-0 right-0 h-[env(safe-area-inset-top,44px)] min-h-[44px]" />
-                <button
-                    onClick={() => router.push('/')}
-                    className="absolute top-8 left-8 w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center"
-                >
-                    <Home size={32} />
-                </button>
-                <div className="text-9xl mb-8">🚀</div>
-                <h1 className="text-5xl font-black mb-4">{t.ui.coming_soon}!</h1>
-                <p className="text-2xl opacity-70">Level {id.replace('w', '')} is coming soon! ✨</p>
-                <button
-                    onClick={() => router.push('/')}
-                    className="mt-12 px-10 py-4 bg-indigo-500 rounded-2xl font-bold text-xl shadow-lg hover:bg-indigo-400 transition-all"
-                >
-                    {t.ui.back_home}
-                </button>
-            </div>
-        );
-    }
+    // Ref to prevent double execution of victory effect
+    const hasRedirectedRef = useRef(false);
+    const startTimeRef = useRef<number>(0);
 
     const currentItem = randomizedItems[currentItemIndex];
     const isGameComplete = currentItemIndex >= randomizedItems.length;
 
     useEffect(() => {
-        if (currentItem && !isGameComplete && !isProcessing) {
+        if (currentItem && !isGameComplete && !isProcessing && config) {
             // Initialize start time on first item
             if (startTimeRef.current === 0) {
                 startTimeRef.current = Date.now();
@@ -99,15 +78,11 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             }, 300);
             return () => clearTimeout(timer);
         }
-    }, [currentItemIndex, currentItem, isGameComplete, isProcessing, language]);
+    }, [currentItemIndex, currentItem, isGameComplete, isProcessing, language, config, id]);
 
     // Background Music management
     useEffect(() => {
         AudioSystem.playBGM();
-        return () => {
-            // Optional: stop BGM when leaving the game, but usually keeping it across levels is better.
-            // For now, let's keep it playing as long as we are in the app.
-        };
     }, []);
 
     // Preload images for better performance
@@ -125,6 +100,52 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             img.src = src;
         });
     }, [config]);
+
+    useEffect(() => {
+        if (isGameComplete && randomizedItems.length > 0 && !hasRedirectedRef.current && config) {
+            hasRedirectedRef.current = true;
+
+            const stars = GameLogic.calculateStars(correctCount, randomizedItems.length);
+            updateWeek(id, stars);
+
+            // Update mastery time and status
+            const timeSpent = (Date.now() - startTimeRef.current) / 1000;
+            const skillId = WEEK_SKILL_MAP[id] || id;
+            updateMastery(skillId, true, timeSpent);
+
+            confetti({
+                particleCount: 100,
+                spread: 80,
+                origin: { y: 0.5 }
+            });
+            AudioSystem.speak(`${t.feedback.amazing} ${t.weeks[id as keyof typeof t.weeks].title}`);
+        }
+    }, [isGameComplete, randomizedItems.length, correctCount, id, updateWeek, updateMastery, t, config]);
+
+    // If config doesn't exist, show Coming Soon
+    if (!config) {
+        return (
+            <div className="w-screen h-screen bg-gradient-to-br from-indigo-900 to-purple-900 flex flex-col items-center justify-center p-8 text-white relative overflow-hidden">
+                {/* iOS Status Bar Gutter */}
+                <div className="absolute top-0 left-0 right-0 h-[env(safe-area-inset-top,44px)] min-h-[44px]" />
+                <button
+                    onClick={() => router.push('/')}
+                    className="absolute top-8 left-8 w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center"
+                >
+                    <Home size={32} />
+                </button>
+                <div className="text-9xl mb-8">🚀</div>
+                <h1 className="text-5xl font-black mb-4">{t.ui.coming_soon}!</h1>
+                <p className="text-2xl opacity-70">Level {id.replace('w', '')} is coming soon! ✨</p>
+                <button
+                    onClick={() => router.push('/')}
+                    className="mt-12 px-10 py-4 bg-indigo-500 rounded-2xl font-bold text-xl shadow-lg hover:bg-indigo-400 transition-all"
+                >
+                    {t.ui.back_home}
+                </button>
+            </div>
+        );
+    }
 
     const handleDragEnd = async (itemId: string, x: number, y: number) => {
         // Prevent double-trigger with processing lock
@@ -186,34 +207,6 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
         }
     };
 
-    // Ref to prevent double execution of victory effect
-    const hasRedirectedRef = useRef(false);
-    const startTimeRef = useRef<number>(0);
-
-    useEffect(() => {
-        if (isGameComplete && randomizedItems.length > 0 && !hasRedirectedRef.current) {
-            hasRedirectedRef.current = true;
-
-            const stars = GameLogic.calculateStars(correctCount, randomizedItems.length);
-            updateWeek(id as any, stars);
-
-            // Update mastery time and status
-            const timeSpent = (Date.now() - startTimeRef.current) / 1000;
-            const skillId = WEEK_SKILL_MAP[id] || id;
-            updateMastery(skillId, true, timeSpent);
-
-            confetti({
-                particleCount: 100,
-                spread: 80,
-                origin: { y: 0.5 }
-            });
-            AudioSystem.speak(`${t.feedback.amazing} ${t.weeks[id as keyof typeof t.weeks].title}`);
-
-            setTimeout(() => {
-                router.push('/');
-            }, 2500);
-        }
-    }, [isGameComplete, correctCount, updateWeek, updateMastery, router, id, t.weeks, t.feedback.amazing, randomizedItems.length]);
 
     if (isGameComplete) {
         return (
@@ -335,7 +328,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 >
                     <DropZone
                         id={config.leftZone.id}
-                        label={(t.zones as any)[config.leftZone.id] || config.leftZone.label}
+                        label={(t.zones as Record<string, string>)[config.leftZone.id] || config.leftZone.label}
                         icon={config.leftZone.icon}
                         acceptTypes={[config.leftZone.id]}
                         color={config.leftZone.color}
@@ -351,7 +344,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                 >
                     <DropZone
                         id={config.rightZone.id}
-                        label={(t.zones as any)[config.rightZone.id] || config.rightZone.label}
+                        label={(t.zones as Record<string, string>)[config.rightZone.id] || config.rightZone.label}
                         icon={config.rightZone.icon}
                         acceptTypes={[config.rightZone.id]}
                         color={config.rightZone.color}

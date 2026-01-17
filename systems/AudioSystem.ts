@@ -9,7 +9,7 @@ import { SupportedLanguage } from './SaveSystem';
 class AudioSystemClass {
     private soundEnabled: boolean = true;
     private musicEnabled: boolean = true;
-    private speechSynthesis: SpeechSynthesisUtterance | null = null;
+    private synth: SpeechSynthesis | null = null;
     private currentUtterance: SpeechSynthesisUtterance | null = null;
     private currentLanguage: SupportedLanguage = 'en-US';
     private isAudioUnlocked: boolean = false;
@@ -17,7 +17,7 @@ class AudioSystemClass {
 
     constructor() {
         if (typeof window !== 'undefined') {
-            this.speechSynthesis = window.speechSynthesis as any;
+            this.synth = window.speechSynthesis;
         }
     }
 

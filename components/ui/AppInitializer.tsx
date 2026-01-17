@@ -14,8 +14,11 @@ export function AppInitializer({ children }: { children: React.ReactNode }) {
 
         if (hasVisited) {
             // Skip loading screen for returning users
-            setIsLoading(false);
-            setIsFirstVisit(false);
+            // Use a micro-task to avoid cascading renders warning in strict mode
+            Promise.resolve().then(() => {
+                setIsLoading(false);
+                setIsFirstVisit(false);
+            });
         } else {
             // Show loading screen for first-time users
             localStorage.setItem('hasVisited', 'true');
