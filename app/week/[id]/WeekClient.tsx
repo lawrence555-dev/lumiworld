@@ -112,9 +112,11 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
     useEffect(() => {
         if (!config) return;
 
-        const imagesToPreload = config.items
-            .filter(item => item.image)
-            .map(item => item.image as string);
+        const imagesToPreload = [
+            ...config.items.filter(item => item.image).map(item => item.image as string),
+            config.leftZone.selectionImage,
+            config.rightZone.selectionImage
+        ].filter(Boolean) as string[];
 
         imagesToPreload.forEach(src => {
             const img = new Image();
@@ -317,7 +319,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
             )}
 
             {/* Drop Zones */}
-            <div className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-12 sm:gap-20">
+            <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-16 sm:gap-24">
                 <div
                     ref={leftZoneRef}
                     className={`transition-all duration-500 ${consecutiveErrors >= 3 && currentItem.type !== config.leftZone.id ? 'opacity-30 pointer-events-none grayscale scale-95' : 'hover:scale-105'}`}
@@ -329,6 +331,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                         acceptTypes={[config.leftZone.id]}
                         color={config.leftZone.color}
                         filled={leftFilled}
+                        selectionImage={config.leftZone.selectionImage}
                         highlight={consecutiveErrors >= 2 && currentItem.type === config.leftZone.id}
                     />
                 </div>
@@ -344,6 +347,7 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                         acceptTypes={[config.rightZone.id]}
                         color={config.rightZone.color}
                         filled={rightFilled}
+                        selectionImage={config.rightZone.selectionImage}
                         highlight={consecutiveErrors >= 2 && currentItem.type === config.rightZone.id}
                     />
                 </div>
@@ -359,8 +363,8 @@ export default function WeekClient({ params: paramsPromise }: { params: Promise<
                         label={GAME_LABELS[currentItem.id]?.[language as keyof typeof GAME_LABELS[string]] || currentItem.label}
                         emoji={currentItem.emoji}
                         image={currentItem.image}
-                        initialX={typeof window !== 'undefined' ? window.innerWidth / 2 - 80 : 0}
-                        initialY={150}
+                        initialX={typeof window !== 'undefined' ? window.innerWidth / 2 - 100 : 0}
+                        initialY={140}
                         onDragEnd={handleDragEnd}
                     />
                 </div>

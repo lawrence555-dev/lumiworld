@@ -104,17 +104,18 @@ export function Draggable({
         <motion.div
             ref={dragRef}
             className={`
-        absolute bg-white rounded-3xl shadow-2xl p-6
-        flex flex-col items-center justify-center gap-2
+        absolute bg-white rounded-[2.5rem] shadow-2xl p-8
+        flex flex-col items-center justify-center gap-4
         cursor-grab active:cursor-grabbing
         select-none touch-none
-        ${isDragging ? 'z-50 scale-110' : 'z-10'}
+        border-4 border-white/50
+        ${isDragging ? 'z-50 scale-110 shadow-[0_30px_60px_rgba(0,0,0,0.5)]' : 'z-10'}
       `}
             style={{
                 left: position.x,
                 top: position.y,
-                width: '140px',
-                height: '140px',
+                width: '200px',
+                height: '200px',
             }}
             animate={{
                 scale: isDragging ? 1.1 : 1,
@@ -129,17 +130,17 @@ export function Draggable({
             onMouseLeave={handleMouseUp}
         >
             {image ? (
-                <div className="w-20 h-20 relative flex items-center justify-center">
+                <div className="w-28 h-28 relative flex items-center justify-center">
                     <img
                         src={image}
                         alt={label}
-                        className="w-full h-full object-contain pointer-events-none"
+                        className="w-full h-full object-contain pointer-events-none drop-shadow-xl"
                     />
                 </div>
             ) : (
-                <div className="text-6xl">{emoji}</div>
+                <div className="text-8xl filter drop-shadow-lg">{emoji}</div>
             )}
-            <div className="text-lg font-bold text-gray-800 text-center">{label}</div>
+            <div className="text-2xl font-black text-gray-800 text-center tracking-tight leading-tight">{label}</div>
         </motion.div>
     );
 }
