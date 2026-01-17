@@ -79,7 +79,7 @@ export default function ParentDashboard() {
                                     {/* Levels Completed */}
                                     <motion.div
                                         whileHover={{ y: -3 }}
-                                        className="glass-card rounded-2xl p-6 px-8 relative overflow-hidden group"
+                                        className="glass-card rounded-2xl p-6 px-8 relative overflow-hidden group min-h-[140px] flex flex-col justify-center"
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <h3 className="text-lg font-black text-white/90">{t.parent.levels_completed}</h3>
@@ -104,7 +104,7 @@ export default function ParentDashboard() {
                                     {/* Stars Earned */}
                                     <motion.div
                                         whileHover={{ y: -3 }}
-                                        className="glass-card rounded-2xl p-6 px-8 relative overflow-hidden group"
+                                        className="glass-card rounded-2xl p-6 px-8 relative overflow-hidden group min-h-[140px] flex flex-col justify-center"
                                     >
                                         <div className="flex items-center justify-between mb-4">
                                             <h3 className="text-lg font-black text-white/90">{t.parent.stars_earned}</h3>
