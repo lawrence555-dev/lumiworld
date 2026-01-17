@@ -33,34 +33,33 @@ export default function Dashboard() {
   });
 
   return (
-    {/* Optimized wrapper for scroll stability and centering */ }
-    < div className = "w-full max-w-[1240px] px-8 sm:px-12 flex flex-col items-center py-10 sm:py-16" >
+    <div className="app-container items-center overflow-y-auto w-full">
+      <div className="w-full max-w-[1240px] px-8 sm:px-12 flex flex-col items-center py-12 sm:py-20 lg:py-24">
+        {/* Header Block - Massive spacing to ensure no overlap */}
+        <div className="w-full mb-16 sm:mb-24 shrink-0 px-4">
+          <Header />
+        </div>
 
-      {/* Header Block - Massive spacing to ensure no overlap */ }
-      < div className = "w-full mb-16 sm:mb-24 shrink-0 px-4" >
-        <Header />
-        </div >
-
-    {/* Main Grid Section - Ensure bottom padding is visible on all iPads */ }
-    < main className = "w-full pb-32" >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12"
-      >
-        {weeks_data.map((week) => (
-          <div key={week.id} className="w-full h-full">
-            <WeekCard
-              {...week}
-              weekId={week.id}
-              weekNumber={week.number}
-              onClick={() => router.push(`/week/${week.id}`)}
-            />
-          </div>
-        ))}
-      </motion.div>
-        </main >
-      </div >
-    </div >
+        {/* Main Grid Section - Ensure bottom padding is visible on all iPads */}
+        <main className="w-full pb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12"
+          >
+            {weeks_data.map((week) => (
+              <div key={week.id} className="w-full h-full">
+                <WeekCard
+                  {...week}
+                  weekId={week.id}
+                  weekNumber={week.number}
+                  onClick={() => router.push(`/week/${week.id}`)}
+                />
+              </div>
+            ))}
+          </motion.div>
+        </main>
+      </div>
+    </div>
   );
 }
