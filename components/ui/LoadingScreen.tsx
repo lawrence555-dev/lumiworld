@@ -69,9 +69,27 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                     }}
                     className="text-white text-center"
                 >
-                    <h1 className="text-6xl md:text-8xl font-black mb-4">
-                        🌟 LumiWorld
-                    </h1>
+                    <div className="flex flex-col items-center gap-4">
+                        <div className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-white/20 rounded-full blur-2xl animate-pulse" />
+                            <img
+                                src="/assets/brand/logo.png"
+                                alt="LumiWorld"
+                                className="relative w-[90%] h-[90%] object-contain drop-shadow-2xl"
+                                onError={(e) => {
+                                    (e.target as HTMLImageElement).style.display = 'none';
+                                    const fallback = (e.target as HTMLImageElement).parentElement?.querySelector('.fallback-logo');
+                                    if (fallback) (fallback as HTMLElement).style.display = 'block';
+                                }}
+                            />
+                            <div className="fallback-logo hidden text-6xl md:text-8xl">
+                                🌟
+                            </div>
+                        </div>
+                        <h1 className="text-4xl md:text-5xl font-black tracking-tight">
+                            LumiWorld
+                        </h1>
+                    </div>
                     <p className="text-xl md:text-2xl font-medium opacity-90">
                         {t.ui.master_steam}
                     </p>
