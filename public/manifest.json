@@ -1,31 +1,23 @@
 {
     "name": "LumiWorld STEAM",
     "short_name": "LumiWorld",
-    "description": "Pre-K STEAM Education - Interactive Learning Games for 4-Year-Olds",
+    "description": "Pre-K Educational STEAM Learning App",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#1e293b",
-    "theme_color": "#3b82f6",
-    "orientation": "landscape",
+    "background_color": "#0B0E14",
+    "theme_color": "#6366F1",
     "icons": [
         {
-            "src": "/images/icon-192.png",
+            "src": "/assets/brand/logo.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "/images/icon-512.png",
+            "src": "/assets/brand/logo.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
         }
-    ],
-    "categories": [
-        "education",
-        "kids",
-        "games"
-    ],
-    "lang": "en-US",
-    "dir": "ltr"
+    ]
 }

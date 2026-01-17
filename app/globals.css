@@ -77,12 +77,6 @@ body {
   user-select: none;
   overflow-x: hidden;
   overflow-y: auto;
-
-  /* Support for iOS Dynamic Toolbars and Safe Areas - Standardized Padding */
-  padding-top: max(env(safe-area-inset-top), 1rem);
-  padding-bottom: max(env(safe-area-inset-bottom), 1rem);
-  padding-left: env(safe-area-inset-left, 0px);
-  padding-right: env(safe-area-inset-right, 0px);
 }
 
 .app-container {

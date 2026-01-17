@@ -49,7 +49,7 @@ export default function ParentDashboard() {
     return (
         <div className="app-container h-screen overflow-hidden items-center">
             {/* Unified Content Wrapper - Aligned with Homepage */}
-            <div className="w-full max-w-[1240px] px-8 sm:px-12 flex flex-col h-full py-6 sm:py-8 lg:py-10">
+            <div className="w-full max-w-[1240px] px-8 sm:px-12 flex flex-col h-full pb-6 sm:pb-8 lg:pb-10">
 
                 {/* Header Block - Compact for iPad height */}
                 <div className="mb-6 sm:mb-8 shrink-0">

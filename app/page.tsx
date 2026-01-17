@@ -96,8 +96,8 @@ export default function Dashboard() {
         </div>
       ) : (
         <div key="content" className="app-container h-screen overflow-hidden px-6 sm:px-12 flex flex-col items-center">
-          {/* Dynamic Safe Area Padding for iOS */}
-          <div className="w-full max-w-[1280px] h-full flex flex-col py-6 sm:py-8 lg:py-10">
+          {/* Unified Content Wrapper - Aligned with Homepage */}
+          <div className="w-full max-w-[1280px] h-full flex flex-col pb-6 sm:pb-8 lg:pb-10">
             {/* Header Block - Compact for iPad height */}
             <div className="w-full mb-6 sm:mb-8 shrink-0">
               <Header />
