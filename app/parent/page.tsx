@@ -43,11 +43,11 @@ export default function ParentDashboard() {
             <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-6 sm:py-8">
 
                 {/* Header Block - Improved spacing for iPad */}
-                <div className="pb-8 sm:pb-10 pt-2">
+                <div className="mb-10 sm:mb-14 pt-2 shrink-0">
                     <Header showHome showCurriculumPath />
                 </div>
 
-                <main className="flex-1 flex flex-col w-full justify-start pt-2 sm:pt-4">
+                <main className="flex-1 w-full pb-20">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export default function ParentDashboard() {
                             {/* Levels Completed */}
                             <motion.div
                                 whileHover={{ y: -3 }}
-                                className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
+                                className="glass-card rounded-3xl p-8 px-10 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
                                     <h3 className="text-xl font-black text-white/90">{t.parent.levels_completed}</h3>
@@ -78,7 +78,7 @@ export default function ParentDashboard() {
                             {/* Stars Earned */}
                             <motion.div
                                 whileHover={{ y: -3 }}
-                                className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
+                                className="glass-card rounded-3xl p-8 px-10 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
                                     <h3 className="text-xl font-black text-white/90">{t.parent.stars_earned}</h3>
@@ -98,7 +98,7 @@ export default function ParentDashboard() {
                             {/* Total Time */}
                             <motion.div
                                 whileHover={{ y: -3 }}
-                                className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
+                                className="glass-card rounded-3xl p-8 px-10 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
                                     <h3 className="text-xl font-black text-white/90">{t.parent.total_time}</h3>
@@ -115,7 +115,7 @@ export default function ParentDashboard() {
                         </div>
 
                         {/* Weekly Breakdown */}
-                        <div className="glass-card rounded-[2.5rem] p-10 px-12">
+                        <div className="glass-card rounded-3xl p-10 px-12">
                             <h2 className="text-xl font-black text-white/90 mb-6">
                                 {t.parent.weekly_breakdown}
                             </h2>
@@ -169,7 +169,7 @@ export default function ParentDashboard() {
                         </div>
 
                         {/* Detailed Mastery Report */}
-                        <div className="glass-card rounded-[2.5rem] p-10 px-12">
+                        <div className="glass-card rounded-3xl p-10 px-12">
                             <h2 className="text-xl font-black text-white/90 mb-6">
                                 {t.settings.learning_report}
                             </h2>
