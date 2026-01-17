@@ -36,8 +36,8 @@ export default function SettingsPage() {
             {/* Unified Content Wrapper - Aligned with Homepage */}
             <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-6 sm:py-8">
 
-                {/* Header Block - Improved spacing for iPad */}
-                <div className="mb-10 sm:mb-14 pt-2 shrink-0">
+                {/* Header Block - Increased spacing for clear separation */}
+                <div className="mb-14 sm:mb-20 pt-4 shrink-0">
                     <Header showHome showCurriculumPath />
                 </div>
 
@@ -49,7 +49,7 @@ export default function SettingsPage() {
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {/* Student Name Section */}
-                            <section className="glass-card rounded-3xl p-8 px-10 flex flex-col gap-4">
+                            <section className="glass-card rounded-2xl p-8 px-10 flex flex-col gap-4">
                                 <h1 className="text-xl font-black text-white/90">
                                     {t.settings.student_name_label}
                                 </h1>
@@ -65,7 +65,7 @@ export default function SettingsPage() {
                             </section>
 
                             {/* Language Picker Section */}
-                            <section className="glass-card rounded-3xl p-8 px-10 flex flex-col gap-4">
+                            <section className="glass-card rounded-2xl p-8 px-10 flex flex-col gap-4">
                                 <h2 className="text-xl font-black text-white/90">
                                     {t.settings.language_label}
                                 </h2>
@@ -75,7 +75,7 @@ export default function SettingsPage() {
                             </section>
 
                             {/* Theme Selection */}
-                            <section className="glass-card rounded-3xl p-8 px-10 flex flex-col gap-4">
+                            <section className="glass-card rounded-2xl p-8 px-10 flex flex-col gap-4">
                                 <h2 className="text-xl font-black text-white/90">
                                     {t.settings.theme_label}
                                 </h2>
@@ -96,7 +96,7 @@ export default function SettingsPage() {
                             </section>
 
                             {/* Data Management */}
-                            <section className="glass-card rounded-3xl p-8 px-10 flex flex-col gap-4">
+                            <section className="glass-card rounded-2xl p-8 px-10 flex flex-col gap-4">
                                 <h2 className="text-xl font-black text-white/90">
                                     {t.settings.data_management}
                                 </h2>
@@ -118,7 +118,7 @@ export default function SettingsPage() {
                         </div>
 
                         {/* Learning Report Section */}
-                        <section className="glass-card rounded-3xl p-10 px-12 mt-1">
+                        <section className="glass-card rounded-2xl p-10 px-12 mt-1">
                             <h2 className="text-2xl font-black text-white/90 mb-6">
                                 {t.settings.learning_report}
                             </h2>
@@ -165,7 +165,7 @@ export default function SettingsPage() {
                                         <motion.div
                                             key={skillId}
                                             whileHover={{ y: -2 }}
-                                            className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col gap-3"
+                                            className="bg-white/5 border border-white/10 rounded-xl p-6 px-8 flex flex-col gap-3"
                                         >
                                             <div className="text-[12px] font-black text-white/40 uppercase tracking-widest line-clamp-1">
                                                 {skillTitle}

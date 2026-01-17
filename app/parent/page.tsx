@@ -42,8 +42,8 @@ export default function ParentDashboard() {
             {/* Unified Content Wrapper - Aligned with Homepage */}
             <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-6 sm:py-8">
 
-                {/* Header Block - Improved spacing for iPad */}
-                <div className="mb-10 sm:mb-14 pt-2 shrink-0">
+                {/* Header Block - Increased spacing for clear separation */}
+                <div className="mb-14 sm:mb-20 pt-4 shrink-0">
                     <Header showHome showCurriculumPath />
                 </div>
 
@@ -115,7 +115,7 @@ export default function ParentDashboard() {
                         </div>
 
                         {/* Weekly Breakdown */}
-                        <div className="glass-card rounded-3xl p-10 px-12">
+                        <div className="glass-card rounded-2xl p-10 px-12">
                             <h2 className="text-xl font-black text-white/90 mb-6">
                                 {t.parent.weekly_breakdown}
                             </h2>
@@ -124,7 +124,7 @@ export default function ParentDashboard() {
                                     <motion.div
                                         key={week.id}
                                         whileHover={{ y: -2 }}
-                                        className={`p-5 rounded-2xl border-2 transition-all flex flex-col gap-4 ${week.isCompleted
+                                        className={`p-6 px-8 rounded-2xl border-2 transition-all flex flex-col gap-4 ${week.isCompleted
                                             ? 'border-emerald-500/30 bg-emerald-500/5'
                                             : week.stars > 0
                                                 ? 'border-yellow-500/30 bg-yellow-500/5'
@@ -169,7 +169,7 @@ export default function ParentDashboard() {
                         </div>
 
                         {/* Detailed Mastery Report */}
-                        <div className="glass-card rounded-3xl p-10 px-12">
+                        <div className="glass-card rounded-2xl p-10 px-12">
                             <h2 className="text-xl font-black text-white/90 mb-6">
                                 {t.settings.learning_report}
                             </h2>
@@ -216,7 +216,7 @@ export default function ParentDashboard() {
                                         <motion.div
                                             key={skillId}
                                             whileHover={{ y: -2 }}
-                                            className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col gap-4"
+                                            className="bg-white/5 border border-white/10 rounded-xl p-6 px-8 flex flex-col gap-4"
                                         >
                                             <div className="text-[12px] font-black text-white/40 uppercase tracking-widest line-clamp-1">
                                                 {skillTitle}
