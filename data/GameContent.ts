@@ -32,8 +32,8 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         title: "Scientific Classification",
         mode: "classification",
         thumbnail: "/assets/levels/week1.png",
-        leftZone: { id: "living", label: "Living", icon: "❤️", color: "green" },
-        rightZone: { id: "non-living", label: "Non-Living", icon: "🪨", color: "gray" },
+        leftZone: { id: "living", label: "Living", icon: "❤️", color: "green", selectionImage: "/assets/selections/w1_left.png" },
+        rightZone: { id: "non-living", label: "Non-Living", icon: "🪨", color: "gray", selectionImage: "/assets/selections/w1_right.png" },
         items: [
             // Living (15)
             { id: 'cat', type: 'living', label: 'Cat', emoji: '🐱', image: '/assets/items/w1/cat.png' },
@@ -66,15 +66,15 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
             { id: 'key', type: 'non-living', label: 'Key', emoji: '🔑', image: '/assets/items/w1/key.png' },
             { id: 'toy', type: 'non-living', label: 'Toy', emoji: '🧸', image: '/assets/items/w1/toy.png' },
             { id: 'cup', type: 'non-living', label: 'Cup', emoji: '🥛', image: '/assets/items/w1/cup.png' },
-            { id: 'clock', type: 'non-living', label: 'Clock', emoji: '⏰' },
+            { id: 'clock', type: 'non-living', label: 'Clock', emoji: '⏰', image: '/assets/items/w1/clock.png' },
         ]
     },
     w2: {
         title: "Introduction to Anatomy",
         mode: "classification",
         thumbnail: "/assets/levels/week2.png",
-        leftZone: { id: "fish-parts", label: "Fish Parts", icon: "🐟", color: "blue" },
-        rightZone: { id: "other-parts", label: "Other Parts", icon: "🦁", color: "emerald" },
+        leftZone: { id: "fish-parts", label: "Fish Parts", icon: "🐟", color: "blue", selectionImage: "/assets/selections/w2_left.png" },
+        rightZone: { id: "other-parts", label: "Other Parts", icon: "🦁", color: "emerald", selectionImage: "/assets/selections/w2_right.png" },
         items: [
             { id: 'fin', type: 'fish-parts', label: 'Fin', emoji: '🐟' },
             { id: 'scales', type: 'fish-parts', label: 'Scales', emoji: '🧜' },
@@ -113,8 +113,8 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         title: "Number Sense & Needs",
         mode: "classification",
         thumbnail: "/assets/levels/week3.png",
-        leftZone: { id: "n-low", label: "Group 1-10", icon: "1️⃣", color: "cyan" },
-        rightZone: { id: "n-high", label: "Group 11-20", icon: "🔟", color: "blue" },
+        leftZone: { id: "n-low", label: "Group 1-10", icon: "1️⃣", color: "cyan", selectionImage: "/assets/selections/w3_left.png" },
+        rightZone: { id: "n-high", label: "Group 11-20", icon: "🔟", color: "blue", selectionImage: "/assets/selections/w3_right.png" },
         items: [
             // Low (1-10) - 15 items
             { id: 'n1', type: 'n-low', label: '1 Item', emoji: '🍎' },
@@ -154,8 +154,8 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         title: "Comparative Measurement",
         mode: "classification",
         thumbnail: "/assets/levels/week4.png",
-        leftZone: { id: "huge", label: "Huge (Heavy)", icon: "🏢", color: "purple" },
-        rightZone: { id: "tiny", label: "Tiny (Light)", icon: "🐜", color: "emerald" },
+        leftZone: { id: "huge", label: "Huge (Heavy)", icon: "🏢", color: "purple", selectionImage: "/assets/selections/w4_left.png" },
+        rightZone: { id: "tiny", label: "Tiny (Light)", icon: "🐜", color: "emerald", selectionImage: "/assets/selections/w4_right.png" },
         items: [
             // Huge (15)
             { id: 'elephant_h', type: 'huge', label: 'Elephant', emoji: '🐘' },
@@ -195,8 +195,8 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         title: "Habitats Exploration",
         mode: "classification",
         thumbnail: "/assets/levels/week5.png",
-        leftZone: { id: "sky", label: "Sky", icon: "☁️", color: "blue" },
-        rightZone: { id: "earth", label: "Earth", icon: "🌱", color: "green" },
+        leftZone: { id: "sky", label: "Sky", icon: "☁️", color: "blue", selectionImage: "/assets/selections/w5_left.png" },
+        rightZone: { id: "earth", label: "Earth", icon: "🌱", color: "green", selectionImage: "/assets/selections/w5_right.png" },
         items: [
             // Sky (15)
             { id: 'eagle', type: 'sky', label: 'Eagle', emoji: '🦅' },
@@ -236,8 +236,8 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         title: "Botanical Basics",
         mode: "classification",
         thumbnail: "/assets/levels/week6.png",
-        leftZone: { id: "need", label: "Growth Needs", icon: "🌱", color: "green" },
-        rightZone: { id: "not_need", label: "Not Needed", icon: "❌", color: "gray" },
+        leftZone: { id: "need", label: "Growth Needs", icon: "🌱", color: "green", selectionImage: "/assets/selections/w6_left.png" },
+        rightZone: { id: "not_need", label: "Not Needed", icon: "❌", color: "gray", selectionImage: "/assets/selections/w6_right.png" },
         items: [
             // Needs (15)
             { id: 'sun_b', type: 'need', label: 'Sunlight', emoji: '☀️' },
@@ -277,8 +277,8 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         title: "Environmental Science",
         mode: "classification",
         thumbnail: "/assets/levels/week7.png",
-        leftZone: { id: "clean", label: "Clean Ocean", icon: "🐬", color: "cyan" },
-        rightZone: { id: "trash", label: "Trash", icon: "🗑️", color: "gray" },
+        leftZone: { id: "clean", label: "Clean Ocean", icon: "🐬", color: "cyan", selectionImage: "/assets/selections/w7_left.png" },
+        rightZone: { id: "trash", label: "Trash", icon: "🗑️", color: "gray", selectionImage: "/assets/selections/w7_right.png" },
         items: [
             // Clean (15)
             { id: 'dolphin', type: 'clean', label: 'Dolphin', emoji: '🐬' },
@@ -318,8 +318,8 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
         title: "Ecosystem Management",
         mode: "classification",
         thumbnail: "/assets/levels/week8.png",
-        leftZone: { id: "forest", label: "Forest", icon: "🌲", color: "green" },
-        rightZone: { id: "ocean", label: "Ocean", icon: "🌊", color: "blue" },
+        leftZone: { id: "forest", label: "Forest", icon: "🌲", color: "green", selectionImage: "/assets/selections/w8_left.png" },
+        rightZone: { id: "ocean", label: "Ocean", icon: "🌊", color: "blue", selectionImage: "/assets/selections/w8_right.png" },
         items: [
             // Forest (15)
             { id: 'bear', type: 'forest', label: 'Bear', emoji: '🐻' },
