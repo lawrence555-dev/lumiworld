@@ -35,9 +35,11 @@ export default function SettingsPage() {
         <div className="app-container h-screen overflow-hidden items-center">
             {/* Unified Content Wrapper - Aligned with Homepage */}
             <div className="w-full max-w-[1240px] px-8 sm:px-12 flex flex-col h-full pb-6 sm:pb-8 lg:pb-10">
+                {/* iOS Status Bar Gutter - Ensures no overlap with clock/battery */}
+                <div className="h-[env(safe-area-inset-top,44px)] min-h-[44px] shrink-0" />
 
                 {/* Header Block - Compact for iPad height */}
-                <div className="mb-2 sm:mb-4 shrink-0">
+                <div className="mb-4 sm:mb-6 shrink-0">
                     <Header showHome showCurriculumPath />
                 </div>
 
