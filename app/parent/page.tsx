@@ -79,13 +79,18 @@ export default function ParentDashboard() {
                                     {/* Levels Completed */}
                                     <motion.div
                                         whileHover={{ y: -3 }}
-                                        className="glass-card rounded-2xl p-8 px-10 relative overflow-hidden group"
+                                        className="glass-card rounded-2xl p-6 px-8 relative overflow-hidden group"
                                     >
                                         <div className="flex items-center justify-between mb-4">
-                                            <h3 className="text-xl font-black text-white/90">{t.parent.levels_completed}</h3>
-                                            <span className="text-3xl font-black text-white">
-                                                {completedWeeks}<span className="text-white/30 text-xl font-bold">/{totalWeeks}</span>
-                                            </span>
+                                            <h3 className="text-lg font-black text-white/90">{t.parent.levels_completed}</h3>
+                                            <div className="flex items-baseline gap-1.5">
+                                                <span className="text-3xl font-black text-white">
+                                                    {completedWeeks}
+                                                </span>
+                                                <span className="text-white/30 text-lg font-bold">
+                                                    /{totalWeeks}
+                                                </span>
+                                            </div>
                                         </div>
                                         <div className="mt-4 h-3 bg-white/5 rounded-full overflow-hidden">
                                             <motion.div
@@ -99,13 +104,18 @@ export default function ParentDashboard() {
                                     {/* Stars Earned */}
                                     <motion.div
                                         whileHover={{ y: -3 }}
-                                        className="glass-card rounded-2xl p-8 px-10 relative overflow-hidden group"
+                                        className="glass-card rounded-2xl p-6 px-8 relative overflow-hidden group"
                                     >
                                         <div className="flex items-center justify-between mb-4">
-                                            <h3 className="text-xl font-black text-white/90">{t.parent.stars_earned}</h3>
-                                            <span className="text-3xl font-black text-white">
-                                                {totalStars}<span className="text-white/30 text-xl font-bold">/{maxStars}</span>
-                                            </span>
+                                            <h3 className="text-lg font-black text-white/90">{t.parent.stars_earned}</h3>
+                                            <div className="flex items-baseline gap-1.5">
+                                                <span className="text-3xl font-black text-white">
+                                                    {totalStars}
+                                                </span>
+                                                <span className="text-white/30 text-lg font-bold">
+                                                    /{maxStars}
+                                                </span>
+                                            </div>
                                         </div>
                                         <div className="mt-4 h-3 bg-white/5 rounded-full overflow-hidden">
                                             <motion.div
@@ -119,15 +129,15 @@ export default function ParentDashboard() {
                                     {/* Total Time */}
                                     <motion.div
                                         whileHover={{ y: -3 }}
-                                        className="glass-card rounded-2xl p-8 px-10 relative overflow-hidden group"
+                                        className="glass-card rounded-2xl p-6 px-8 relative overflow-hidden group min-h-[140px] flex flex-col justify-center"
                                     >
-                                        <div className="flex items-center justify-between mb-4">
-                                            <h3 className="text-xl font-black text-white/90">{t.parent.total_time}</h3>
-                                            <div className="flex flex-col items-end">
+                                        <div className="flex items-center justify-between">
+                                            <h3 className="text-lg font-black text-white/90">{t.parent.total_time}</h3>
+                                            <div className="flex items-baseline gap-1.5">
                                                 <span className="text-3xl font-black text-white">
                                                     {totalTimeMinutes}
                                                 </span>
-                                                <span className="text-white/40 font-black uppercase tracking-widest text-[12px]">
+                                                <span className="text-white/40 font-black uppercase tracking-widest text-xs whitespace-nowrap">
                                                     {t.settings.minutes_abbr}
                                                 </span>
                                             </div>
