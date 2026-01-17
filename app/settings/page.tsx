@@ -36,8 +36,8 @@ export default function SettingsPage() {
             {/* Unified Content Wrapper - Aligned with Homepage */}
             <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-6 sm:py-8">
 
-                {/* Header Block - Aligned with Homepage */}
-                <div className="pb-4 sm:pb-6">
+                {/* Header Block - Improved spacing for iPad */}
+                <div className="pb-8 sm:pb-10 pt-2">
                     <Header showHome showCurriculumPath />
                 </div>
 
@@ -58,7 +58,7 @@ export default function SettingsPage() {
                                         type="text"
                                         value={progress.studentName}
                                         onChange={(e) => updateName(e.target.value)}
-                                        className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-6 py-3 text-xl font-bold text-white outline-none focus:border-indigo-500/50 transition-all focus:bg-white/10"
+                                        className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-6 py-4 text-2xl font-bold text-white outline-none focus:border-indigo-500/50 transition-all focus:bg-white/10"
                                         placeholder={t.settings.student_name_placeholder}
                                     />
                                 </div>
@@ -167,14 +167,14 @@ export default function SettingsPage() {
                                             whileHover={{ y: -2 }}
                                             className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col gap-3"
                                         >
-                                            <div className="text-[10px] font-black text-white/40 uppercase tracking-widest line-clamp-1">
+                                            <div className="text-[12px] font-black text-white/40 uppercase tracking-widest line-clamp-1">
                                                 {skillTitle}
                                             </div>
                                             <div className="flex flex-col gap-2">
                                                 <div className="text-xl font-mono font-black text-white">
                                                     {formatTime(data.totalTimeSeconds)}
                                                 </div>
-                                                <div className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
+                                                <div className={`px-3 py-2 rounded-lg text-[11px] font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
                                                     {getStatusLabel(data.status)}
                                                 </div>
                                             </div>

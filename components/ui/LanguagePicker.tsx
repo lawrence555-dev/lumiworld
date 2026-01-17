@@ -33,7 +33,7 @@ export function LanguagePicker() {
                     `}
                 >
                     <span className="text-3xl mb-1">{option.flag}</span>
-                    <span className="text-xs font-bold tracking-tight uppercase">{option.name}</span>
+                    <span className="text-sm font-black tracking-tight uppercase">{option.name}</span>
                     {option.code === language && (
                         <motion.div
                             layoutId="lang-active"

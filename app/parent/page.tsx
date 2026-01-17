@@ -42,12 +42,12 @@ export default function ParentDashboard() {
             {/* Unified Content Wrapper - Aligned with Homepage */}
             <div className="w-full max-w-[1160px] px-6 flex flex-col min-h-screen py-6 sm:py-8">
 
-                {/* Header Block - Aligned with Homepage */}
-                <div className="pb-4 sm:pb-6">
+                {/* Header Block - Improved spacing for iPad */}
+                <div className="pb-8 sm:pb-10 pt-2">
                     <Header showHome showCurriculumPath />
                 </div>
 
-                <main className="flex-1 flex flex-col w-full justify-start pt-4">
+                <main className="flex-1 flex flex-col w-full justify-start pt-2 sm:pt-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function ParentDashboard() {
                                 className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-lg font-black text-white/90">{t.parent.levels_completed}</h3>
+                                    <h3 className="text-xl font-black text-white/90">{t.parent.levels_completed}</h3>
                                     <span className="text-3xl font-black text-white">
                                         {completedWeeks}<span className="text-white/30 text-xl font-bold">/{totalWeeks}</span>
                                     </span>
@@ -81,7 +81,7 @@ export default function ParentDashboard() {
                                 className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-lg font-black text-white/90">{t.parent.stars_earned}</h3>
+                                    <h3 className="text-xl font-black text-white/90">{t.parent.stars_earned}</h3>
                                     <span className="text-3xl font-black text-white">
                                         {totalStars}<span className="text-white/30 text-xl font-bold">/{maxStars}</span>
                                     </span>
@@ -101,12 +101,12 @@ export default function ParentDashboard() {
                                 className="glass-card rounded-[2rem] p-8 relative overflow-hidden group"
                             >
                                 <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-lg font-black text-white/90">{t.parent.total_time}</h3>
+                                    <h3 className="text-xl font-black text-white/90">{t.parent.total_time}</h3>
                                     <div className="flex flex-col items-end">
                                         <span className="text-3xl font-black text-white">
                                             {totalTimeMinutes}
                                         </span>
-                                        <span className="text-white/40 font-bold uppercase tracking-widest text-[10px]">
+                                        <span className="text-white/40 font-black uppercase tracking-widest text-[12px]">
                                             {t.settings.minutes_abbr}
                                         </span>
                                     </div>
@@ -132,7 +132,7 @@ export default function ParentDashboard() {
                                             }`}
                                     >
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">
+                                            <span className="text-[12px] font-black text-white/40 uppercase tracking-widest">
                                                 {t.ui.level} {week.number}
                                             </span>
                                             <div className="flex gap-1">
@@ -147,10 +147,10 @@ export default function ParentDashboard() {
                                                 ))}
                                             </div>
                                         </div>
-                                        <h4 className="text-sm font-black text-white leading-tight flex-1 line-clamp-1">
+                                        <h4 className="text-base font-black text-white leading-tight flex-1 line-clamp-1">
                                             {week.title}
                                         </h4>
-                                        <div className={`text-[9px] font-black px-4 py-2 rounded-xl text-center uppercase tracking-wider ${week.isCompleted
+                                        <div className={`text-[11px] font-black px-4 py-2 rounded-xl text-center uppercase tracking-wider ${week.isCompleted
                                             ? 'bg-emerald-500 text-white shadow-md shadow-emerald-500/20'
                                             : week.stars > 0
                                                 ? 'bg-yellow-500 text-black shadow-md shadow-yellow-500/20'
@@ -218,14 +218,14 @@ export default function ParentDashboard() {
                                             whileHover={{ y: -2 }}
                                             className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col gap-4"
                                         >
-                                            <div className="text-[10px] font-black text-white/40 uppercase tracking-widest line-clamp-1">
+                                            <div className="text-[12px] font-black text-white/40 uppercase tracking-widest line-clamp-1">
                                                 {skillTitle}
                                             </div>
                                             <div className="flex flex-col gap-3">
                                                 <div className="text-xl font-mono font-black text-white">
                                                     {formatTime(data.totalTimeSeconds)}
                                                 </div>
-                                                <div className={`px-4 py-2 rounded-xl text-[9px] font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
+                                                <div className={`px-4 py-2 rounded-xl text-[11px] font-black uppercase text-center tracking-wider ${getStatusColor(data.status)}`}>
                                                     {getStatusLabel(data.status)}
                                                 </div>
                                             </div>

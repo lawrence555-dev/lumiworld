@@ -37,17 +37,17 @@ export default function Dashboard() {
       {/* Unified Content Wrapper - Perfectly Centered and Balanced */}
       <div className="w-full max-w-[1160px] px-6 flex flex-col flex-1 py-4 sm:py-5">
 
-        {/* Header Block */}
-        <div className="pb-3 sm:pb-4">
+        {/* Header Block with generous spacing for iPad */}
+        <div className="pb-6 sm:pb-8 pt-2">
           <Header />
         </div>
 
-        {/* Main Grid Section - Balanced Vertical Spacing */}
-        <main className="flex-1 w-full flex flex-col justify-center">
+        {/* Main Grid Section - Aligned to top to avoid header overlap on short screens */}
+        <main className="w-full flex flex-col justify-start pt-2 sm:pt-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 pb-10"
           >
             {weeks_data.map((week) => (
               <div key={week.id} className="w-full h-full">
