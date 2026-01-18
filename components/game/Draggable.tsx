@@ -104,13 +104,13 @@ export function Draggable({
         <motion.div
             ref={dragRef}
             className={`
-        absolute bg-white rounded-[2.5rem] shadow-2xl p-8
-        flex flex-col items-center justify-center gap-4
-        cursor-grab active:cursor-grabbing
-        select-none touch-none
-        border-4 border-white/50
-        ${isDragging ? 'z-50 scale-110 shadow-[0_30px_60px_rgba(0,0,0,0.5)]' : 'z-10'}
-      `}
+                absolute bg-[#fcfaf7] rounded-[2.5rem] shadow-2xl p-8
+                flex flex-col items-center justify-center gap-4
+                cursor-grab active:cursor-grabbing
+                select-none touch-none
+                border-4 border-white/50
+                ${isDragging ? 'z-50 scale-110 shadow-[0_30px_60px_rgba(0,0,0,0.5)]' : 'z-10'}
+            `}
             style={{
                 left: position.x,
                 top: position.y,
@@ -129,18 +129,23 @@ export function Draggable({
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
         >
+            {/* Subtle Stage Glow */}
+            <div className="absolute inset-0 bg-radial-gradient from-white/40 to-transparent pointer-events-none opacity-50" />
+
             {image ? (
-                <div className="w-28 h-28 relative flex items-center justify-center">
+                <div className="w-32 h-32 relative flex items-center justify-center">
                     <img
                         src={image}
                         alt={label}
-                        className="w-full h-full object-contain pointer-events-none drop-shadow-xl"
+                        className="w-full h-full object-contain pointer-events-none drop-shadow-sm mix-blend-multiply"
                     />
                 </div>
             ) : (
                 <div className="text-8xl filter drop-shadow-lg">{emoji}</div>
             )}
-            <div className="text-2xl font-black text-gray-800 text-center tracking-tight leading-tight">{label}</div>
+            <div className="text-2xl font-black text-gray-800/80 text-center tracking-tighter leading-none mt-2">
+                {label}
+            </div>
         </motion.div>
     );
 }
