@@ -101,12 +101,12 @@ export const WEEK_GAME_DATA: Record<string, WeekConfig> = {
             { id: 'beak', type: 'other-parts', label: 'Beak', emoji: '🦜', image: '/assets/items/w2/beak.png' },
             { id: 'hoof', type: 'other-parts', label: 'Hoof', emoji: '🐎', image: '/assets/items/w2/hoof.png' },
             { id: 'horn', type: 'other-parts', label: 'Horn', emoji: '🦌', image: '/assets/items/w2/horn.png' },
-            { id: 'feather', type: 'other-parts', label: 'Feather', emoji: '🪶' },
-            { id: 'trunk', type: 'other-parts', label: 'Trunk', emoji: '🐘' },
-            { id: 'mane', type: 'other-parts', label: 'Mane', emoji: '🦁' },
-            { id: 'pouch', type: 'other-parts', label: 'Pouch', emoji: '🦘' },
-            { id: 'spots', type: 'other-parts', label: 'Spots', emoji: '🐆' },
-            { id: 'stripes', type: 'other-parts', label: 'Stripes', emoji: '🦓' },
+            { id: 'feather', type: 'other-parts', label: 'Feather', emoji: '🪶', image: '/assets/items/w2/feather.png' },
+            { id: 'trunk', type: 'other-parts', label: 'Trunk', emoji: '🐘', image: '/assets/items/w2/trunk.png' },
+            { id: 'mane', type: 'other-parts', label: 'Mane', emoji: '🦁', image: '/assets/items/w2/mane.png' },
+            { id: 'pouch', type: 'other-parts', label: 'Pouch', emoji: '🦘', image: '/assets/items/w2/pouch.png' },
+            { id: 'spots', type: 'other-parts', label: 'Spots', emoji: '🐆', image: '/assets/items/w2/spots.png' },
+            { id: 'stripes', type: 'other-parts', label: 'Stripes', emoji: '🦓', image: '/assets/items/w2/stripes.png' },
         ]
     },
     w3: {
