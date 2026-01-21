@@ -1,4 +1,4 @@
-# 🌟 LumiWorld - Pre-K Educational PWA
+# LumiWorld - Pre-K Educational PWA
 
 > **Version:** 2.4.0  
 > **Type:** Pre-K Educational Progressive Web App  
@@ -6,20 +6,20 @@
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [Project Overview](#-project-overview)
-- [Key Features](#-key-features)
-- [System Architecture](#-system-architecture)
-- [8-Week Curriculum](#-8-week-curriculum)
-- [Multi-Language Support](#-multi-language-support)
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
-- [License](#-license)
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [System Architecture](#system-architecture)
+- [8-Week Curriculum](#8-week-curriculum)
+- [Multi-Language Support](#multi-language-support)
+- [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
+- [License](#license)
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 
 LumiWorld is an interactive educational PWA designed for 4-year-old children, focusing on STEAM education through engaging drag-and-drop games and interactive activities. It is fully aligned with **US Pre-K STEAM & Early Literacy** standards (CCSS & NGSS).
 
@@ -27,7 +27,7 @@ LumiWorld is an interactive educational PWA designed for 4-year-old children, fo
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 | Feature | Description |
 |---------|-------------|
@@ -104,7 +104,7 @@ Each level contains **30 practice items** with drag-and-drop classification:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 lumiworld-persistent-system/
@@ -119,19 +119,19 @@ lumiworld-persistent-system/
 
 ---
 
-## 🔒 Privacy & Security
+## Privacy & Security
 
-- ✅ **No Data Collection:** All data stays on device
-- ✅ **No Backend:** No server, no database
-- ✅ **No Tracking:** No analytics, no cookies
-- ✅ **COPPA Compliant:** Safe for children under 13
+- ✅ No Data Collection: All data stays on device
+- ✅ No Backend: No server, no database
+- ✅ No Tracking: No analytics, no cookies
+- ✅ COPPA Compliant: Safe for children under 13
 
 ---
 
-## 📝 License
+## License
 
 MIT License - Free for educational use
 
 ---
 
-**Made with ❤️ for curious 4-year-olds**
+**Made for curious 4-year-olds**
